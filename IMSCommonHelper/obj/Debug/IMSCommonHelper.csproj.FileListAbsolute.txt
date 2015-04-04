@@ -1,0 +1,4 @@
+H:\projects\IMS\IMSCommonHelper\bin\Debug\IMSCommonHelper.dll
+H:\projects\IMS\IMSCommonHelper\bin\Debug\IMSCommonHelper.pdb
+H:\projects\IMS\IMSCommonHelper\obj\Debug\IMSCommonHelper.dll
+H:\projects\IMS\IMSCommonHelper\obj\Debug\IMSCommonHelper.pdb

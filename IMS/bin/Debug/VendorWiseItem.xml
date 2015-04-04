@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <ItemName>card</ItemName>
+    <Received_x0020_Date>2015-04-24T00:00:00+05:45</Received_x0020_Date>
+    <Quantity>300</Quantity>
+    <Rate>90</Rate>
+    <Amount>27000.0000</Amount>
+  </Table1>
+</NewDataSet>
