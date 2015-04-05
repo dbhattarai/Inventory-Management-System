@@ -31,13 +31,19 @@ namespace IMS
             if (result > 0)
             {
                 MessageBox.Show("Department Saved Successfully ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clear();
             }
 
         }
-
+        private void clear()
+        {
+            txtDeptName.Clear();
+            txtDeptCode.Clear();
+            txtHod.Clear();
+        }
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            clear();
         }     
      
     }

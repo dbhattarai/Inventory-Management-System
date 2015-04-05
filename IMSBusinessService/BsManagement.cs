@@ -35,5 +35,9 @@ namespace IMSBusinessService
         {
             return _mgmt.SaveBalance(blnc,rec,issue);
         }
+        public DataTable getLatestGRNandISN()
+        {
+            return _mgmt.getLatestGRNandISN();
+        }
     }
 }

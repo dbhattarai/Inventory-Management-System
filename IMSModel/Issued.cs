@@ -11,10 +11,10 @@ namespace IMSModel
         public int itemId { get; set; }
         public string unit { get; set; }
         public int quantity { get; set; }
-        public float Rate { get; set; }
+        public decimal Rate { get; set; }
         public decimal amount { get; set; }
         public int DeptId { get; set; }
-        public string ISN { get; set; }
+        public int ISN { get; set; }
         public string remarks { get; set; }
         public string receivedby { get; set; }
         public string issuedby { get; set; }

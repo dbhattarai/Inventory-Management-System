@@ -35,7 +35,7 @@ namespace IMSDataRepository
                    cmd.Parameters.AddWithValue("@Rate", rec.Rate);
                    cmd.Parameters.AddWithValue("@amount", rec.amount);
                    cmd.Parameters.AddWithValue("@vendorId", rec.vendorId);
-                   //cmd.Parameters.AddWithValue("@GNR", rec.GNR);
+                   cmd.Parameters.AddWithValue("@GNR", rec.GNR);
                    cmd.Parameters.AddWithValue("@remarks", rec.remarks);
                    cmd.Parameters.AddWithValue("@receivedby", rec.receivedby);
                    cmd.Parameters.AddWithValue("@Id", rec.Id);
@@ -237,6 +237,26 @@ namespace IMSDataRepository
            {
                throw (ex);
            }
+       }
+
+       public DataTable getLatestGRNandISN()
+       {
+           dbc.Connect();
+
+           var cmd = new SqlCommand
+           {
+               Connection = dbc.Connection,
+               CommandText = "[getLatestGRNandISN]",
+               CommandType = CommandType.StoredProcedure
+           };
+
+           SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+           DataTable dt = new DataTable();
+           adapter.Fill(dt);
+           cmd.Dispose();
+           dbc.Disconnect();
+           return dt;
+
        }
     }
 }

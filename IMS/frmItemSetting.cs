@@ -32,12 +32,21 @@ namespace IMS
             if (result > 0)
             {
                 MessageBox.Show("Item Saved Successfully ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clear();
             }
+        }
+
+        private void clear()
+        {
+            txtCname.Clear();
+            txtDescription.Clear();
+            txtItemName.Clear();
+            txtUnit.Clear();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            clear();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

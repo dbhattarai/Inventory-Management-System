@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using IMSDataRepository;
+using IMSBusinessService;
 namespace IMS
 {
     public partial class itemSearch : Form
     {
-        private readonly  DSSetting _setting=new DSSetting();
+        private readonly BsSetting _setting = new BsSetting();
         DataTable dt;
         public itemSearch()
         {

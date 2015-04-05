@@ -31,12 +31,21 @@ namespace IMS
             if (result > 0)
             {
                 MessageBox.Show("Vendor Saved Successfully ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clear();
             }
+        }
+
+        private void clear()
+        {
+            txtVendorName.Clear();
+            txtAddress.Clear();
+            txtPhNo.Clear();
+           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            clear();
         }
     }
 }
