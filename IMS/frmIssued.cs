@@ -82,18 +82,7 @@ namespace IMS
             dgvItemDetail.Rows.Clear();
             loadISN();
         }
-        
-        private void dgvItemDetail_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtQuantity.MouseLeave-= txtQuantity_MouseLeave;
-            txtQuantity.Text = dgvItemDetail.Rows[e.RowIndex].Cells["colQty"].Value.ToString();
-            txtRate.Text = dgvItemDetail.Rows[e.RowIndex].Cells["colRate"].Value.ToString();
-            txtAmount.Text = dgvItemDetail.Rows[e.RowIndex].Cells["colAmt"].Value.ToString();
-            txtQuantity.MouseLeave += txtQuantity_MouseLeave;
-            txtRate.Enabled = false;
-            txtAmount.Enabled = false;
-        }
-
+       
         private void cmbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
             var unitList = _BsMgmt.GetReceivedItem();
@@ -221,7 +210,7 @@ namespace IMS
                     blnc.date = Convert.ToDateTime(txtDate.Text);
 
                     resultisseived = _BsMgmt.SaveIssued(iss);
-                    resultBalance = _BsMgmt.SaveBalance(blnc, 1, 0);
+                    resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
                 }
             }
             else
@@ -247,7 +236,7 @@ namespace IMS
                 blnc.date = Convert.ToDateTime(txtDate.Text);
 
                 resultisseived = _BsMgmt.SaveIssued(iss);
-                resultBalance = _BsMgmt.SaveBalance(blnc, 1, 0);
+                resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
             }
             if (resultisseived > 0 && resultBalance > 0)
             {
@@ -267,14 +256,21 @@ namespace IMS
 
         private void btnCancel_Click_1(object sender, EventArgs e)
         {
+            cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
             Clear();
+            cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
         }
 
-        private void cmbDept_SelectedIndexChanged(object sender, EventArgs e)
+        private void dgvItemDetail_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            txtQuantity.MouseLeave -= txtQuantity_MouseLeave;
+            txtQuantity.Text = dgvItemDetail.Rows[e.RowIndex].Cells["colQty"].Value.ToString();
+            txtRate.Text = dgvItemDetail.Rows[e.RowIndex].Cells["colRate"].Value.ToString();
+            txtAmount.Text = dgvItemDetail.Rows[e.RowIndex].Cells["colAmt"].Value.ToString();
+            txtQuantity.MouseLeave += txtQuantity_MouseLeave;
+            txtRate.Enabled = false;
+            txtAmount.Enabled = false;
         }
 
-     
     }
 }

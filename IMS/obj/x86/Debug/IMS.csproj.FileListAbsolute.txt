@@ -36,3 +36,4 @@ H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmItemWiseStockLedge
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmVendorWiseItemRpt.resources
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmItemWiseVendorRpt.resources
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmLedgerReportRpt.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.DatabaseBackup.resources

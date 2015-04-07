@@ -44,6 +44,7 @@
     <Compile Include="BSReport.cs" />
     <Compile Include="BsSetting.cs" />
     <Compile Include="BsUser.cs" />
+    <Compile Include="BSDBService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

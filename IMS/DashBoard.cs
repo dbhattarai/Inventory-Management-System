@@ -153,6 +153,15 @@ namespace IMS
             this.Close();
         }
 
+        private void databaseBackupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseBackup db = new DatabaseBackup();
+            db.MdiParent = this;
+            db.Show();
+            db.Activate();
+            db.BringToFront();
+        }
+
 
     }
 }

@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.grpItemDetail = new System.Windows.Forms.GroupBox();
             this.dgvItemDetail = new System.Windows.Forms.DataGridView();
             this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +57,6 @@
             this.txtAmount = new System.Windows.Forms.TextBox();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.txtUnit = new System.Windows.Forms.TextBox();
-            this.txtDate = new System.Windows.Forms.MaskedTextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtIssuedBy = new System.Windows.Forms.TextBox();
@@ -113,9 +113,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDate);
             this.groupBox1.Controls.Add(this.grpItemDetail);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.txtDate);
             this.groupBox1.Controls.Add(this.btnCancel);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtIssuedBy);
@@ -136,6 +136,14 @@
             this.groupBox1.TabIndex = 34;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Issued Item";
+            // 
+            // txtDate
+            // 
+            this.txtDate.Location = new System.Drawing.Point(148, 21);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(212, 21);
+            this.txtDate.TabIndex = 122;
+            this.txtDate.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
             // 
             // grpItemDetail
             // 
@@ -163,6 +171,7 @@
             this.dgvItemDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItemDetail.Size = new System.Drawing.Size(362, 122);
             this.dgvItemDetail.TabIndex = 1;
+            this.dgvItemDetail.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemDetail_CellContentDoubleClick);
             // 
             // colQty
             // 
@@ -211,9 +220,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(203, 146);
+            this.btnAdd.Location = new System.Drawing.Point(229, 146);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(87, 27);
+            this.btnAdd.Size = new System.Drawing.Size(75, 27);
             this.btnAdd.TabIndex = 120;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -275,7 +284,7 @@
             // 
             this.txtQuantity.Location = new System.Drawing.Point(92, 69);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(198, 21);
+            this.txtQuantity.Size = new System.Drawing.Size(212, 21);
             this.txtQuantity.TabIndex = 12;
             this.txtQuantity.MouseLeave += new System.EventHandler(this.txtQuantity_MouseLeave);
             // 
@@ -330,7 +339,7 @@
             this.cmbItem.FormattingEnabled = true;
             this.cmbItem.Location = new System.Drawing.Point(92, 17);
             this.cmbItem.Name = "cmbItem";
-            this.cmbItem.Size = new System.Drawing.Size(198, 23);
+            this.cmbItem.Size = new System.Drawing.Size(212, 23);
             this.cmbItem.TabIndex = 21;
             this.cmbItem.SelectedIndexChanged += new System.EventHandler(this.cmbItem_SelectedIndexChanged);
             // 
@@ -338,14 +347,14 @@
             // 
             this.txtAmount.Location = new System.Drawing.Point(92, 119);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(198, 21);
+            this.txtAmount.Size = new System.Drawing.Size(212, 21);
             this.txtAmount.TabIndex = 10;
             // 
             // txtRate
             // 
             this.txtRate.Location = new System.Drawing.Point(92, 94);
             this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(198, 21);
+            this.txtRate.Size = new System.Drawing.Size(212, 21);
             this.txtRate.TabIndex = 11;
             this.txtRate.MouseLeave += new System.EventHandler(this.txtRate_MouseLeave);
             // 
@@ -353,17 +362,8 @@
             // 
             this.txtUnit.Location = new System.Drawing.Point(92, 44);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(198, 21);
+            this.txtUnit.Size = new System.Drawing.Size(212, 21);
             this.txtUnit.TabIndex = 13;
-            // 
-            // txtDate
-            // 
-            this.txtDate.BackColor = System.Drawing.Color.White;
-            this.txtDate.Location = new System.Drawing.Point(148, 22);
-            this.txtDate.Mask = "0000/00/00";
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(125, 21);
-            this.txtDate.TabIndex = 28;
             // 
             // btnCancel
             // 
@@ -392,7 +392,7 @@
             this.txtIssuedBy.ForeColor = System.Drawing.Color.Black;
             this.txtIssuedBy.Location = new System.Drawing.Point(148, 376);
             this.txtIssuedBy.Name = "txtIssuedBy";
-            this.txtIssuedBy.Size = new System.Drawing.Size(198, 21);
+            this.txtIssuedBy.Size = new System.Drawing.Size(212, 21);
             this.txtIssuedBy.TabIndex = 24;
             // 
             // label11
@@ -410,22 +410,21 @@
             this.cmbDept.FormattingEnabled = true;
             this.cmbDept.Location = new System.Drawing.Point(148, 74);
             this.cmbDept.Name = "cmbDept";
-            this.cmbDept.Size = new System.Drawing.Size(198, 23);
+            this.cmbDept.Size = new System.Drawing.Size(212, 23);
             this.cmbDept.TabIndex = 22;
-            this.cmbDept.SelectedIndexChanged += new System.EventHandler(this.cmbDept_SelectedIndexChanged);
             // 
             // txtReceivedBy
             // 
             this.txtReceivedBy.Location = new System.Drawing.Point(148, 351);
             this.txtReceivedBy.Name = "txtReceivedBy";
-            this.txtReceivedBy.Size = new System.Drawing.Size(198, 21);
+            this.txtReceivedBy.Size = new System.Drawing.Size(212, 21);
             this.txtReceivedBy.TabIndex = 20;
             // 
             // txtRemarks
             // 
             this.txtRemarks.Location = new System.Drawing.Point(148, 103);
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(198, 61);
+            this.txtRemarks.Size = new System.Drawing.Size(212, 61);
             this.txtRemarks.TabIndex = 19;
             this.txtRemarks.Text = "";
             // 
@@ -453,7 +452,7 @@
             this.txtISN.Enabled = false;
             this.txtISN.Location = new System.Drawing.Point(148, 48);
             this.txtISN.Name = "txtISN";
-            this.txtISN.Size = new System.Drawing.Size(198, 21);
+            this.txtISN.Size = new System.Drawing.Size(212, 21);
             this.txtISN.TabIndex = 15;
             // 
             // label6
@@ -550,7 +549,6 @@
         private System.Windows.Forms.TextBox txtAmount;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.TextBox txtUnit;
-        private System.Windows.Forms.MaskedTextBox txtDate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtIssuedBy;
@@ -571,5 +569,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
+        private System.Windows.Forms.DateTimePicker txtDate;
     }
 }

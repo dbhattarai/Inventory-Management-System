@@ -30,6 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.grpItem = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cmbItem = new System.Windows.Forms.ComboBox();
@@ -61,7 +62,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.dgvDetail = new System.Windows.Forms.DataGridView();
-            this.txtDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -113,6 +113,14 @@
             this.groupBox4.TabIndex = 117;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Received Item";
+            // 
+            // txtDate
+            // 
+            this.txtDate.Location = new System.Drawing.Point(107, 25);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(212, 21);
+            this.txtDate.TabIndex = 121;
+            this.txtDate.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
             // 
             // grpItem
             // 
@@ -235,7 +243,7 @@
             this.txtGNR.Enabled = false;
             this.txtGNR.Location = new System.Drawing.Point(107, 52);
             this.txtGNR.Name = "txtGNR";
-            this.txtGNR.Size = new System.Drawing.Size(198, 21);
+            this.txtGNR.Size = new System.Drawing.Size(212, 21);
             this.txtGNR.TabIndex = 2;
             // 
             // label13
@@ -307,6 +315,7 @@
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -324,7 +333,7 @@
             this.cmbVendor.FormattingEnabled = true;
             this.cmbVendor.Location = new System.Drawing.Point(107, 79);
             this.cmbVendor.Name = "cmbVendor";
-            this.cmbVendor.Size = new System.Drawing.Size(198, 23);
+            this.cmbVendor.Size = new System.Drawing.Size(212, 23);
             this.cmbVendor.TabIndex = 3;
             // 
             // txtReceivedBy
@@ -334,14 +343,14 @@
             this.txtReceivedBy.ForeColor = System.Drawing.Color.Black;
             this.txtReceivedBy.Location = new System.Drawing.Point(107, 177);
             this.txtReceivedBy.Name = "txtReceivedBy";
-            this.txtReceivedBy.Size = new System.Drawing.Size(198, 21);
+            this.txtReceivedBy.Size = new System.Drawing.Size(212, 21);
             this.txtReceivedBy.TabIndex = 5;
             // 
             // txtRemarks
             // 
             this.txtRemarks.Location = new System.Drawing.Point(107, 110);
             this.txtRemarks.Name = "txtRemarks";
-            this.txtRemarks.Size = new System.Drawing.Size(198, 61);
+            this.txtRemarks.Size = new System.Drawing.Size(212, 61);
             this.txtRemarks.TabIndex = 4;
             this.txtRemarks.Text = "";
             // 
@@ -393,14 +402,6 @@
             this.dgvDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetail.Size = new System.Drawing.Size(1000, 230);
             this.dgvDetail.TabIndex = 15;
-            // 
-            // txtDate
-            // 
-            this.txtDate.Location = new System.Drawing.Point(107, 25);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(200, 21);
-            this.txtDate.TabIndex = 121;
-            this.txtDate.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
             // 
             // frmReceived
             // 

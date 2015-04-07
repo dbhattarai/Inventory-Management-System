@@ -45,8 +45,8 @@ namespace IMS
         {
             cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
             txtReceivedBy.Text = Global.fullName;
-            DateTime theDate = txtDate.Value.Date;
-            txtDate.Text = theDate.ToString(); //DateTime.Today.ToString("yyyy/MM/dd");
+           // DateTime theDate = txtDate.Value.Date;
+           // txtDate.Text = theDate.ToString("yyyy/MM/dd");//DateTime.Today.ToString("yyyy/MM/dd");
             LoadComboBox();
             loadGridview();
             loadGRN();
@@ -54,7 +54,7 @@ namespace IMS
         private void loadGRN()
         {
             DataTable dt = _BsMgmt.getLatestGRNandISN();
-            int GNR = int.Parse(dt.Rows[0]["GRN"].ToString());
+            int GNR = string.IsNullOrEmpty(dt.Rows[0]["GRN"].ToString()) ? 0 : int.Parse(dt.Rows[0]["GRN"].ToString());
             txtGNR.Text = (GNR + 1).ToString();
 
         }
@@ -194,7 +194,7 @@ namespace IMS
                 cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
                 Clear();
                 loadGridview();
-                cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+                cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
             }
             else
                 MessageBox.Show("Insufficient Information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -213,12 +213,13 @@ namespace IMS
 
         private void cmbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var unitList = _BsMgmt.GetReceivedItem();
+           // var unitList = _BsMgmt.GetReceivedItem();
+            var unitList = _BsSetting.GetItem();
             int itemId = string.IsNullOrEmpty(cmbItem.SelectedValue.ToString()) ? 0 : int.Parse(cmbItem.SelectedValue.ToString());
 
             foreach (var unit in unitList)
             {
-                if (itemId == unit.itemId)
+                if (itemId == unit.Id)
                 {
                     txtUnit.Text = unit.unit;
                 }
@@ -226,6 +227,11 @@ namespace IMS
 
         }
 
-    
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+            Clear();
+            cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
+        }
     }
 }
