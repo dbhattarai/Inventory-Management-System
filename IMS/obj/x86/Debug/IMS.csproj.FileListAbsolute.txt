@@ -37,3 +37,9 @@ H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmVendorWiseItemRpt.
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmItemWiseVendorRpt.resources
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmLedgerReportRpt.resources
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.DatabaseBackup.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmDepartmentWiseItemRptSummary.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmItemWiseDeptRptSummary.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmItemWiseVendorRptSummary.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.frmVendorWiseItemRptSummary.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.Report.receivedVoucherReport.resources
+H:\projects\IMS\IMS\obj\x86\Debug\IMS.Crystal.crystalForms.issuedVoucherReport.resources

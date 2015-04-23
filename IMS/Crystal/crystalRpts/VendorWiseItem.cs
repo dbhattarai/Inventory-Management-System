@@ -103,6 +103,14 @@ namespace IMS.Crystal.crystalRpts {
                 return this.DataDefinition.ParameterFields[1];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_vendor {
+            get {
+                return this.DataDefinition.ParameterFields[2];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]

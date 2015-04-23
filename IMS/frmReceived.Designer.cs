@@ -32,6 +32,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.grpItem = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cmbItem = new System.Windows.Forms.ComboBox();
             this.txtUnit = new System.Windows.Forms.TextBox();
@@ -124,6 +125,7 @@
             // 
             // grpItem
             // 
+            this.grpItem.Controls.Add(this.btnPrint);
             this.grpItem.Controls.Add(this.btnAdd);
             this.grpItem.Controls.Add(this.cmbItem);
             this.grpItem.Controls.Add(this.txtUnit);
@@ -141,6 +143,17 @@
             this.grpItem.TabIndex = 120;
             this.grpItem.TabStop = false;
             this.grpItem.Text = "Item Detail";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(192, 162);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(61, 27);
+            this.btnPrint.TabIndex = 27;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Visible = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnAdd
             // 
@@ -272,8 +285,10 @@
             this.dgvItem.Location = new System.Drawing.Point(626, 20);
             this.dgvItem.Name = "dgvItem";
             this.dgvItem.RowHeadersVisible = false;
+            this.dgvItem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItem.Size = new System.Drawing.Size(368, 211);
             this.dgvItem.TabIndex = 14;
+            this.dgvItem.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItem_CellContentDoubleClick);
             // 
             // item
             // 
@@ -402,6 +417,7 @@
             this.dgvDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetail.Size = new System.Drawing.Size(1000, 230);
             this.dgvDetail.TabIndex = 15;
+            this.dgvDetail.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetail_CellContentDoubleClick);
             // 
             // frmReceived
             // 
@@ -464,6 +480,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DateTimePicker txtDate;
+        private System.Windows.Forms.Button btnPrint;
 
 
     }

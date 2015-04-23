@@ -20,6 +20,7 @@ namespace IMS.Report
         private readonly BSReport _report = new BSReport();
         private readonly BsManagement _BsMgmt = new BsManagement();
         private string type = "";
+        private string item = "";
         DataTable dt;
         DateTime sDate;
         DateTime eDate;
@@ -49,8 +50,11 @@ namespace IMS.Report
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
+            print.Visible = true;
+            printSummary.Visible = false;
             type = "detail";
             int itemId = int.Parse(cmbItem.SelectedValue.ToString());
+            item = cmbItem.Text;
              sDate = DateTime.Parse((txtDateFrom.Text));
              eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetItemWiseDepartmentReport(sDate, eDate, itemId,type);
@@ -59,9 +63,11 @@ namespace IMS.Report
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
-            
+            print.Visible = false;
+            printSummary.Visible = true;
             type = "summary";
             int itemId = int.Parse(cmbItem.SelectedValue.ToString());
+            item = cmbItem.Text;
              sDate = DateTime.Parse((txtDateFrom.Text));
              eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetItemWiseDepartmentReport(sDate, eDate, itemId, type);
@@ -73,7 +79,16 @@ namespace IMS.Report
             //DataSet ds = new DataSet();
             //ds.Tables.Add(dt);
             //ds.WriteXml("ItemWiseDepartment.xml");
-            frmItemWiseDepartmentRpt frmcrystal = new frmItemWiseDepartmentRpt(dt, sDate, eDate);
+            frmItemWiseDepartmentRpt frmcrystal = new frmItemWiseDepartmentRpt(dt, sDate, eDate,item);
+            frmcrystal.Show();
+        }
+
+        private void printSummary_Click(object sender, EventArgs e)
+        {
+            //DataSet ds = new DataSet();
+            //ds.Tables.Add(dt);
+            //ds.WriteXml("ItemWiseDepartmentSummary.xml");
+            frmItemWiseDeptRptSummary frmcrystal = new frmItemWiseDeptRptSummary(dt, sDate, eDate,item);
             frmcrystal.Show();
         }
 

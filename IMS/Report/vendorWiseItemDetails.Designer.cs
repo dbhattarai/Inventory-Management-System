@@ -43,6 +43,7 @@
             this.btnSummary = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.printSummary = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
             this.panel2.SuspendLayout();
             this.grpDetail.SuspendLayout();
@@ -130,12 +131,13 @@
             // 
             // print
             // 
-            this.print.Location = new System.Drawing.Point(432, 47);
+            this.print.Location = new System.Drawing.Point(432, 15);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(75, 23);
             this.print.TabIndex = 11;
             this.print.Text = "Print";
             this.print.UseVisualStyleBackColor = true;
+            this.print.Visible = false;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // btnPrint
@@ -158,6 +160,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.printSummary);
             this.groupBox1.Controls.Add(this.btnSummary);
             this.groupBox1.Controls.Add(this.print);
             this.groupBox1.Controls.Add(this.btnPrint);
@@ -206,6 +209,17 @@
             this.panel1.Size = new System.Drawing.Size(519, 283);
             this.panel1.TabIndex = 6;
             // 
+            // printSummary
+            // 
+            this.printSummary.Location = new System.Drawing.Point(432, 45);
+            this.printSummary.Name = "printSummary";
+            this.printSummary.Size = new System.Drawing.Size(75, 23);
+            this.printSummary.TabIndex = 13;
+            this.printSummary.Text = "Print";
+            this.printSummary.UseVisualStyleBackColor = true;
+            this.printSummary.Visible = false;
+            this.printSummary.Click += new System.EventHandler(this.printSummary_Click);
+            // 
             // vendorWiseItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,5 +257,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSummary;
+        private System.Windows.Forms.Button printSummary;
     }
 }

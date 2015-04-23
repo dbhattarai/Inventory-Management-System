@@ -43,6 +43,7 @@
             this.btnDetail = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.printSummary = new System.Windows.Forms.Button();
             this.grpDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
             this.panel1.SuspendLayout();
@@ -92,12 +93,13 @@
             // 
             // print
             // 
-            this.print.Location = new System.Drawing.Point(388, 47);
+            this.print.Location = new System.Drawing.Point(388, 19);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(75, 23);
             this.print.TabIndex = 11;
             this.print.Text = "Print";
             this.print.UseVisualStyleBackColor = true;
+            this.print.Visible = false;
             this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // panel1
@@ -121,6 +123,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.printSummary);
             this.groupBox1.Controls.Add(this.btnSummary);
             this.groupBox1.Controls.Add(this.print);
             this.groupBox1.Controls.Add(this.btnPrint);
@@ -206,6 +209,17 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Date From:";
             // 
+            // printSummary
+            // 
+            this.printSummary.Location = new System.Drawing.Point(388, 48);
+            this.printSummary.Name = "printSummary";
+            this.printSummary.Size = new System.Drawing.Size(75, 23);
+            this.printSummary.TabIndex = 13;
+            this.printSummary.Text = "Print";
+            this.printSummary.UseVisualStyleBackColor = true;
+            this.printSummary.Visible = false;
+            this.printSummary.Click += new System.EventHandler(this.printSummary_Click);
+            // 
             // itemWiseDepartmentReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +256,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvDetail;
         private System.Windows.Forms.Button btnSummary;
+        private System.Windows.Forms.Button printSummary;
     }
 }

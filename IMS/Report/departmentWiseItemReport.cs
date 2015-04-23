@@ -21,6 +21,7 @@ namespace IMS.Report
         private readonly BSReport _report = new BSReport();
         private readonly BsUser _BsUser = new BsUser();
         private string type = "";
+        private string department = "";
         private DataTable dt;
         DateTime sDate;
         DateTime eDate;
@@ -53,6 +54,7 @@ namespace IMS.Report
         {
             type = "detail";
             int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
+            department = cmbDepartment.Text;
             sDate = DateTime.Parse((txtDateFrom.Text));
             eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId,type);
@@ -64,6 +66,7 @@ namespace IMS.Report
             
             type = "summary";
             int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
+            department = cmbDepartment.Text;
             sDate = DateTime.Parse((txtDateFrom.Text));
             eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId,type);
@@ -75,7 +78,16 @@ namespace IMS.Report
            // DataSet ds = new DataSet();
             //ds.Tables.Add(dt);
             //ds.WriteXml("DepartmentWiseItem.xml");
-            frmDepartmentWiseItemRpt frmcrystal = new frmDepartmentWiseItemRpt(dt,sDate,eDate);
+            frmDepartmentWiseItemRpt frmcrystal = new frmDepartmentWiseItemRpt(dt,sDate,eDate,department);
+            frmcrystal.Show();
+        }
+
+        private void printSummary_Click(object sender, EventArgs e)
+        {
+            //DataSet ds = new DataSet();
+            //ds.Tables.Add(dt);
+            //ds.WriteXml("DepartmentWiseItemSummary.xml");
+            frmDepartmentWiseItemRptSummary frmcrystal = new frmDepartmentWiseItemRptSummary(dt, sDate, eDate,department);
             frmcrystal.Show();
         }
 

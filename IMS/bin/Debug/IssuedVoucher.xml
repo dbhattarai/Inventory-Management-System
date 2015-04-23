@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Issued>
+    <Date>4/22/2015 12:00:00 AM</Date>
+    <itemId>6</itemId>
+    <unit>PC</unit>
+    <quantity>200</quantity>
+    <Rate>10</Rate>
+    <amount>2000.0000</amount>
+    <DeptId>4</DeptId>
+    <ISN>4</ISN>
+    <remarks>sdfgdfsgdf</remarks>
+    <receivedby>sdfdgdfgdf</receivedby>
+    <issuedby />
+    <Id>4bd703a3-f931-4e8a-acbd-fcf98788dba4</Id>
+  </Issued>
+</NewDataSet>

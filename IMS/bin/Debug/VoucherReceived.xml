@@ -1,0 +1,18 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <Date>2015-04-05T00:00:00+05:45</Date>
+    <itemId>6</itemId>
+    <unit>PC</unit>
+    <quantity>500</quantity>
+    <Rate>23</Rate>
+    <amount>11500</amount>
+    <vendorId>4</vendorId>
+    <GNR>5</GNR>
+    <remarks>ccdvdfgsrfg</remarks>
+    <receivedby />
+    <Id>b30dde8f-5e68-4988-99d4-91e1bba78301</Id>
+    <vendorName>shyam pasal</vendorName>
+    <itemName />
+  </Table1>
+</NewDataSet>

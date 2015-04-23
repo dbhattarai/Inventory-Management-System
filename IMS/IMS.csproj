@@ -62,11 +62,23 @@
     <Compile Include="Crystal\crystalForms\frmDepartmentWiseItemRpt.Designer.cs">
       <DependentUpon>frmDepartmentWiseItemRpt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crystal\crystalForms\frmDepartmentWiseItemRptSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\frmDepartmentWiseItemRptSummary.Designer.cs">
+      <DependentUpon>frmDepartmentWiseItemRptSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Crystal\crystalForms\frmItemWiseDepartmentRpt.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Crystal\crystalForms\frmItemWiseDepartmentRpt.Designer.cs">
       <DependentUpon>frmItemWiseDepartmentRpt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\frmItemWiseDeptRptSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\frmItemWiseDeptRptSummary.Designer.cs">
+      <DependentUpon>frmItemWiseDeptRptSummary.cs</DependentUpon>
     </Compile>
     <Compile Include="Crystal\crystalForms\frmItemWiseVendorRpt.cs">
       <SubType>Form</SubType>
@@ -80,6 +92,12 @@
     <Compile Include="Crystal\crystalForms\frmItemWiseStockLedgerRpt.Designer.cs">
       <DependentUpon>frmItemWiseStockLedgerRpt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crystal\crystalForms\frmItemWiseVendorRptSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\frmItemWiseVendorRptSummary.Designer.cs">
+      <DependentUpon>frmItemWiseVendorRptSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Crystal\crystalForms\frmLedgerReportRpt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,16 +110,46 @@
     <Compile Include="Crystal\crystalForms\frmVendorWiseItemRpt.Designer.cs">
       <DependentUpon>frmVendorWiseItemRpt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crystal\crystalForms\frmVendorWiseItemRptSummary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\frmVendorWiseItemRptSummary.Designer.cs">
+      <DependentUpon>frmVendorWiseItemRptSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\issuedVoucherReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\issuedVoucherReport.Designer.cs">
+      <DependentUpon>issuedVoucherReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Crystal\crystalRpts\DepartmentWiseItem.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DepartmentWiseItem.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Crystal\crystalRpts\DepartmentWiseItemSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepartmentWiseItemSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalRpts\IssuedVoucher.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IssuedVoucher.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Crystal\crystalRpts\ItemWiseDepartment.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ItemWiseDepartment.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalRpts\ItemWiseDeptSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemWiseDeptSummary.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Crystal\crystalRpts\ItemWiseStockLedger.cs">
@@ -116,10 +164,28 @@
       <DependentUpon>ItemWiseVendor.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Crystal\crystalRpts\ItemWiseVendorSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemWiseVendorSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalRpts\ReceivedVoucher.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReceivedVoucher.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Crystal\crystalRpts\VendorWiseItem.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>VendorWiseItem.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalRpts\VendorWiseItemSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendorWiseItemSummary.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DashBoard.cs">
@@ -221,6 +287,12 @@
     <Compile Include="Report\ledgerReport.Designer.cs">
       <DependentUpon>ledgerReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Crystal\crystalForms\receivedVoucherReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalForms\receivedVoucherReport.Designer.cs">
+      <DependentUpon>receivedVoucherReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\vendorWiseItemDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,8 +302,14 @@
     <EmbeddedResource Include="Crystal\crystalForms\frmDepartmentWiseItemRpt.resx">
       <DependentUpon>frmDepartmentWiseItemRpt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalForms\frmDepartmentWiseItemRptSummary.resx">
+      <DependentUpon>frmDepartmentWiseItemRptSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalForms\frmItemWiseDepartmentRpt.resx">
       <DependentUpon>frmItemWiseDepartmentRpt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalForms\frmItemWiseDeptRptSummary.resx">
+      <DependentUpon>frmItemWiseDeptRptSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalForms\frmItemWiseVendorRpt.resx">
       <DependentUpon>frmItemWiseVendorRpt.cs</DependentUpon>
@@ -239,19 +317,40 @@
     <EmbeddedResource Include="Crystal\crystalForms\frmItemWiseStockLedgerRpt.resx">
       <DependentUpon>frmItemWiseStockLedgerRpt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalForms\frmItemWiseVendorRptSummary.resx">
+      <DependentUpon>frmItemWiseVendorRptSummary.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalForms\frmLedgerReportRpt.resx">
       <DependentUpon>frmLedgerReportRpt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalForms\frmVendorWiseItemRpt.resx">
       <DependentUpon>frmVendorWiseItemRpt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalForms\frmVendorWiseItemRptSummary.resx">
+      <DependentUpon>frmVendorWiseItemRptSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalForms\issuedVoucherReport.resx">
+      <DependentUpon>issuedVoucherReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\DepartmentWiseItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>DepartmentWiseItem.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\DepartmentWiseItemSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepartmentWiseItemSummary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\IssuedVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>IssuedVoucher.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseDepartment.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseDepartment.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseDeptSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ItemWiseDeptSummary.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseStockLedger.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -261,9 +360,21 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseVendor.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseVendorSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ItemWiseVendorSummary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\ReceivedVoucher.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReceivedVoucher.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\VendorWiseItem.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>VendorWiseItem.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\VendorWiseItemSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>VendorWiseItemSummary.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
@@ -322,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\ledgerReport.resx">
       <DependentUpon>ledgerReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalForms\receivedVoucherReport.resx">
+      <DependentUpon>receivedVoucherReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\vendorWiseItemDetails.resx">
       <DependentUpon>vendorWiseItemDetails.cs</DependentUpon>

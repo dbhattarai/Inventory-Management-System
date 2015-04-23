@@ -12,13 +12,14 @@ namespace IMS.Crystal.crystalForms
 {
     public partial class frmVendorWiseItemRpt : Form
     {
-        public frmVendorWiseItemRpt(DataTable ds, DateTime fromD, DateTime toD)
+        public frmVendorWiseItemRpt(DataTable ds, DateTime fromD, DateTime toD,string vendor)
         {
             InitializeComponent();
             VendorWiseItem cr = new VendorWiseItem();
             cr.SetDataSource(ds);
             cr.SetParameterValue("DateFrom", fromD);
             cr.SetParameterValue("DateTo", toD);
+            cr.SetParameterValue("vendor", vendor);
             crptViewer.ReportSource = cr;
         }
     }

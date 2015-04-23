@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <Item>Ball Pen</Item>
+    <Quantity>90</Quantity>
+    <Rate>15</Rate>
+    <Amount>1350.0000</Amount>
+  </Table1>
+  <Table1>
+    <Item>Copy</Item>
+    <Quantity>150</Quantity>
+    <Rate>10</Rate>
+    <Amount>1500.0000</Amount>
+  </Table1>
+</NewDataSet>

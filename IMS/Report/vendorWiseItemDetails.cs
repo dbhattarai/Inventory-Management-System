@@ -20,6 +20,7 @@ namespace IMS.Report
         private string type = "";
         private readonly BSReport _report = new BSReport();
         private readonly BsSetting _BsSetting = new BsSetting();
+        private string vendor;
         DataTable dt;
         DateTime sDate;
         DateTime eDate;
@@ -50,8 +51,11 @@ namespace IMS.Report
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
+            print.Visible = true;
+            printSummary.Visible = false;
             type = "detail";
             int venId = int.Parse(cmbVendor.SelectedValue.ToString());
+            vendor = cmbVendor.Text;
              sDate = DateTime.Parse((txtDateFrom.Text));
              eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetVendorWiseItemReport(sDate, eDate, venId,type);
@@ -60,8 +64,11 @@ namespace IMS.Report
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
+            print.Visible = false;
+            printSummary.Visible = true;
             type = "summary";
             int venId = int.Parse(cmbVendor.SelectedValue.ToString());
+            vendor = cmbVendor.Text;
              sDate = DateTime.Parse((txtDateFrom.Text));
              eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetVendorWiseItemReport(sDate, eDate, venId,type);
@@ -73,7 +80,16 @@ namespace IMS.Report
             //DataSet ds = new DataSet();
             //ds.Tables.Add(dt);
             //ds.WriteXml("VendorWiseItem.xml");
-            frmVendorWiseItemRpt frmcrystal = new frmVendorWiseItemRpt(dt, sDate, eDate);
+            frmVendorWiseItemRpt frmcrystal = new frmVendorWiseItemRpt(dt, sDate, eDate,vendor);
+            frmcrystal.Show();
+        }
+
+        private void printSummary_Click(object sender, EventArgs e)
+        {
+            //DataSet ds = new DataSet();
+            //ds.Tables.Add(dt);
+            //ds.WriteXml("VendorWiseItemSummary.xml");
+            frmVendorWiseItemRptSummary frmcrystal = new frmVendorWiseItemRptSummary(dt, sDate, eDate,vendor);
             frmcrystal.Show();
         }
 

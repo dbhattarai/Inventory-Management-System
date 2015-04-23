@@ -12,13 +12,14 @@ namespace IMS.Crystal.crystalForms
 {
     public partial class frmDepartmentWiseItemRpt : Form
     {
-        public frmDepartmentWiseItemRpt(DataTable dt,DateTime fromD,DateTime toD)
+        public frmDepartmentWiseItemRpt(DataTable dt,DateTime fromD,DateTime toD,string dept)
         {
             InitializeComponent();
             DepartmentWiseItem cr = new DepartmentWiseItem();
             cr.SetDataSource(dt);
             cr.SetParameterValue("DateFrom", fromD);
             cr.SetParameterValue("DateTo", toD);
+            cr.SetParameterValue("department", dept);
             crptViewer.ReportSource = cr;
 
 

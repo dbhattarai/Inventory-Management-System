@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Table1>
+    <Vendor>hira bhandar</Vendor>
+    <Quantity>200</Quantity>
+    <Rate>5</Rate>
+    <Amount>1000.0000</Amount>
+  </Table1>
+  <Table1>
+    <Vendor>shyam pasal</Vendor>
+    <Quantity>500</Quantity>
+    <Rate>15</Rate>
+    <Amount>7500.0000</Amount>
+  </Table1>
+</NewDataSet>
