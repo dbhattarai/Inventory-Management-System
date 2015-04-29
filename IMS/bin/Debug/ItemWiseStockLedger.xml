@@ -1,11 +1,12 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
-  <Table>
+  <Table1>
+    <Item>Pen</Item>
     <Date>2015-04-05T00:00:00+05:45</Date>
-    <Received_x0020_Quantity>1000</Received_x0020_Quantity>
-    <Rate>2</Rate>
-    <Received_x0020_Amount>2000.0000</Received_x0020_Amount>
-    <Balance_x0020_Quantity>1000</Balance_x0020_Quantity>
-    <Balance_x0020_Amount>2000.0000</Balance_x0020_Amount>
-  </Table>
+    <Rate>1</Rate>
+    <Received_x0020_Quantity>56</Received_x0020_Quantity>
+    <Received_x0020_Amount>56.0000</Received_x0020_Amount>
+    <Balance_x0020_Quantity>56</Balance_x0020_Quantity>
+    <Balance_x0020_Amount>56.0000</Balance_x0020_Amount>
+  </Table1>
 </NewDataSet>

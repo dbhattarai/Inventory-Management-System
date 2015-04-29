@@ -12,7 +12,7 @@ namespace IMSBusinessService
     {
        private readonly DSReport _report = new DSReport();
 
-       public DataSet GetItemWiseStockReport(DateTime dateFrom, DateTime dateTo, int itemId)
+       public DataTable GetItemWiseStockReport(DateTime dateFrom, DateTime dateTo, int itemId)
        {
            return _report.GetItemWiseStockReport(dateFrom, dateTo, itemId);
        }

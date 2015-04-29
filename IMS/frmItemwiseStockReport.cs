@@ -15,7 +15,7 @@ namespace IMS
     {
         private readonly BSReport _report = new BSReport();
         private readonly BsSetting _setting = new BsSetting();
-        DataSet ds;
+        DataTable dt;
         DateTime sDate;
         DateTime eDate;
         string item;
@@ -41,9 +41,9 @@ namespace IMS
             item = cmbItem.Text;
              sDate = DateTime.Parse((txtDateFrom.Text));
              eDate = DateTime.Parse((txtDateTo.Text));
-            ds = _report.GetItemWiseStockReport(sDate, eDate, itemId);
+            dt = _report.GetItemWiseStockReport(sDate, eDate, itemId);
             //dgvReceived.DataSource = ds.Tables[0];
-            dgvIssued.DataSource = ds.Tables[0];
+            dgvIssued.DataSource = dt;
             //dgvBalance.DataSource = ds
         }
 
@@ -55,14 +55,16 @@ namespace IMS
         private void frmItemwiseStockReport_Load(object sender, EventArgs e)
         {
             LoadComboBox();
+            txtDateFrom.Text = DateTime.Today.ToString("yyyy/MM/dd");
+            txtDateTo.Text = DateTime.Today.ToString("yyyy/MM/dd");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             //DataSet ds = new DataSet();
-            //ds.Tables.Add(ds);
-            ds.WriteXml("ItemWiseStockLedger.xml");
-            frmItemWiseStockLedgerRpt frmcrystal = new frmItemWiseStockLedgerRpt(ds, sDate, eDate, item);
+            //ds.Tables.Add(dt);
+            //ds.WriteXml("ItemWiseStockLedger.xml");
+            frmItemWiseStockLedgerRpt frmcrystal = new frmItemWiseStockLedgerRpt(dt, sDate, eDate, item);
             frmcrystal.Show();
         }
 

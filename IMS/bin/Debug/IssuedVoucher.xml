@@ -1,17 +1,19 @@
 <?xml version="1.0" standalone="yes"?>
 <NewDataSet>
   <Issued>
-    <Date>4/22/2015 12:00:00 AM</Date>
-    <itemId>6</itemId>
-    <unit>PC</unit>
-    <quantity>200</quantity>
-    <Rate>10</Rate>
-    <amount>2000.0000</amount>
+    <Date>4/29/2015 12:00:00 AM</Date>
+    <itemId>3</itemId>
+    <unit>89</unit>
+    <quantity>234</quantity>
+    <Rate>12</Rate>
+    <amount>2808</amount>
     <DeptId>4</DeptId>
-    <ISN>4</ISN>
-    <remarks>sdfgdfsgdf</remarks>
-    <receivedby>sdfdgdfgdf</receivedby>
+    <ISN>8</ISN>
+    <remarks>sdfdsf</remarks>
+    <receivedby>sdfdsfgd</receivedby>
     <issuedby />
-    <Id>4bd703a3-f931-4e8a-acbd-fcf98788dba4</Id>
+    <Id>948f2500-9b9f-47a4-b20b-f8814553fb7c</Id>
+    <departmentName>Grade 2</departmentName>
+    <itemName>Pen</itemName>
   </Issued>
 </NewDataSet>

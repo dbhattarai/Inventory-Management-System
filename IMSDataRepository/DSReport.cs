@@ -14,9 +14,9 @@ namespace IMSDataRepository
     {
         private readonly DBConnect dbc = new DBConnect();
 
-        public DataSet GetItemWiseStockReport(DateTime dateFrom, DateTime dateTo,int itemId)
+        public DataTable GetItemWiseStockReport(DateTime dateFrom, DateTime dateTo,int itemId)
         {
-            DataSet ds = new DataSet();
+            DataTable ds = new DataTable();
             dbc.Connect();
 
             using (var cmd = new SqlCommand()

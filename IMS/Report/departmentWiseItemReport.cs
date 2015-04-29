@@ -52,6 +52,8 @@ namespace IMS.Report
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
+            btnDetail.Visible = true;
+            btnSummary.Visible = false;
             type = "detail";
             int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
             department = cmbDepartment.Text;
@@ -63,7 +65,8 @@ namespace IMS.Report
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
-            
+            btnSummary.Visible = true;
+            btnDetail.Visible = false;
             type = "summary";
             int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
             department = cmbDepartment.Text;

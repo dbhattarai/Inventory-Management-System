@@ -121,7 +121,7 @@
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(212, 21);
             this.txtDate.TabIndex = 121;
-            this.txtDate.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
+            this.txtDate.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
             // 
             // grpItem
             // 

@@ -270,7 +270,7 @@ namespace IMS
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-             List<Issued> iss = new List<Issued>();
+            List<Issued> iss = new List<Issued>();
             DataTable dt = new DataTable();
             List<Balance> blnc = new List<Balance>();
             int resultissued = 0;
@@ -323,6 +323,8 @@ namespace IMS
                     receivedby = txtReceivedBy.Text,
                     issuedby=txtIssuedBy.Text,
                     remarks = txtRemarks.Text,
+                    departmentName=cmbDept.Text,
+                    itemName=cmbItem.Text,
                     Id = Convert.ToString(Guid.NewGuid().ToString())
                 });
 
@@ -339,7 +341,7 @@ namespace IMS
                // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
               
             }
-            if (resultissued > 0 && resultBalance > 0 && resTransaction>0)
+            if (resultissued > 0 )
             {
                 
                 MessageBox.Show("Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -347,9 +349,9 @@ namespace IMS
                 if (result == DialogResult.Yes)
                 {
                     dt = ToDataTable<Issued>(iss);
-                    //DataSet ds = new DataSet();
-                    //ds.Tables.Add(dt);
-                    //ds.WriteXml("IssuedVoucher.xml");
+                    DataSet ds = new DataSet();
+                    ds.Tables.Add(dt);
+                    ds.WriteXml("IssuedVoucher.xml");
                    
                     issuedVoucherReport frmcrystal = new issuedVoucherReport(dt);
                    frmcrystal.Show();

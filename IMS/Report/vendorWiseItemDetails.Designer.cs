@@ -30,7 +30,6 @@
         {
             this.cmbVendor = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDateFrom = new System.Windows.Forms.MaskedTextBox();
             this.dgvDetail = new System.Windows.Forms.DataGridView();
             this.btnDetail = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,12 +37,13 @@
             this.grpDetail = new System.Windows.Forms.GroupBox();
             this.print = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.txtDateTo = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.printSummary = new System.Windows.Forms.Button();
             this.btnSummary = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.printSummary = new System.Windows.Forms.Button();
+            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
+            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
             this.panel2.SuspendLayout();
             this.grpDetail.SuspendLayout();
@@ -69,15 +69,6 @@
             this.label3.Size = new System.Drawing.Size(52, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Vendor";
-            // 
-            // txtDateFrom
-            // 
-            this.txtDateFrom.BackColor = System.Drawing.Color.White;
-            this.txtDateFrom.Location = new System.Drawing.Point(89, 19);
-            this.txtDateFrom.Mask = "0000/00/00";
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.Size = new System.Drawing.Size(100, 22);
-            this.txtDateFrom.TabIndex = 1;
             // 
             // dgvDetail
             // 
@@ -149,25 +140,16 @@
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
-            // txtDateTo
-            // 
-            this.txtDateTo.BackColor = System.Drawing.Color.White;
-            this.txtDateTo.Location = new System.Drawing.Point(89, 50);
-            this.txtDateTo.Mask = "0000/00/00";
-            this.txtDateTo.Name = "txtDateTo";
-            this.txtDateTo.Size = new System.Drawing.Size(100, 22);
-            this.txtDateTo.TabIndex = 2;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDateTo);
+            this.groupBox1.Controls.Add(this.txtDateFrom);
             this.groupBox1.Controls.Add(this.printSummary);
             this.groupBox1.Controls.Add(this.btnSummary);
             this.groupBox1.Controls.Add(this.print);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.cmbVendor);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtDateTo);
-            this.groupBox1.Controls.Add(this.txtDateFrom);
             this.groupBox1.Controls.Add(this.btnDetail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -179,6 +161,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Report";
+            // 
+            // printSummary
+            // 
+            this.printSummary.Location = new System.Drawing.Point(432, 45);
+            this.printSummary.Name = "printSummary";
+            this.printSummary.Size = new System.Drawing.Size(75, 23);
+            this.printSummary.TabIndex = 13;
+            this.printSummary.Text = "Print";
+            this.printSummary.UseVisualStyleBackColor = true;
+            this.printSummary.Visible = false;
+            this.printSummary.Click += new System.EventHandler(this.printSummary_Click);
             // 
             // btnSummary
             // 
@@ -209,16 +202,21 @@
             this.panel1.Size = new System.Drawing.Size(519, 283);
             this.panel1.TabIndex = 6;
             // 
-            // printSummary
+            // txtDateTo
             // 
-            this.printSummary.Location = new System.Drawing.Point(432, 45);
-            this.printSummary.Name = "printSummary";
-            this.printSummary.Size = new System.Drawing.Size(75, 23);
-            this.printSummary.TabIndex = 13;
-            this.printSummary.Text = "Print";
-            this.printSummary.UseVisualStyleBackColor = true;
-            this.printSummary.Visible = false;
-            this.printSummary.Click += new System.EventHandler(this.printSummary_Click);
+            this.txtDateTo.Location = new System.Drawing.Point(89, 48);
+            this.txtDateTo.Name = "txtDateTo";
+            this.txtDateTo.Size = new System.Drawing.Size(115, 22);
+            this.txtDateTo.TabIndex = 125;
+            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // txtDateFrom
+            // 
+            this.txtDateFrom.Location = new System.Drawing.Point(89, 20);
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(115, 22);
+            this.txtDateFrom.TabIndex = 124;
+            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
             // 
             // vendorWiseItemDetails
             // 
@@ -244,7 +242,6 @@
 
         private System.Windows.Forms.ComboBox cmbVendor;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox txtDateFrom;
         private System.Windows.Forms.DataGridView dgvDetail;
         private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.Label label2;
@@ -252,11 +249,12 @@
         private System.Windows.Forms.GroupBox grpDetail;
         private System.Windows.Forms.Button print;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.MaskedTextBox txtDateTo;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSummary;
         private System.Windows.Forms.Button printSummary;
+        private System.Windows.Forms.DateTimePicker txtDateTo;
+        private System.Windows.Forms.DateTimePicker txtDateFrom;
     }
 }

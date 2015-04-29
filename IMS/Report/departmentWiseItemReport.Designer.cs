@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.printDetail = new System.Windows.Forms.Button();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.printSummary = new System.Windows.Forms.Button();
             this.btnSummary = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
-            this.txtDateTo = new System.Windows.Forms.MaskedTextBox();
-            this.txtDateFrom = new System.Windows.Forms.MaskedTextBox();
             this.btnDetail = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +42,8 @@
             this.dgvDetail = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.printSummary = new System.Windows.Forms.Button();
+            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.grpDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
@@ -51,15 +51,16 @@
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // printDetail
             // 
-            this.button1.Location = new System.Drawing.Point(433, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.printDetail.Location = new System.Drawing.Point(433, 15);
+            this.printDetail.Name = "printDetail";
+            this.printDetail.Size = new System.Drawing.Size(75, 23);
+            this.printDetail.TabIndex = 11;
+            this.printDetail.Text = "Print";
+            this.printDetail.UseVisualStyleBackColor = true;
+            this.printDetail.Visible = false;
+            this.printDetail.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmbDepartment
             // 
@@ -82,14 +83,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDateTo);
+            this.groupBox1.Controls.Add(this.txtDateFrom);
             this.groupBox1.Controls.Add(this.printSummary);
             this.groupBox1.Controls.Add(this.btnSummary);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.printDetail);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.cmbDepartment);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtDateTo);
-            this.groupBox1.Controls.Add(this.txtDateFrom);
             this.groupBox1.Controls.Add(this.btnDetail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -101,6 +102,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Report";
+            // 
+            // printSummary
+            // 
+            this.printSummary.Location = new System.Drawing.Point(431, 47);
+            this.printSummary.Name = "printSummary";
+            this.printSummary.Size = new System.Drawing.Size(75, 23);
+            this.printSummary.TabIndex = 13;
+            this.printSummary.Text = "Print";
+            this.printSummary.UseVisualStyleBackColor = true;
+            this.printSummary.Visible = false;
+            this.printSummary.Click += new System.EventHandler(this.printSummary_Click);
             // 
             // btnSummary
             // 
@@ -120,24 +132,6 @@
             this.btnPrint.TabIndex = 10;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
-            // 
-            // txtDateTo
-            // 
-            this.txtDateTo.BackColor = System.Drawing.Color.White;
-            this.txtDateTo.Location = new System.Drawing.Point(89, 50);
-            this.txtDateTo.Mask = "0000/00/00";
-            this.txtDateTo.Name = "txtDateTo";
-            this.txtDateTo.Size = new System.Drawing.Size(100, 22);
-            this.txtDateTo.TabIndex = 2;
-            // 
-            // txtDateFrom
-            // 
-            this.txtDateFrom.BackColor = System.Drawing.Color.White;
-            this.txtDateFrom.Location = new System.Drawing.Point(89, 19);
-            this.txtDateFrom.Mask = "0000/00/00";
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.Size = new System.Drawing.Size(100, 22);
-            this.txtDateFrom.TabIndex = 1;
             // 
             // btnDetail
             // 
@@ -208,15 +202,21 @@
             this.panel2.Size = new System.Drawing.Size(518, 216);
             this.panel2.TabIndex = 1;
             // 
-            // printSummary
+            // txtDateFrom
             // 
-            this.printSummary.Location = new System.Drawing.Point(431, 47);
-            this.printSummary.Name = "printSummary";
-            this.printSummary.Size = new System.Drawing.Size(75, 23);
-            this.printSummary.TabIndex = 13;
-            this.printSummary.Text = "Print";
-            this.printSummary.UseVisualStyleBackColor = true;
-            this.printSummary.Click += new System.EventHandler(this.printSummary_Click);
+            this.txtDateFrom.Location = new System.Drawing.Point(89, 22);
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(115, 22);
+            this.txtDateFrom.TabIndex = 122;
+            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // txtDateTo
+            // 
+            this.txtDateTo.Location = new System.Drawing.Point(89, 49);
+            this.txtDateTo.Name = "txtDateTo";
+            this.txtDateTo.Size = new System.Drawing.Size(115, 22);
+            this.txtDateTo.TabIndex = 123;
+            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
             // 
             // departmentWiseItemReport
             // 
@@ -240,13 +240,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button printDetail;
         private System.Windows.Forms.ComboBox cmbDepartment;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnPrint;
-        private System.Windows.Forms.MaskedTextBox txtDateTo;
-        private System.Windows.Forms.MaskedTextBox txtDateFrom;
         private System.Windows.Forms.Button btnDetail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -256,5 +254,7 @@
         private System.Windows.Forms.DataGridView dgvDetail;
         private System.Windows.Forms.Button btnSummary;
         private System.Windows.Forms.Button printSummary;
+        private System.Windows.Forms.DateTimePicker txtDateFrom;
+        private System.Windows.Forms.DateTimePicker txtDateTo;
     }
 }

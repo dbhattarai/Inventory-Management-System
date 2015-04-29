@@ -20,5 +20,7 @@ namespace IMSModel
         public string issuedby { get; set; }
         public string Id { get; set; }
         public string receivedId { get; set; }
+        public string departmentName { get; set; }
+        public string itemName { get; set; }
     }
 }

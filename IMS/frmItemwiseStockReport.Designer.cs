@@ -38,10 +38,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cmbItem = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDateTo = new System.Windows.Forms.MaskedTextBox();
-            this.txtDateFrom = new System.Windows.Forms.MaskedTextBox();
             this.btnShow = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
+            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grpDetail.SuspendLayout();
@@ -110,12 +110,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDateTo);
+            this.groupBox1.Controls.Add(this.txtDateFrom);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.cmbItem);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtDateTo);
-            this.groupBox1.Controls.Add(this.txtDateFrom);
             this.groupBox1.Controls.Add(this.btnShow);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -157,24 +157,6 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Item";
             // 
-            // txtDateTo
-            // 
-            this.txtDateTo.BackColor = System.Drawing.Color.White;
-            this.txtDateTo.Location = new System.Drawing.Point(89, 50);
-            this.txtDateTo.Mask = "0000/00/00";
-            this.txtDateTo.Name = "txtDateTo";
-            this.txtDateTo.Size = new System.Drawing.Size(100, 22);
-            this.txtDateTo.TabIndex = 2;
-            // 
-            // txtDateFrom
-            // 
-            this.txtDateFrom.BackColor = System.Drawing.Color.White;
-            this.txtDateFrom.Location = new System.Drawing.Point(89, 19);
-            this.txtDateFrom.Mask = "0000/00/00";
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.Size = new System.Drawing.Size(100, 22);
-            this.txtDateFrom.TabIndex = 1;
-            // 
             // btnShow
             // 
             this.btnShow.Location = new System.Drawing.Point(358, 46);
@@ -193,6 +175,22 @@
             this.label1.Size = new System.Drawing.Size(74, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Date From:";
+            // 
+            // txtDateTo
+            // 
+            this.txtDateTo.Location = new System.Drawing.Point(89, 49);
+            this.txtDateTo.Name = "txtDateTo";
+            this.txtDateTo.Size = new System.Drawing.Size(115, 22);
+            this.txtDateTo.TabIndex = 125;
+            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // txtDateFrom
+            // 
+            this.txtDateFrom.Location = new System.Drawing.Point(89, 19);
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(115, 22);
+            this.txtDateFrom.TabIndex = 124;
+            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
             // 
             // frmItemwiseStockReport
             // 
@@ -219,8 +217,6 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.MaskedTextBox txtDateTo;
-        private System.Windows.Forms.MaskedTextBox txtDateFrom;
         private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbItem;
@@ -229,5 +225,7 @@
         private System.Windows.Forms.GroupBox grpDetail;
         private System.Windows.Forms.DataGridView dgvIssued;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DateTimePicker txtDateTo;
+        private System.Windows.Forms.DateTimePicker txtDateFrom;
     }
 }

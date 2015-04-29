@@ -15,7 +15,7 @@ namespace IMS.Crystal.crystalForms
         public issuedVoucherReport(DataTable dt)
         {
             InitializeComponent();
-            ReceivedVoucher cr = new ReceivedVoucher();
+            IssuedVoucher cr = new IssuedVoucher();
             cr.SetDataSource(dt);
             crptViewer.ReportSource = cr;
         }

@@ -152,12 +152,6 @@
       <DependentUpon>ItemWiseDeptSummary.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Crystal\crystalRpts\ItemWiseStockLedger.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ItemWiseStockLedger.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Crystal\crystalRpts\ItemWiseVendor.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -352,10 +346,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseDeptSummary.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseStockLedger.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ItemWiseStockLedger.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseVendor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseVendor.cs</LastGenOutput>
@@ -476,6 +466,13 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Backup_center_icon.png" />
+    <None Include="Resources\backup.jpg" />
+    <Content Include="Resources\issuedIcon.jpg" />
+    <Content Include="Resources\ims.jpg" />
+    <Content Include="Resources\logo.ico" />
+    <Content Include="Resources\rec.jpg" />
+    <Content Include="Resources\receivedIcon.jpg" />
     <Content Include="Resources\ullens.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

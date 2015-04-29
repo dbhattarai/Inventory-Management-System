@@ -162,6 +162,41 @@ namespace IMS
             db.BringToFront();
         }
 
+        private void btnReceive_Click(object sender, EventArgs e)
+        {
+            frmReceived fr = new frmReceived();
+            fr.MdiParent = this;
+            fr.Show();
+            fr.Activate();
+            fr.BringToFront();
+        }
+
+        private void btnIssue_Click(object sender, EventArgs e)
+        {
+            frmIssued fi = new frmIssued();
+            fi.MdiParent = this;
+            fi.Show();
+            fi.Activate();
+            fi.BringToFront();
+        }
+
+        private void btnreceived_Click(object sender, EventArgs e)
+        {
+            frmReceived fr = new frmReceived();
+            fr.MdiParent = this;
+            fr.Show();
+            fr.Activate();
+            fr.BringToFront();
+        }
+
+        private void btnIssued_Click(object sender, EventArgs e)
+        {
+            frmIssued fi = new frmIssued();
+            fi.MdiParent = this;
+            fi.Show();
+            fi.Activate();
+            fi.BringToFront();
+        }
 
     }
 }
