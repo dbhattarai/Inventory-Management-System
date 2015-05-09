@@ -152,6 +152,12 @@
       <DependentUpon>ItemWiseDeptSummary.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Crystal\crystalRpts\ItemWiseLedger.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemWiseLedger.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Crystal\crystalRpts\ItemWiseVendor.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +168,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ItemWiseVendorSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Crystal\crystalRpts\LedgerReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LedgerReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Crystal\crystalRpts\ReceivedVoucher.cs">
@@ -224,10 +236,10 @@
     <Compile Include="frmItemSetting.Designer.cs">
       <DependentUpon>frmItemSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmItemwiseStockReport.cs">
+    <Compile Include="Report\frmItemwiseStockReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmItemwiseStockReport.Designer.cs">
+    <Compile Include="Report\frmItemwiseStockReport.Designer.cs">
       <DependentUpon>frmItemwiseStockReport.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -293,6 +305,9 @@
     <Compile Include="Report\vendorWiseItemDetails.Designer.cs">
       <DependentUpon>vendorWiseItemDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="uiutils\FormUtil.cs" />
+    <Compile Include="uiutils\Regulator.cs" />
+    <Compile Include="uiutils\Validation.cs" />
     <EmbeddedResource Include="Crystal\crystalForms\frmDepartmentWiseItemRpt.resx">
       <DependentUpon>frmDepartmentWiseItemRpt.cs</DependentUpon>
     </EmbeddedResource>
@@ -346,6 +361,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseDeptSummary.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseLedger.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ItemWiseLedger.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseVendor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseVendor.cs</LastGenOutput>
@@ -353,6 +372,10 @@
     <EmbeddedResource Include="Crystal\crystalRpts\ItemWiseVendorSummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ItemWiseVendorSummary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Crystal\crystalRpts\LedgerReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LedgerReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalRpts\ReceivedVoucher.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -387,7 +410,7 @@
     <EmbeddedResource Include="frmItemSetting.resx">
       <DependentUpon>frmItemSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmItemwiseStockReport.resx">
+    <EmbeddedResource Include="Report\frmItemwiseStockReport.resx">
       <DependentUpon>frmItemwiseStockReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">

@@ -13,6 +13,7 @@ using IMSBusinessService;
 using IMS.Crystal;
 using IMS.Report;
 using System.Reflection;
+using IMS.uiutils;
 
 namespace IMS
 {
@@ -46,6 +47,7 @@ namespace IMS
 
         private void frmReceived_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
             cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
             txtReceivedBy.Text = Global.fullName;
             LoadComboBox();
@@ -85,7 +87,8 @@ namespace IMS
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Item item = new Item();
-                       
+        if (ValidInputs() && cmbItem.SelectedIndex>-1 && cmbVendor.SelectedIndex>-1)
+                   
             {
                 item.ItemName = (cmbItem.Text);
                 item.Id= int.Parse(cmbItem.SelectedValue.ToString());
@@ -93,13 +96,7 @@ namespace IMS
                 item.Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
                 item.amount = string.IsNullOrEmpty(txtAmount.Text) ? 0 : decimal.Parse(txtAmount.Text);
                 item.unit = string.IsNullOrEmpty(txtUnit.Text) ? "" :Convert.ToString(txtUnit.Text);
-                //foreach (DataGridViewRow row in dgvItem.Rows)
-                //{
-                //    if (row.Cells["item"].Value.ToString() == cmbItem.Text)
-                //    {
-                //        dupd = true;
-                //    }
-                //}
+          
                     dgvItem.Rows.Add(item.ItemName, item.quantity, item.Rate,item.amount,item.Id,item.unit);
                     cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
                     cmbItem.SelectedIndex = -1;
@@ -109,8 +106,14 @@ namespace IMS
                    txtUnit.Clear();
                    cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
             }
+        else
+            MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+      
         }
-
+        private bool ValidInputs()
+        {
+            return FormUtil.EnsureNotEmpty(new TextBox[] {txtAmount,txtGNR,txtQuantity,txtRate,txtReceivedBy,txtUnit});
+        }
         private void txtRate_MouseLeave(object sender, EventArgs e)
         {
 
@@ -333,6 +336,7 @@ namespace IMS
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             List<Received> rec = new List<Received>();
             DataTable dt = new DataTable();
             List<Balance> blnc = new List<Balance>();
@@ -373,34 +377,39 @@ namespace IMS
             }
             else
             {
-                rec.Add(new Received
+                if (ValidInputs() && cmbItem.SelectedIndex>-1 && cmbVendor.SelectedIndex>-1)
                 {
-                    Date = Convert.ToDateTime(txtDate.Text),
-                    amount = decimal.Parse(txtAmount.Text),
-                    GNR = int.Parse(txtGNR.Text),
-                    itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                    unit = (txtUnit.Text.ToString()),
-                    itemName = cmbItem.Text,
-                    vendorId = int.Parse(cmbVendor.SelectedValue.ToString()),
-                    vendorName = cmbVendor.Text,
-                    quantity = int.Parse(txtQuantity.Text),
-                    Rate = decimal.Parse(txtRate.Text),
-                    receivedby = txtReceivedBy.Text,
-                    remarks = txtRemarks.Text,
-                    Id = Convert.ToString(Guid.NewGuid().ToString())
-                });
+                    rec.Add(new Received
+                    {
+                        Date = Convert.ToDateTime(txtDate.Text),
+                        amount = decimal.Parse(txtAmount.Text),
+                        GNR = int.Parse(txtGNR.Text),
+                        itemId = int.Parse(cmbItem.SelectedValue.ToString()),
+                        unit = (txtUnit.Text.ToString()),
+                        itemName = cmbItem.Text,
+                        vendorId = int.Parse(cmbVendor.SelectedValue.ToString()),
+                        vendorName = cmbVendor.Text,
+                        quantity = int.Parse(txtQuantity.Text),
+                        Rate = decimal.Parse(txtRate.Text),
+                        receivedby = txtReceivedBy.Text,
+                        remarks = txtRemarks.Text,
+                        Id = Convert.ToString(Guid.NewGuid().ToString())
+                    });
 
-                blnc.Add(new Balance
-                {
-                    date = Convert.ToDateTime(txtDate.Text),
-                    amount = decimal.Parse(txtAmount.Text),
-                    itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                    quantity = int.Parse(txtQuantity.Text),
-                    Rate = decimal.Parse(txtRate.Text),
-                });
-                resultReceived = _BsMgmt.SaveReceived(rec, blnc, 1, 0);
-               // resultBalance = _BsMgmt.SaveBalance(blnc, 1, 0);
-              
+                    blnc.Add(new Balance
+                    {
+                        date = Convert.ToDateTime(txtDate.Text),
+                        amount = decimal.Parse(txtAmount.Text),
+                        itemId = int.Parse(cmbItem.SelectedValue.ToString()),
+                        quantity = int.Parse(txtQuantity.Text),
+                        Rate = decimal.Parse(txtRate.Text),
+                    });
+                    resultReceived = _BsMgmt.SaveReceived(rec, blnc, 1, 0);
+                    // resultBalance = _BsMgmt.SaveBalance(blnc, 1, 0);
+                }
+                else
+                    MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+      
             }
             if (resultReceived > 0  )
             {
@@ -423,8 +432,53 @@ namespace IMS
                 cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
 
             }
-            else
-                MessageBox.Show("Insufficient Information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //else
+            //    MessageBox.Show("Insufficient Information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void frmReceived_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == System.Windows.Forms.Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }

@@ -44,8 +44,6 @@
             this.receivedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issuedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemWiseStockLedgerReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departmentWiseReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departmentWiseItemDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemWiseDepartmentDetailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +51,7 @@
             this.vendorWiseItemDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.itemWiseVendorDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ledgerReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.individualLedgerReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logOffToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,11 +62,16 @@
             this.sETTINGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iTEMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnreceived = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnreceived = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnIssued = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBackup = new System.Windows.Forms.ToolStripButton();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -82,7 +86,7 @@
             // 
             // menuStrip2
             // 
-            this.menuStrip2.BackColor = System.Drawing.Color.Brown;
+            this.menuStrip2.BackColor = System.Drawing.Color.DarkCyan;
             this.menuStrip2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
@@ -199,30 +203,14 @@
             // reportToolStripMenuItem
             // 
             this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.printAllToolStripMenuItem,
             this.departmentWiseReportToolStripMenuItem,
             this.vendorToolStripMenuItem,
-            this.ledgerReportToolStripMenuItem});
+            this.ledgerReportToolStripMenuItem,
+            this.individualLedgerReportToolStripMenuItem});
             this.reportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
             this.reportToolStripMenuItem.Size = new System.Drawing.Size(98, 36);
             this.reportToolStripMenuItem.Text = "Report";
-            // 
-            // printAllToolStripMenuItem
-            // 
-            this.printAllToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.itemWiseStockLedgerReportToolStripMenuItem});
-            this.printAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printAllToolStripMenuItem.Name = "printAllToolStripMenuItem";
-            this.printAllToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.printAllToolStripMenuItem.Text = "Item";
-            // 
-            // itemWiseStockLedgerReportToolStripMenuItem
-            // 
-            this.itemWiseStockLedgerReportToolStripMenuItem.Name = "itemWiseStockLedgerReportToolStripMenuItem";
-            this.itemWiseStockLedgerReportToolStripMenuItem.Size = new System.Drawing.Size(291, 26);
-            this.itemWiseStockLedgerReportToolStripMenuItem.Text = "Item wise Stock Ledger Report";
-            this.itemWiseStockLedgerReportToolStripMenuItem.Click += new System.EventHandler(this.itemWiseStockLedgerReportToolStripMenuItem_Click);
             // 
             // departmentWiseReportToolStripMenuItem
             // 
@@ -231,7 +219,7 @@
             this.itemWiseDepartmentDetailsToolStripMenuItem1});
             this.departmentWiseReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentWiseReportToolStripMenuItem.Name = "departmentWiseReportToolStripMenuItem";
-            this.departmentWiseReportToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.departmentWiseReportToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.departmentWiseReportToolStripMenuItem.Text = "Department";
             // 
             // departmentWiseItemDetailsToolStripMenuItem
@@ -255,7 +243,7 @@
             this.itemWiseVendorDetailsToolStripMenuItem});
             this.vendorToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendorToolStripMenuItem.Name = "vendorToolStripMenuItem";
-            this.vendorToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.vendorToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.vendorToolStripMenuItem.Text = "Vendor";
             // 
             // vendorWiseItemDetailsToolStripMenuItem
@@ -276,9 +264,17 @@
             // 
             this.ledgerReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ledgerReportToolStripMenuItem.Name = "ledgerReportToolStripMenuItem";
-            this.ledgerReportToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.ledgerReportToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.ledgerReportToolStripMenuItem.Text = "Ledger Report";
             this.ledgerReportToolStripMenuItem.Click += new System.EventHandler(this.ledgerReportToolStripMenuItem_Click);
+            // 
+            // individualLedgerReportToolStripMenuItem
+            // 
+            this.individualLedgerReportToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.individualLedgerReportToolStripMenuItem.Name = "individualLedgerReportToolStripMenuItem";
+            this.individualLedgerReportToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
+            this.individualLedgerReportToolStripMenuItem.Text = "Individual Ledger Report";
+            this.individualLedgerReportToolStripMenuItem.Click += new System.EventHandler(this.individualLedgerReportToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
@@ -359,71 +355,111 @@
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
+            this.toolStrip1.BackColor = System.Drawing.Color.DarkCyan;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSeparator1,
-            this.btnreceived,
             this.toolStripSeparator2,
+            this.btnreceived,
+            this.toolStripLabel2,
+            this.toolStripSeparator1,
             this.btnIssued,
-            this.btnBackup});
+            this.toolStripLabel3,
+            this.toolStripSeparator4,
+            this.btnBackup,
+            this.toolStripLabel1,
+            this.toolStripSeparator3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 42);
-            this.toolStrip1.MinimumSize = new System.Drawing.Size(100, 100);
+            this.toolStrip1.MinimumSize = new System.Drawing.Size(80, 80);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(132, 382);
+            this.toolStrip1.Size = new System.Drawing.Size(80, 382);
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(130, 6);
-            // 
-            // btnreceived
-            // 
-            this.btnreceived.AutoSize = false;
-            this.btnreceived.BackgroundImage = global::IMS.Properties.Resources.receivedIcon;
-            this.btnreceived.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnreceived.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnreceived.Image = ((System.Drawing.Image)(resources.GetObject("btnreceived.Image")));
-            this.btnreceived.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnreceived.ImageTransparentColor = System.Drawing.Color.Indigo;
-            this.btnreceived.Name = "btnreceived";
-            this.btnreceived.Size = new System.Drawing.Size(130, 130);
-            this.btnreceived.Text = "Receive";
-            this.btnreceived.Click += new System.EventHandler(this.btnreceived_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(130, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(78, 6);
+            // 
+            // btnreceived
+            // 
+            this.btnreceived.AutoSize = false;
+            this.btnreceived.BackColor = System.Drawing.Color.Transparent;
+            this.btnreceived.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnreceived.BackgroundImage")));
+            this.btnreceived.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnreceived.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnreceived.ForeColor = System.Drawing.Color.Black;
+            this.btnreceived.Image = ((System.Drawing.Image)(resources.GetObject("btnreceived.Image")));
+            this.btnreceived.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnreceived.ImageTransparentColor = System.Drawing.Color.Indigo;
+            this.btnreceived.Name = "btnreceived";
+            this.btnreceived.Size = new System.Drawing.Size(80, 80);
+            this.btnreceived.Click += new System.EventHandler(this.btnreceived_Click);
+            // 
+            // toolStripLabel2
+            // 
+            this.toolStripLabel2.Name = "toolStripLabel2";
+            this.toolStripLabel2.Size = new System.Drawing.Size(78, 30);
+            this.toolStripLabel2.Text = "Receive";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(78, 6);
             // 
             // btnIssued
             // 
             this.btnIssued.AutoSize = false;
-            this.btnIssued.BackgroundImage = global::IMS.Properties.Resources.issuedIcon;
-            this.btnIssued.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIssued.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnIssued.BackColor = System.Drawing.Color.Transparent;
+            this.btnIssued.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIssued.BackgroundImage")));
+            this.btnIssued.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnIssued.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIssued.ForeColor = System.Drawing.Color.Black;
             this.btnIssued.Image = ((System.Drawing.Image)(resources.GetObject("btnIssued.Image")));
-            this.btnIssued.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnIssued.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnIssued.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnIssued.Name = "btnIssued";
-            this.btnIssued.Size = new System.Drawing.Size(130, 130);
-            this.btnIssued.Text = "Issue";
+            this.btnIssued.Size = new System.Drawing.Size(80, 80);
+            this.btnIssued.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnIssued.Click += new System.EventHandler(this.btnIssued_Click);
+            // 
+            // toolStripLabel3
+            // 
+            this.toolStripLabel3.Name = "toolStripLabel3";
+            this.toolStripLabel3.Size = new System.Drawing.Size(78, 30);
+            this.toolStripLabel3.Text = "Issue";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(78, 6);
             // 
             // btnBackup
             // 
             this.btnBackup.AutoSize = false;
-            this.btnBackup.BackColor = System.Drawing.Color.Silver;
-            this.btnBackup.Font = new System.Drawing.Font("Segoe UI", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackup.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnBackup.BackColor = System.Drawing.Color.Transparent;
+            this.btnBackup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBackup.BackgroundImage")));
+            this.btnBackup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBackup.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.Black;
             this.btnBackup.Image = ((System.Drawing.Image)(resources.GetObject("btnBackup.Image")));
-            this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnBackup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Size = new System.Drawing.Size(130, 130);
-            this.btnBackup.Text = "Backup";
+            this.btnBackup.Size = new System.Drawing.Size(80, 80);
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(85, 30);
+            this.toolStripLabel1.Text = "Backup";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(78, 6);
             // 
             // DashBoard
             // 
@@ -471,7 +507,6 @@
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem;
@@ -486,7 +521,6 @@
         private System.Windows.Forms.ToolStripMenuItem itemWiseVendorDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem departmentWiseItemDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemWiseDepartmentDetailsToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem itemWiseStockLedgerReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ledgerReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
@@ -497,5 +531,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnIssued;
         private System.Windows.Forms.ToolStripButton btnBackup;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem individualLedgerReportToolStripMenuItem;
     }
 }

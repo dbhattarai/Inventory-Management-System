@@ -52,28 +52,53 @@ namespace IMS.Report
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
-            btnDetail.Visible = true;
-            btnSummary.Visible = false;
-            type = "detail";
-            int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
-            department = cmbDepartment.Text;
-            sDate = DateTime.Parse((txtDateFrom.Text));
-            eDate = DateTime.Parse((txtDateTo.Text));
-            dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId,type);
-            dgvDetail.DataSource = dt;
+            if (cmbDepartment.SelectedIndex >-1)
+            {
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
+                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
+                lblDepartment.Text = string.IsNullOrEmpty(cmbDepartment.Text) ? "" : cmbDepartment.Text;
+                //
+
+                printDetail.Visible = true;
+                printSummary.Visible = false;
+                type = "detail";
+                int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
+                department = cmbDepartment.Text;
+                sDate = DateTime.Parse((txtDateFrom.Text));
+                eDate = DateTime.Parse((txtDateTo.Text));
+                dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId, type);
+                dgvDetail.DataSource = dt;
+            }
+            else
+                MessageBox.Show("Please Select Department", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
         }
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
-            btnSummary.Visible = true;
-            btnDetail.Visible = false;
-            type = "summary";
-            int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
-            department = cmbDepartment.Text;
-            sDate = DateTime.Parse((txtDateFrom.Text));
-            eDate = DateTime.Parse((txtDateTo.Text));
-            dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId,type);
-            dgvDetail.DataSource = dt;
+            if (cmbDepartment.SelectedIndex >-1)
+            {
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
+                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
+                lblDepartment.Text = string.IsNullOrEmpty(cmbDepartment.Text) ? "" : cmbDepartment.Text;
+                //
+                printDetail.Visible = false;
+                printSummary.Visible = true;
+                type = "summary";
+                int deptId = int.Parse(cmbDepartment.SelectedValue.ToString());
+                department = cmbDepartment.Text;
+                sDate = DateTime.Parse((txtDateFrom.Text));
+                eDate = DateTime.Parse((txtDateTo.Text));
+                dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId, type);
+                dgvDetail.DataSource = dt;
+            }
+            else
+                MessageBox.Show("Please Select Department", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -93,6 +118,8 @@ namespace IMS.Report
             frmDepartmentWiseItemRptSummary frmcrystal = new frmDepartmentWiseItemRptSummary(dt, sDate, eDate,department);
             frmcrystal.Show();
         }
+
+      
 
     }
 }

@@ -36,15 +36,26 @@ namespace IMS
         }
         private void btnShow_Click(object sender, EventArgs e)
         {
-           
-            int itemId = int.Parse(cmbItem.SelectedValue.ToString());
-            item = cmbItem.Text;
-             sDate = DateTime.Parse((txtDateFrom.Text));
-             eDate = DateTime.Parse((txtDateTo.Text));
-            dt = _report.GetItemWiseStockReport(sDate, eDate, itemId);
-            //dgvReceived.DataSource = ds.Tables[0];
-            dgvIssued.DataSource = dt;
-            //dgvBalance.DataSource = ds
+            if (cmbItem.SelectedIndex >-1)
+            {
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
+                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
+                lblItem.Text = string.IsNullOrEmpty(cmbItem.Text) ? "" : cmbItem.Text;
+                //
+                int itemId = int.Parse(cmbItem.SelectedValue.ToString());
+                item = cmbItem.Text;
+                sDate = DateTime.Parse((txtDateFrom.Text));
+                eDate = DateTime.Parse((txtDateTo.Text));
+                dt = _report.GetItemWiseStockReport(sDate, eDate, itemId);
+                //dgvReceived.DataSource = ds.Tables[0];
+                dgvIssued.DataSource = dt;
+                //dgvBalance.DataSource = ds
+            }
+            else
+                MessageBox.Show("Please Select Item", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
         }
 
         private void cmbItem_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,7 +74,7 @@ namespace IMS
         {
             //DataSet ds = new DataSet();
             //ds.Tables.Add(dt);
-            //ds.WriteXml("ItemWiseStockLedger.xml");
+            //ds.WriteXml("ItemWiseLedger.xml");
             frmItemWiseStockLedgerRpt frmcrystal = new frmItemWiseStockLedgerRpt(dt, sDate, eDate, item);
             frmcrystal.Show();
         }

@@ -144,7 +144,6 @@
             this.txtDate.Size = new System.Drawing.Size(212, 21);
             this.txtDate.TabIndex = 122;
             this.txtDate.Value = new System.DateTime(2015, 4, 5, 0, 0, 0, 0);
-           // this.txtDate.ValueChanged += new System.EventHandler(this.txtDate_ValueChanged);
             // 
             // grpItemDetail
             // 
@@ -287,6 +286,8 @@
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(212, 21);
             this.txtQuantity.TabIndex = 12;
+            this.txtQuantity.Tag = "INT";
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             this.txtQuantity.MouseLeave += new System.EventHandler(this.txtQuantity_MouseLeave);
             // 
             // label2
@@ -350,6 +351,8 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(212, 21);
             this.txtAmount.TabIndex = 10;
+            this.txtAmount.Tag = "DECIMAL";
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // txtRate
             // 
@@ -357,6 +360,8 @@
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(212, 21);
             this.txtRate.TabIndex = 11;
+            this.txtRate.Tag = "DECIMAL";
+            this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             this.txtRate.MouseLeave += new System.EventHandler(this.txtRate_MouseLeave);
             // 
             // txtUnit

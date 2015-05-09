@@ -15,12 +15,11 @@ namespace IMS.Crystal.crystalForms
         public frmItemWiseStockLedgerRpt(DataTable ds, DateTime fromD, DateTime toD,string item)
         {
             InitializeComponent();
-            //ItemWiseStockLedger cr = new ItemWiseStockLedger();
-            //cr.SetDataSource(ds);
-            //cr.SetParameterValue("DateFrom", fromD);
-            //cr.SetParameterValue("DateTo", toD);
-            //cr.SetParameterValue("Item", item);
-            //crptViewer.ReportSource = cr;
+            ItemWiseLedger cr = new ItemWiseLedger();
+            cr.SetDataSource(ds);
+            cr.SetParameterValue("DateFrom", fromD);
+            cr.SetParameterValue("DateTo", toD);
+            crptViewer.ReportSource = cr;
         }
     }
 }

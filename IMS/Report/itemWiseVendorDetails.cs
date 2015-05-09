@@ -51,6 +51,15 @@ namespace IMS.Report
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
+            if(cmbItem.SelectedIndex>-1)
+            {
+            //to display input parameter details
+            grpDepartmentDetail.Visible = true;
+            lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
+            lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
+            lblItem.Text = string.IsNullOrEmpty(cmbItem.Text) ? "" : cmbItem.Text;
+            //
+
             print.Visible = true;
             printSummary.Visible = false;
             type = "detail";
@@ -60,10 +69,23 @@ namespace IMS.Report
              eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetItemWiseVendorReport(sDate, eDate, itemId,type);
             dgvDetail.DataSource = dt;
+            }
+            else
+                MessageBox.Show("Please Select Item", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
         }
 
         private void btnSummary_Click(object sender, EventArgs e)
         {
+            if(cmbItem.SelectedIndex>-1)
+            {
+            //to display input parameter details
+            grpDepartmentDetail.Visible = true;
+            lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
+            lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
+            lblItem.Text = string.IsNullOrEmpty(cmbItem.Text) ? "" : cmbItem.Text;
+            //
+
             print.Visible = false;
             printSummary.Visible = true;
             type = "summary";
@@ -73,6 +95,10 @@ namespace IMS.Report
              eDate = DateTime.Parse((txtDateTo.Text));
             dt = _report.GetItemWiseVendorReport(sDate, eDate, itemId,type);
             dgvDetail.DataSource = dt;
+            }
+            else
+                MessageBox.Show("Please Select Item", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
         }
 
         private void print_Click(object sender, EventArgs e)

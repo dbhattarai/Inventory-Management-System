@@ -95,6 +95,9 @@
             this.txtPhNo.Name = "txtPhNo";
             this.txtPhNo.Size = new System.Drawing.Size(116, 21);
             this.txtPhNo.TabIndex = 29;
+            this.txtPhNo.Tag = "NUM";
+            this.txtPhNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhNo_KeyPress);
+            this.txtPhNo.Leave += new System.EventHandler(this.txtPhNo_Leave);
             // 
             // txtAddress
             // 

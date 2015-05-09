@@ -22,7 +22,7 @@ namespace IMSDataRepository
             using (var cmd = new SqlCommand()
             {
                 Connection = dbc.Connection,
-                CommandText = "[proc_GetItemWiseStockLedgerReportTest]",
+                CommandText = "[proc_GetItemWiseStockLedgerReport]",
                 CommandType = CommandType.StoredProcedure
             })
             {
@@ -44,7 +44,7 @@ namespace IMSDataRepository
             using (var cmd = new SqlCommand()
             {
                 Connection = dbc.Connection,
-                CommandText = "[proc_GetLedgerReportTest]",
+                CommandText = "[proc_GetLedgerReport]",
                 CommandType = CommandType.StoredProcedure
             })
             {

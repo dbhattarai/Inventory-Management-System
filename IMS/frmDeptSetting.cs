@@ -10,6 +10,7 @@ using IMSCommonHelper;
 using IMSModel;
 using System.Globalization;
 using IMSBusinessService;
+using IMS.uiutils;
 
 namespace IMS
 {
@@ -20,19 +21,28 @@ namespace IMS
         {
             InitializeComponent();
         }
-
+        private bool ValidInputs()
+        {
+            return FormUtil.EnsureNotEmpty(new TextBox[] { txtDeptCode, txtDeptName, txtHod });
+        }
         private void btnDeptSet_Click(object sender, EventArgs e)
         {
-            Department dept = new Department();
-            dept.DepartmentName = txtDeptName.Text;
-            dept.DeptCode = txtDeptCode.Text;
-            dept.HOD = txtHod.Text;
-            int result = _BsSetting.SaveDepartment(dept);
-            if (result > 0)
+            if (ValidInputs())
             {
-                MessageBox.Show("Department Saved Successfully ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                clear();
+                Department dept = new Department();
+                dept.DepartmentName = txtDeptName.Text;
+                dept.DeptCode = txtDeptCode.Text;
+                dept.HOD = txtHod.Text;
+                int result = _BsSetting.SaveDepartment(dept);
+                if (result > 0)
+                {
+                    MessageBox.Show("Department Saved Successfully ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clear();
+                }
             }
+            else
+                MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
 
         }
         private void clear()

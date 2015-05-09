@@ -188,6 +188,8 @@
             this.txtQuantity.Name = "txtQuantity";
             this.txtQuantity.Size = new System.Drawing.Size(153, 21);
             this.txtQuantity.TabIndex = 8;
+            this.txtQuantity.Tag = "INT";
+            this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
             this.txtQuantity.MouseLeave += new System.EventHandler(this.txtQuantity_MouseLeave);
             // 
             // txtRate
@@ -196,6 +198,8 @@
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(153, 21);
             this.txtRate.TabIndex = 9;
+            this.txtRate.Tag = "DECIMAL";
+            this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
             this.txtRate.MouseLeave += new System.EventHandler(this.txtRate_MouseLeave);
             // 
             // txtAmount
@@ -204,6 +208,8 @@
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(153, 21);
             this.txtAmount.TabIndex = 10;
+            this.txtAmount.Tag = "DECIMAL";
+            this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
             // 
             // label14
             // 
@@ -430,6 +436,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Received Item management";
             this.Load += new System.EventHandler(this.frmReceived_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmReceived_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

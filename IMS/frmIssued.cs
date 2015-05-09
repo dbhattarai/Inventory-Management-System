@@ -13,6 +13,7 @@ using IMSBusinessService;
 using System.Reflection;
 using IMS.Report;
 using IMS.Crystal.crystalForms;
+using IMS.uiutils;
 
 namespace IMS
 {
@@ -111,7 +112,10 @@ namespace IMS
             decimal amount = (quantity) * (Rate);
             txtAmount.Text = amount.ToString();
         }
-
+        private bool ValidInputs()
+        {
+            return FormUtil.EnsureNotEmpty(new TextBox[] { txtAmount, txtISN, txtQuantity, txtRate, txtReceivedBy, txtUnit,txtIssuedBy });
+        }
         private void txtRate_MouseLeave(object sender, EventArgs e)
         {
             int quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
@@ -126,7 +130,7 @@ namespace IMS
             //bool dupd = false;
             int quantity=0;
             Item item = new Item();
-
+            if (ValidInputs() && cmbItem.SelectedIndex > -1 && cmbDept.SelectedIndex > -1)
             {
                 item.ItemName = (cmbItem.Text);
                 item.Id = int.Parse(cmbItem.SelectedValue.ToString());
@@ -165,6 +169,9 @@ namespace IMS
                     }
                 
             }
+            else
+                MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
         }
         private void clearItemDetail()
         {
@@ -310,36 +317,41 @@ namespace IMS
             }
             else
             {
-                iss.Add(new Issued
+                if (ValidInputs() && cmbItem.SelectedIndex > -1 && cmbDept.SelectedIndex > -1)
                 {
-                    Date = Convert.ToDateTime(txtDate.Text),
-                    amount = decimal.Parse(txtAmount.Text),
-                    ISN = int.Parse(txtISN.Text),
-                    itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                    unit = (txtUnit.Text.ToString()),
-                    DeptId = int.Parse(cmbDept.SelectedValue.ToString()),
-                    quantity = int.Parse(txtQuantity.Text),
-                    Rate = decimal.Parse(txtRate.Text),
-                    receivedby = txtReceivedBy.Text,
-                    issuedby=txtIssuedBy.Text,
-                    remarks = txtRemarks.Text,
-                    departmentName=cmbDept.Text,
-                    itemName=cmbItem.Text,
-                    Id = Convert.ToString(Guid.NewGuid().ToString())
-                });
+                    iss.Add(new Issued
+                    {
+                        Date = Convert.ToDateTime(txtDate.Text),
+                        amount = decimal.Parse(txtAmount.Text),
+                        ISN = int.Parse(txtISN.Text),
+                        itemId = int.Parse(cmbItem.SelectedValue.ToString()),
+                        unit = (txtUnit.Text.ToString()),
+                        DeptId = int.Parse(cmbDept.SelectedValue.ToString()),
+                        quantity = int.Parse(txtQuantity.Text),
+                        Rate = decimal.Parse(txtRate.Text),
+                        receivedby = txtReceivedBy.Text,
+                        issuedby = txtIssuedBy.Text,
+                        remarks = txtRemarks.Text,
+                        departmentName = cmbDept.Text,
+                        itemName = cmbItem.Text,
+                        Id = Convert.ToString(Guid.NewGuid().ToString())
+                    });
 
-                blnc.Add(new Balance
-                {
-                    date = Convert.ToDateTime(txtDate.Text),
-                    amount = decimal.Parse(txtAmount.Text),
-                    itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                    quantity = int.Parse(txtQuantity.Text),
-                    Rate = decimal.Parse(txtRate.Text),
-                });
-                resultissued = _BsMgmt.SaveIssued(iss, blnc, 0, 1);
-              //  resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
-               // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
-              
+                    blnc.Add(new Balance
+                    {
+                        date = Convert.ToDateTime(txtDate.Text),
+                        amount = decimal.Parse(txtAmount.Text),
+                        itemId = int.Parse(cmbItem.SelectedValue.ToString()),
+                        quantity = int.Parse(txtQuantity.Text),
+                        Rate = decimal.Parse(txtRate.Text),
+                    });
+                    resultissued = _BsMgmt.SaveIssued(iss, blnc, 0, 1);
+                    //  resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
+                    // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
+                }
+                else
+                    MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
             }
             if (resultissued > 0 )
             {
@@ -349,9 +361,9 @@ namespace IMS
                 if (result == DialogResult.Yes)
                 {
                     dt = ToDataTable<Issued>(iss);
-                    DataSet ds = new DataSet();
-                    ds.Tables.Add(dt);
-                    ds.WriteXml("IssuedVoucher.xml");
+                    //DataSet ds = new DataSet();
+                    //ds.Tables.Add(dt);
+                    //ds.WriteXml("IssuedVoucher.xml");
                    
                     issuedVoucherReport frmcrystal = new issuedVoucherReport(dt);
                    frmcrystal.Show();
@@ -363,8 +375,8 @@ namespace IMS
                 cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
 
             }
-            else
-                MessageBox.Show("Insufficient Information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //else
+            //    MessageBox.Show("Insufficient Information", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         
         }
         public DataTable ToDataTable<T>(List<Issued> items)
@@ -390,6 +402,42 @@ namespace IMS
             }
             //put a breakpoint here and check datatable
             return dataTable;
+        }
+
+        private void txtQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtRate_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as System.Windows.Forms.TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
         }
 
     }

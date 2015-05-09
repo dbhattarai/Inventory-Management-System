@@ -85,15 +85,6 @@ namespace IMS
             this.BackColor = Color.Maroon;
         }
 
-        private void itemWiseStockLedgerReportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmItemwiseStockReport fi = new frmItemwiseStockReport();
-            fi.MdiParent = this;
-            fi.Show();
-            fi.Activate();
-        }
-
-
         private void itemWiseDepartmentDetailsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             itemWiseDepartmentReport fi = new itemWiseDepartmentReport();
@@ -110,6 +101,7 @@ namespace IMS
             fi.Show();
             fi.Activate();
             fi.BringToFront();
+           
         }
 
         private void itemWiseVendorDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -196,6 +188,23 @@ namespace IMS
             fi.Show();
             fi.Activate();
             fi.BringToFront();
+        }
+
+        private void individualLedgerReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmItemwiseStockReport fi = new frmItemwiseStockReport();
+            fi.MdiParent = this;
+            fi.Show();
+            fi.Activate();
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            DatabaseBackup db = new DatabaseBackup();
+            db.MdiParent = this;
+            db.Show();
+            db.Activate();
+            db.BringToFront();
         }
 
     }
