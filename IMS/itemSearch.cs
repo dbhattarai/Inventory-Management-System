@@ -30,17 +30,17 @@ namespace IMS
         {
             if (e.KeyChar == (char)13)
             {
-                dt = _setting.SearchItem(txtSearchName.Text);
+                dt = _setting.SearchItem(txtSearch.Text);
                 dgvItem.DataSource = dt;
-                txtSearchName.Text = string.Empty;
+               // txtSearchName.Text = string.Empty;
             }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-            dt = _setting.SearchItem(txtSearchName.Text);
+            dt = _setting.SearchItem(txtSearch.Text);
             dgvItem.DataSource = dt;
-            txtSearchName.Text = string.Empty;
+           // txtSearchName.Text = string.Empty;
         }
 
     }

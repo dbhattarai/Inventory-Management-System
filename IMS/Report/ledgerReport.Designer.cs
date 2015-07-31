@@ -34,16 +34,16 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.grpDetail = new System.Windows.Forms.GroupBox();
-            this.dgvReceived = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDateTo = new System.Windows.Forms.DateTimePicker();
             this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgvReceived = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grpDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceived)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReceived)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -105,18 +105,6 @@
             this.grpDetail.TabIndex = 0;
             this.grpDetail.TabStop = false;
             // 
-            // dgvReceived
-            // 
-            this.dgvReceived.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReceived.BackgroundColor = System.Drawing.Color.White;
-            this.dgvReceived.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReceived.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReceived.Location = new System.Drawing.Point(3, 16);
-            this.dgvReceived.Name = "dgvReceived";
-            this.dgvReceived.RowHeadersVisible = false;
-            this.dgvReceived.Size = new System.Drawing.Size(1228, 479);
-            this.dgvReceived.TabIndex = 0;
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
@@ -160,11 +148,24 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Date From:";
             // 
+            // dgvReceived
+            // 
+            this.dgvReceived.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReceived.BackgroundColor = System.Drawing.Color.White;
+            this.dgvReceived.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReceived.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvReceived.Location = new System.Drawing.Point(3, 18);
+            this.dgvReceived.Name = "dgvReceived";
+            this.dgvReceived.RowHeadersVisible = false;
+            this.dgvReceived.Size = new System.Drawing.Size(1228, 477);
+            this.dgvReceived.TabIndex = 0;
+            // 
             // ledgerReport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ledgerReport";
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -173,9 +174,9 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.grpDetail.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReceived)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReceived)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,10 +189,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox grpDetail;
-        private System.Windows.Forms.DataGridView dgvReceived;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker txtDateTo;
         private System.Windows.Forms.DateTimePicker txtDateFrom;
+        private System.Windows.Forms.DataGridView dgvReceived;
     }
 }

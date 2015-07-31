@@ -75,10 +75,10 @@
             this.dgvDetail.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDetail.Location = new System.Drawing.Point(3, 16);
+            this.dgvDetail.Location = new System.Drawing.Point(3, 18);
             this.dgvDetail.Name = "dgvDetail";
             this.dgvDetail.RowHeadersVisible = false;
-            this.dgvDetail.Size = new System.Drawing.Size(1228, 479);
+            this.dgvDetail.Size = new System.Drawing.Size(1228, 477);
             this.dgvDetail.TabIndex = 0;
             // 
             // print
@@ -293,6 +293,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "itemWiseDepartmentReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Wise Department Details";

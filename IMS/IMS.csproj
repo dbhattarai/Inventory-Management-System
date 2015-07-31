@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutUs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutUs.Designer.cs">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Crystal\crystalForms\frmDepartmentWiseItemRpt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,18 @@
     <Compile Include="frmDeptSetting.Designer.cs">
       <DependentUpon>frmDeptSetting.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGRNVoucherDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGRNVoucherDetails.Designer.cs">
+      <DependentUpon>frmGRNVoucherDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmISNVoucherDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmISNVoucherDetails.Designer.cs">
+      <DependentUpon>frmISNVoucherDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmIssued.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -308,6 +326,9 @@
     <Compile Include="uiutils\FormUtil.cs" />
     <Compile Include="uiutils\Regulator.cs" />
     <Compile Include="uiutils\Validation.cs" />
+    <EmbeddedResource Include="AboutUs.resx">
+      <DependentUpon>AboutUs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Crystal\crystalForms\frmDepartmentWiseItemRpt.resx">
       <DependentUpon>frmDepartmentWiseItemRpt.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,6 +425,12 @@
     <EmbeddedResource Include="frmDeptSetting.resx">
       <DependentUpon>frmDeptSetting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGRNVoucherDetails.resx">
+      <DependentUpon>frmGRNVoucherDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmISNVoucherDetails.resx">
+      <DependentUpon>frmISNVoucherDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIssued.resx">
       <DependentUpon>frmIssued.cs</DependentUpon>
     </EmbeddedResource>
@@ -453,7 +480,9 @@
     <EmbeddedResource Include="Report\vendorWiseItemDetails.resx">
       <DependentUpon>vendorWiseItemDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

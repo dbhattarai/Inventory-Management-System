@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSModel", "IMSModel\IMSMod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMSCommonHelper", "IMSCommonHelper\IMSCommonHelper.csproj", "{7EC92722-B3FE-4190-9277-3B7C44AB9407}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,12 @@ Global
 		{7EC92722-B3FE-4190-9277-3B7C44AB9407}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{7EC92722-B3FE-4190-9277-3B7C44AB9407}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{7EC92722-B3FE-4190-9277-3B7C44AB9407}.Release|x86.ActiveCfg = Release|Any CPU
+		{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}.Debug|Any CPU.ActiveCfg = Debug
+		{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}.Debug|Mixed Platforms.ActiveCfg = Debug
+		{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}.Debug|x86.ActiveCfg = Debug
+		{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}.Release|Any CPU.ActiveCfg = Release
+		{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}.Release|Mixed Platforms.ActiveCfg = Release
+		{419D22CE-7AFF-43C0-BE28-5D7EFDA3F560}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

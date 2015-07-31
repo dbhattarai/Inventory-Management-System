@@ -8,14 +8,14 @@ namespace IMS
 
    public static class Global
     {
-        public static int UserId;
+        public static string UserId;
         public static string CurrentDate;
         public static string UserName;
         public static string fullName;
         public static string Password;
         public static string Utype;
         public static int deptId;
-        public static void SetUserId(int uId)
+        public static void SetUserId(string uId)
         {
             UserId = uId;
         }

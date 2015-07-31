@@ -28,9 +28,9 @@ namespace IMS
             user.fullname = txtName.Text;
             user.username = txtUname.Text;
             user.password = txtPWD.Text;
-            user.Usertype = cmbUtype.SelectedIndex.ToString();
+            user.Usertype = cmbUtype.Text;
            // user.DeptId = 1;
-            user.DeptId = int.Parse(cmbDept.SelectedIndex.ToString()+1);
+            user.DeptId = int.Parse(cmbDept.SelectedValue.ToString());//int.Parse(cmbDept.SelectedIndex.ToString()+1);
             user.userId = userId;
             int result = _BsUser.SaveUser(user);
             if (result > 0)
@@ -47,6 +47,7 @@ namespace IMS
             cmbDept.DisplayMember = "DepartmentName";
             cmbDept.ValueMember = "DeptId";
             cmbDept.SelectedIndex = -1;
+            txtPWD.Text = "iam@ullens";
 
         }
 
@@ -56,12 +57,13 @@ namespace IMS
         }
         private void Clear()
         {
-            txtECode.Clear();
+           // txtECode.Clear();
             txtName.Clear();
             txtPWD.Clear();
             txtUname.Clear();
             cmbDept.SelectedIndex = -1;
             cmbUtype.SelectedIndex = -1;
+            userId = Convert.ToString(Guid.NewGuid().ToString());
         }
     }
 }

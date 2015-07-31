@@ -23,9 +23,37 @@ namespace IMS
         private readonly BsSetting _BsSetting = new BsSetting();
         private string Id = Convert.ToString(Guid.NewGuid().ToString());
         private readonly BsManagement _BsMgmt = new BsManagement();
-        public frmIssued()
+        private string transactionId = "";
+        private bool isEdit = false;
+
+        public frmIssued(bool editmode = false, List<Issued> issue = null)
         {
             InitializeComponent();
+            isEdit = editmode;
+            txtIssuedBy.Text = Global.fullName;
+            txtDate.Text = DateTime.Today.ToString("yyyy/MM/dd");
+            LoadComboBox();
+            loadISN();
+            if (editmode)
+            {
+                foreach (var rec in issue)
+                {
+                    txtDate.Text = rec.Date.ToString();
+                    txtISN.Text = rec.ISN.ToString();
+                    cmbItem.SelectedIndex = cmbItem.FindString(rec.itemName.ToString());
+                    cmbDept.SelectedValue = rec.DeptId;
+                    txtQuantity.Text = Convert.ToString(rec.quantity);
+                    txtRate.Text = Convert.ToString(rec.Rate);
+                    txtAmount.Text = Convert.ToString(rec.amount);
+                    txtReceivedBy.Text = rec.receivedby;
+                    txtRemarks.Text = rec.remarks.ToString();
+                    txtUnit.Text = rec.unit;
+                    txtIssuedBy.Text = rec.issuedby;
+                    btnAdd.Enabled = false;
+                    transactionId = rec.Id;
+
+                }
+            }
         }
         private void LoadComboBox()
         {
@@ -42,6 +70,10 @@ namespace IMS
             cmbItem.ValueMember = "itemId";
             cmbItem.SelectedIndex = -1;
             cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
+
+            cmbItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cmbItem.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbItem.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
         private void loadItemDetail()
         {
@@ -49,16 +81,26 @@ namespace IMS
             List<Received> itemDetail = _BsMgmt.GetReceivedDetail(int.Parse(cmbItem.SelectedValue.ToString()));
             foreach (var item in itemDetail)
             {
+                if(item.quantity>0)
                 dgvItemDetail.Rows.Add(item.quantity,item.Rate,item.amount);
+                
             }
         }
        
         private void frmIssued_Load(object sender, EventArgs e)
         {
-            txtIssuedBy.Text = Global.fullName;
-            txtDate.Text = DateTime.Today.ToString("yyyy/MM/dd");
-            LoadComboBox();
-            loadISN();
+            ToolTip toolTip1 = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            toolTip1.SetToolTip(this.cmbItem, cmbItem.Text);
+            //toolTip1.SetToolTip(this.cmbItem, "My checkBox1");
         }
 
         private void loadISN()
@@ -71,6 +113,7 @@ namespace IMS
        
         private void Clear()
         {
+            cmbDept.Enabled = true;
             txtAmount.Clear();
             //txtDate.Clear();
             txtISN.Clear();
@@ -79,7 +122,7 @@ namespace IMS
             txtReceivedBy.Clear();
             txtRemarks.Clear();
             txtUnit.Clear();
-            txtIssuedBy.Clear();
+           // txtIssuedBy.Clear();
             cmbItem.SelectedIndex = -1;
             cmbDept.SelectedIndex = -1;
             dgvItem.Rows.Clear();
@@ -89,6 +132,18 @@ namespace IMS
        
         private void cmbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ToolTip toolTip1 = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            toolTip1.SetToolTip(this.cmbItem, cmbItem.Text);
+
             var unitList = _BsMgmt.GetReceivedItem();
             int itemId = string.IsNullOrEmpty(cmbItem.SelectedValue.ToString()) ? 0 : int.Parse(cmbItem.SelectedValue.ToString());
 
@@ -106,8 +161,8 @@ namespace IMS
 
         private void txtQuantity_MouseLeave(object sender, EventArgs e)
         {
-            int quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
-            int Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : int.Parse(txtRate.Text);
+            decimal quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
+            decimal Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
 
             decimal amount = (quantity) * (Rate);
             txtAmount.Text = amount.ToString();
@@ -118,8 +173,8 @@ namespace IMS
         }
         private void txtRate_MouseLeave(object sender, EventArgs e)
         {
-            int quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
-            int Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : int.Parse(txtRate.Text);
+            decimal quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
+            decimal Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
 
             decimal amount = (quantity) * (Rate);
             txtAmount.Text = amount.ToString();
@@ -127,14 +182,15 @@ namespace IMS
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            cmbDept.Enabled = false;
             //bool dupd = false;
-            int quantity=0;
+            decimal quantity=0;
             Item item = new Item();
             if (ValidInputs() && cmbItem.SelectedIndex > -1 && cmbDept.SelectedIndex > -1)
             {
                 item.ItemName = (cmbItem.Text);
                 item.Id = int.Parse(cmbItem.SelectedValue.ToString());
-                item.quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
+                item.quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
                decimal rate= item.Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
                 item.amount = string.IsNullOrEmpty(txtAmount.Text) ? 0 : decimal.Parse(txtAmount.Text);
                 item.unit = string.IsNullOrEmpty(txtUnit.Text) ? "" : Convert.ToString(txtUnit.Text);
@@ -143,7 +199,7 @@ namespace IMS
                 {
                     if (decimal.Parse(row.Cells["colRate"].Value.ToString()) == rate)
                     {
-                        quantity = int.Parse(row.Cells["colQty"].Value.ToString()) - int.Parse(txtQuantity.Text);
+                        quantity = decimal.Parse(row.Cells["colQty"].Value.ToString()) - decimal.Parse(txtQuantity.Text);
                         decimal amount=(decimal.Parse(row.Cells["colAmt"].Value.ToString()) - decimal.Parse(txtAmount.Text));
                         if (quantity > 0)
                         {
@@ -286,6 +342,8 @@ namespace IMS
             {
                 foreach (DataGridViewRow row in dgvItem.Rows)
                 {
+                    if (isEdit == false || (isEdit = true && transactionId == null))
+                    transactionId = Convert.ToString(Guid.NewGuid().ToString());
                     iss.Add(new Issued
                     {
                         Date = Convert.ToDateTime(txtDate.Text),
@@ -294,31 +352,37 @@ namespace IMS
                         itemId=int.Parse(row.Cells["itemId"].Value.ToString()),
                         unit=(row.Cells["unit"].Value.ToString()),
                         DeptId=int.Parse(cmbDept.SelectedValue.ToString()),
-                        quantity=int.Parse(row.Cells["quantity"].Value.ToString()),
+                        quantity=decimal.Parse(row.Cells["quantity"].Value.ToString()),
                         Rate=decimal.Parse(row.Cells["rate"].Value.ToString()),
                         receivedby= txtReceivedBy.Text,
                         issuedby=txtIssuedBy.Text,
                         remarks=txtRemarks.Text,
-                        Id = Convert.ToString(Guid.NewGuid().ToString())
+                        Id =transactionId
                     });
                     blnc.Add(new Balance
                     {
                         date = Convert.ToDateTime(txtDate.Text),
                         amount = decimal.Parse(row.Cells["amount"].Value.ToString()),
                         itemId = int.Parse(row.Cells["itemId"].Value.ToString()),
-                        quantity = int.Parse(row.Cells["quantity"].Value.ToString()),
+                        quantity = decimal.Parse(row.Cells["quantity"].Value.ToString()),
                         Rate = decimal.Parse(row.Cells["rate"].Value.ToString()),
+                        isn = int.Parse(txtISN.Text),
+                        grn = 0,
+                        transactionId=transactionId
                     });
                    
                 }
                // resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
                 resultissued = _BsMgmt.SaveIssued(iss,blnc,0,1);
+                transactionId = "";
                // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
             }
             else
             {
                 if (ValidInputs() && cmbItem.SelectedIndex > -1 && cmbDept.SelectedIndex > -1)
                 {
+                    if (isEdit == false || (isEdit = true && transactionId == null))
+                    transactionId = Convert.ToString(Guid.NewGuid().ToString());
                     iss.Add(new Issued
                     {
                         Date = Convert.ToDateTime(txtDate.Text),
@@ -327,14 +391,14 @@ namespace IMS
                         itemId = int.Parse(cmbItem.SelectedValue.ToString()),
                         unit = (txtUnit.Text.ToString()),
                         DeptId = int.Parse(cmbDept.SelectedValue.ToString()),
-                        quantity = int.Parse(txtQuantity.Text),
+                        quantity = decimal.Parse(txtQuantity.Text),
                         Rate = decimal.Parse(txtRate.Text),
                         receivedby = txtReceivedBy.Text,
                         issuedby = txtIssuedBy.Text,
                         remarks = txtRemarks.Text,
                         departmentName = cmbDept.Text,
                         itemName = cmbItem.Text,
-                        Id = Convert.ToString(Guid.NewGuid().ToString())
+                        Id = transactionId
                     });
 
                     blnc.Add(new Balance
@@ -342,10 +406,14 @@ namespace IMS
                         date = Convert.ToDateTime(txtDate.Text),
                         amount = decimal.Parse(txtAmount.Text),
                         itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                        quantity = int.Parse(txtQuantity.Text),
+                        quantity = decimal.Parse(txtQuantity.Text),
                         Rate = decimal.Parse(txtRate.Text),
+                        isn = int.Parse(txtISN.Text),
+                        grn = 0,
+                        transactionId=transactionId
                     });
                     resultissued = _BsMgmt.SaveIssued(iss, blnc, 0, 1);
+                    transactionId = "";
                     //  resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
                     // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
                 }
@@ -439,6 +507,7 @@ namespace IMS
                 e.Handled = true;
             }
         }
+
 
     }
 }

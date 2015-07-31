@@ -53,12 +53,7 @@ namespace IMS.Report
         {
             if (cmbVendor.SelectedIndex >-1)
             {
-                //to display input parameter details
-                grpDepartmentDetail.Visible = true;
-                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
-                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
-                lblVendor.Text = string.IsNullOrEmpty(cmbVendor.Text) ? "" : cmbVendor.Text;
-                //
+                
 
                 print.Visible = true;
                 printSummary.Visible = false;
@@ -69,6 +64,13 @@ namespace IMS.Report
                 eDate = DateTime.Parse((txtDateTo.Text));
                 dt = _report.GetVendorWiseItemReport(sDate, eDate, venId, type);
                 dgvDetail.DataSource = dt;
+
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = sDate.ToShortDateString();
+                lblDateTo.Text = eDate.ToShortDateString();
+                lblVendor.Text = vendor;
+                //
             }
             else
                 MessageBox.Show("Please Select Vendor", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -79,13 +81,6 @@ namespace IMS.Report
         {
             if (cmbVendor.SelectedIndex > -1)
             {
-                //to display input parameter details
-                grpDepartmentDetail.Visible = true;
-                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
-                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
-                lblVendor.Text = string.IsNullOrEmpty(cmbVendor.Text) ? "" : cmbVendor.Text;
-                //
-
                 print.Visible = false;
                 printSummary.Visible = true;
                 type = "summary";
@@ -95,6 +90,13 @@ namespace IMS.Report
                 eDate = DateTime.Parse((txtDateTo.Text));
                 dt = _report.GetVendorWiseItemReport(sDate, eDate, venId, type);
                 dgvDetail.DataSource = dt;
+
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = sDate.ToShortDateString();
+                lblDateTo.Text = eDate.ToShortDateString();
+                lblVendor.Text = vendor;
+                //
             }
             else
                 MessageBox.Show("Please Select Vendor", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);

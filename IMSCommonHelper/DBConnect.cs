@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.IO;
+using System.Configuration;
 
 namespace IMSCommonHelper
 {
@@ -13,8 +14,8 @@ namespace IMSCommonHelper
         public void Connect()
         {
             //string connectionstring = "Data Source=ACER-PC\\SQLEXPRESS;Initial Catalog=PFS;Integrated Security=True";
-           string connectionstring= "Server=DALLS\\DALLS;UID=sa;PWD=dalls;Database=IMS";
-      
+           //string connectionstring= "Server=DALLS\\DALLS;UID=sa;PWD=dalls;Database=IMS";
+           string connectionstring = ConfigurationManager.ConnectionStrings["ims"].ConnectionString;
             //TextReader treader = new StreamReader("default.ini");
             //string connectionstring = treader.ReadLine();
             //treader.Dispose();

@@ -2,4 +2,3 @@ H:\projects\IMS\IMSModel\bin\Debug\IMSModel.dll
 H:\projects\IMS\IMSModel\bin\Debug\IMSModel.pdb
 H:\projects\IMS\IMSModel\obj\Debug\IMSModel.dll
 H:\projects\IMS\IMSModel\obj\Debug\IMSModel.pdb
-H:\projects\IMS\IMSModel\obj\Debug\IMSModel.csprojResolveAssemblyReference.cache

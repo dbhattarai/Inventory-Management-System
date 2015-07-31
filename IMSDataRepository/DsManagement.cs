@@ -69,33 +69,36 @@ namespace IMSDataRepository
                        cmd.Parameters.AddWithValue("@Id", blnc.Id);
                        cmd.Parameters.AddWithValue("@rec", recFlag);
                        cmd.Parameters.AddWithValue("@issue", issue);
+                       cmd.Parameters.AddWithValue("@grn",blnc.grn);
+                       cmd.Parameters.AddWithValue("@isn", blnc.isn);
+                       cmd.Parameters.AddWithValue("@transactionId", blnc.transactionId);
                        i = cmd.ExecuteNonQuery();
                        cmd.Parameters.Clear();
                    }
                }
 
-               using (var cmd = new SqlCommand
-               {
-                   Connection = dbc.Connection,
-                   CommandText = "procSaveBalance",
-                   CommandType = CommandType.StoredProcedure
-               })
-               {
-                   cmd.Transaction = tran;
-                   foreach (var blnc in balance)
-                   {
-                       cmd.Parameters.AddWithValue("@itemId", blnc.itemId);
-                       cmd.Parameters.AddWithValue("@date", blnc.date);
-                       cmd.Parameters.AddWithValue("@quantity", blnc.quantity);
-                       cmd.Parameters.AddWithValue("@Rate", blnc.Rate);
-                       cmd.Parameters.AddWithValue("@amount", blnc.amount);
-                       cmd.Parameters.AddWithValue("@Id", blnc.Id);
-                       cmd.Parameters.AddWithValue("@rec", recFlag);
-                       cmd.Parameters.AddWithValue("@issue", issue);
-                       i = cmd.ExecuteNonQuery();
-                       cmd.Parameters.Clear();
-                   }
-               }
+               //using (var cmd = new SqlCommand
+               //{
+               //    Connection = dbc.Connection,
+               //    CommandText = "procSaveBalance",
+               //    CommandType = CommandType.StoredProcedure
+               //})
+               //{
+               //    cmd.Transaction = tran;
+               //    foreach (var blnc in balance)
+               //    {
+               //        cmd.Parameters.AddWithValue("@itemId", blnc.itemId);
+               //        cmd.Parameters.AddWithValue("@date", blnc.date);
+               //        cmd.Parameters.AddWithValue("@quantity", blnc.quantity);
+               //        cmd.Parameters.AddWithValue("@Rate", blnc.Rate);
+               //        cmd.Parameters.AddWithValue("@amount", blnc.amount);
+               //        cmd.Parameters.AddWithValue("@Id", blnc.Id);
+               //        cmd.Parameters.AddWithValue("@rec", recFlag);
+               //        cmd.Parameters.AddWithValue("@issue", issue);
+               //        i = cmd.ExecuteNonQuery();
+               //        cmd.Parameters.Clear();
+               //    }
+               //}
 
                tran.Commit();
                dbc.Disconnect();
@@ -194,33 +197,36 @@ namespace IMSDataRepository
                        cmd.Parameters.AddWithValue("@Id", blnc.Id);
                        cmd.Parameters.AddWithValue("@rec", recFlag);
                        cmd.Parameters.AddWithValue("@issue", issue);
+                       cmd.Parameters.AddWithValue("@grn", blnc.grn);
+                       cmd.Parameters.AddWithValue("@isn", blnc.isn);
+                       cmd.Parameters.AddWithValue("@transactionId", blnc.transactionId);
                        i = cmd.ExecuteNonQuery();
                        cmd.Parameters.Clear();
                    }
                }
 
-               using (var cmd = new SqlCommand
-               {
-                   Connection = dbc.Connection,
-                   CommandText = "procSaveBalance",
-                   CommandType = CommandType.StoredProcedure
-               })
-               {
-                   cmd.Transaction = tran;
-                   foreach (var blnc in balance)
-                   {
-                       cmd.Parameters.AddWithValue("@itemId", blnc.itemId);
-                       cmd.Parameters.AddWithValue("@date", blnc.date);
-                       cmd.Parameters.AddWithValue("@quantity", blnc.quantity);
-                       cmd.Parameters.AddWithValue("@Rate", blnc.Rate);
-                       cmd.Parameters.AddWithValue("@amount", blnc.amount);
-                       cmd.Parameters.AddWithValue("@Id", blnc.Id);
-                       cmd.Parameters.AddWithValue("@rec", recFlag);
-                       cmd.Parameters.AddWithValue("@issue", issue);
-                       i = cmd.ExecuteNonQuery();
-                       cmd.Parameters.Clear();
-                   }
-               }
+               //using (var cmd = new SqlCommand
+               //{
+               //    Connection = dbc.Connection,
+               //    CommandText = "procSaveBalance",
+               //    CommandType = CommandType.StoredProcedure
+               //})
+               //{
+               //    cmd.Transaction = tran;
+               //    foreach (var blnc in balance)
+               //    {
+               //        cmd.Parameters.AddWithValue("@itemId", blnc.itemId);
+               //        cmd.Parameters.AddWithValue("@date", blnc.date);
+               //        cmd.Parameters.AddWithValue("@quantity", blnc.quantity);
+               //        cmd.Parameters.AddWithValue("@Rate", blnc.Rate);
+               //        cmd.Parameters.AddWithValue("@amount", blnc.amount);
+               //        cmd.Parameters.AddWithValue("@Id", blnc.Id);
+               //        cmd.Parameters.AddWithValue("@rec", recFlag);
+               //        cmd.Parameters.AddWithValue("@issue", issue);
+               //        i = cmd.ExecuteNonQuery();
+               //        cmd.Parameters.Clear();
+               //    }
+               //}
                tran.Commit();
                dbc.Disconnect();
                return i;
@@ -292,7 +298,7 @@ namespace IMSDataRepository
                            {
                                itemName = (string)reader["ItemName"],
                               // unit = (string)reader["Unit"],
-                               quantity = (int)reader["quantity"],
+                               quantity = Convert.ToDecimal(reader["quantity"]),
                               Rate = Convert.ToDecimal( reader["Rate"]),
                                amount = (decimal)reader["amount"]
                            });
@@ -347,6 +353,27 @@ namespace IMSDataRepository
            return dt;
 
        }
+
+       public DataTable GetISNWiseIssuedDetail(int isn)
+       {
+           dbc.Connect();
+
+           var cmd = new SqlCommand
+           {
+               Connection = dbc.Connection,
+               CommandText = "[procGetIsnWiseIssuedDetail]",
+               CommandType = CommandType.StoredProcedure
+           };
+           cmd.Parameters.AddWithValue("@isn", isn);
+           SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+           DataTable dt = new DataTable();
+           adapter.Fill(dt);
+           cmd.Dispose();
+           dbc.Disconnect();
+           return dt;
+
+       }
+
        public List<Received> GetReceivedItem()
        {
            var item = new List<Item>();
@@ -564,6 +591,141 @@ namespace IMSDataRepository
            dbc.Disconnect();
            return dt;
 
+       }
+
+       public List<Received> GetGRNVoucherDetails(DateTime dateFrom,DateTime dateTo)
+       {
+           var rec = new List<Received>();
+           try
+           {
+               dbc.Connect();
+               using (var cmd = new SqlCommand
+               {
+                   Connection = dbc.Connection,
+                   CommandText = "proc_GetGRNVoucherDetails",
+                   CommandType = CommandType.StoredProcedure
+               })
+               {
+                   cmd.Parameters.AddWithValue("@datefrom", dateFrom);
+                   cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                   SqlDataReader reader = cmd.ExecuteReader();
+                   if (reader != null)
+                   {
+                       while (reader.Read())
+                       {
+                           rec.Add(new Received
+                           {
+                               itemName = (string)reader["ItemName"],
+                               itemId = (int)reader["ItemId"],
+                               unit = (string)reader["Unit"],
+                               vendorName = (string)reader["VendorName"],
+                               vendorId = (int)reader["VendorId"],
+                               Id =Convert.ToString(reader["ReceivedId"]),
+                               quantity = Convert.ToDecimal(reader["Quantity"]),
+                               Rate = Convert.ToDecimal(reader["Rate"]),
+                               amount = Convert.ToDecimal(reader["Amount"]),
+                               Date =Convert.ToDateTime(reader["ReceivedDate"]),
+                               remarks = (string)reader["Remarks"],
+                               receivedby = (string)reader["ReceivedBy"],
+                               GNR=(int)reader["GRN_NO"]
+                           });
+                       }
+                   }
+                   dbc.Disconnect();
+                   cmd.Dispose();
+                   reader.Dispose();
+               }
+               return rec;
+           }
+           catch (Exception ex)
+           {
+               throw (ex);
+           }
+       }
+
+       public int DeleteGrnDetail(int grn)
+       {
+           dbc.Connect();
+           using (var cmd = new SqlCommand
+           {
+               Connection = dbc.Connection,
+               CommandText = "[ProcDeleteReceiveDetail]",
+               CommandType = CommandType.StoredProcedure
+           })
+           {
+               cmd.Parameters.AddWithValue("@grn", grn);
+               int result = cmd.ExecuteNonQuery();
+               dbc.Disconnect();
+               return result;
+           }
+       }
+
+       public List<Issued> GetISNVoucherDetails(DateTime dateFrom, DateTime dateTo)
+       {
+           var iss = new List<Issued>();
+           try
+           {
+               dbc.Connect();
+               using (var cmd = new SqlCommand
+               {
+                   Connection = dbc.Connection,
+                   CommandText = "[proc_GetISNVoucherDetails]",
+                   CommandType = CommandType.StoredProcedure
+               })
+               {
+                   cmd.Parameters.AddWithValue("@datefrom", dateFrom);
+                   cmd.Parameters.AddWithValue("@dateTo", dateTo);
+                   SqlDataReader reader = cmd.ExecuteReader();
+                   if (reader != null)
+                   {
+                       while (reader.Read())
+                       {
+                           iss.Add(new Issued
+                           {
+                               itemName = (string)reader["ItemName"],
+                               itemId = (int)reader["ItemId"],
+                               unit = (string)reader["Unit"],
+                               departmentName = (string)reader["DepartmentName"],
+                               DeptId = (int)reader["DeptId"],
+                               Id = Convert.ToString(reader["IssuedId"]),
+                               quantity = Convert.ToDecimal(reader["Quantity"]),
+                               Rate = Convert.ToDecimal(reader["Rate"]),
+                               amount = Convert.ToDecimal(reader["Amount"]),
+                               Date = Convert.ToDateTime(reader["IssuedDate"]),
+                               remarks = (string)reader["Remarks"],
+                               receivedby = (string)reader["ReceivedBy"],
+                               ISN = (int)reader["ISN_NO"],
+                               issuedby=Convert.ToString(reader["IssuedBy"])
+                           });
+                       }
+                   }
+                   dbc.Disconnect();
+                   cmd.Dispose();
+                   reader.Dispose();
+               }
+               return iss;
+           }
+           catch (Exception ex)
+           {
+               throw (ex);
+           }
+       }
+
+       public int DeleteIsnDetail(int isn)
+       {
+           dbc.Connect();
+           using (var cmd = new SqlCommand
+           {
+               Connection = dbc.Connection,
+               CommandText = "[ProcDeleteIssueDetail]",
+               CommandType = CommandType.StoredProcedure
+           })
+           {
+               cmd.Parameters.AddWithValue("@isn", isn );
+               int result = cmd.ExecuteNonQuery();
+               dbc.Disconnect();
+               return result;
+           }
        }
     }
 }

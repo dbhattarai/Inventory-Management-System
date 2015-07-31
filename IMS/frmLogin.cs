@@ -54,6 +54,9 @@ namespace IMS
                         Global.fullName = (dr["FullName"].ToString());
                         Global.Utype = (dr["UserType"].ToString());
                         Global.deptId = Convert.ToInt16(dr["DeptId"]);
+                        Global.UserId = (dr["Id"].ToString());
+                        Global.Utype = (dr["UserType"].ToString());
+
                     }
 
                     this.Hide();
@@ -74,6 +77,11 @@ namespace IMS
             {
                 btnLogin_Click(sender, e);
             }
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

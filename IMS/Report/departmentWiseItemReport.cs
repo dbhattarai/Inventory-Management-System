@@ -54,12 +54,7 @@ namespace IMS.Report
         {
             if (cmbDepartment.SelectedIndex >-1)
             {
-                //to display input parameter details
-                grpDepartmentDetail.Visible = true;
-                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
-                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
-                lblDepartment.Text = string.IsNullOrEmpty(cmbDepartment.Text) ? "" : cmbDepartment.Text;
-                //
+                
 
                 printDetail.Visible = true;
                 printSummary.Visible = false;
@@ -70,6 +65,13 @@ namespace IMS.Report
                 eDate = DateTime.Parse((txtDateTo.Text));
                 dt = _report.GetDepartmentWiseItemReport(sDate, eDate, deptId, type);
                 dgvDetail.DataSource = dt;
+
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = sDate.ToShortDateString();//string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
+                lblDateTo.Text = eDate.ToShortDateString();//string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
+                lblDepartment.Text = department;
+                //
             }
             else
                 MessageBox.Show("Please Select Department", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);

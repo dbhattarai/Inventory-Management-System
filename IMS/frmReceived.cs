@@ -22,10 +22,38 @@ namespace IMS
         private readonly BsSetting _BsSetting = new BsSetting();
         private readonly BsManagement _BsMgmt = new BsManagement();
         private string Id = "";
+        private string transactionId="";
+        private bool isEdit = false;
 
-        public frmReceived()
+        public frmReceived(bool editmode = false, List<Received> received=null)
         {
             InitializeComponent();
+            isEdit = editmode;
+            this.KeyPreview = true;
+            cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+            txtReceivedBy.Text = Global.fullName;
+            txtDate.Text = (DateTime.Now).ToShortDateString();
+            LoadComboBox();
+            loadGRN();
+            if (editmode)
+            {
+                foreach (var rec in received)
+                {
+                    txtDate.Text = rec.Date.ToString();
+                    txtGNR.Text = rec.GNR.ToString();
+                    cmbItem.SelectedIndex = cmbItem.FindString(rec.itemName.ToString());
+                    cmbVendor.SelectedValue = rec.vendorId;
+                    txtQuantity.Text = Convert.ToString(rec.quantity);
+                    txtRate.Text = Convert.ToString(rec.Rate);
+                    txtAmount.Text = Convert.ToString(rec.amount);
+                    txtReceivedBy.Text = rec.receivedby;
+                    txtRemarks.Text = rec.remarks.ToString();
+                    txtUnit.Text = rec.unit;
+                    transactionId = rec.Id;
+                   // btnAdd.Enabled = false;
+
+                }
+            }
         }
         private void LoadComboBox()
         {
@@ -37,6 +65,10 @@ namespace IMS
             cmbItem.SelectedIndex = -1;
             cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
 
+            cmbItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            cmbItem.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbItem.AutoCompleteSource = AutoCompleteSource.ListItems;
+
             var ven = _BsSetting.GetVendor();
             cmbVendor.DataSource = ven;
             cmbVendor.DisplayMember = "VendorName";
@@ -47,11 +79,23 @@ namespace IMS
 
         private void frmReceived_Load(object sender, EventArgs e)
         {
-            this.KeyPreview = true;
-            cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
-            txtReceivedBy.Text = Global.fullName;
-            LoadComboBox();
-            loadGRN();
+            ToolTip toolTip1 = new ToolTip();
+
+            // Set up the delays for the ToolTip.
+            toolTip1.AutoPopDelay = 5000;
+            toolTip1.InitialDelay = 1000;
+            toolTip1.ReshowDelay = 500;
+            // Force the ToolTip text to be displayed whether or not the form is active.
+            toolTip1.ShowAlways = true;
+
+            // Set up the ToolTip text for the Button and Checkbox.
+            toolTip1.SetToolTip(this.cmbItem, cmbItem.Text);
+            //toolTip1.SetToolTip(this.cmbItem, "My checkBox1");
+            //this.KeyPreview = true;
+            //cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+            //txtReceivedBy.Text = Global.fullName;
+            //LoadComboBox();
+            //loadGRN();
         }
         private void loadGRN()
         {
@@ -74,9 +118,10 @@ namespace IMS
             //txtGNR.Clear();
             txtQuantity.Clear();
             txtRate.Clear();
-            txtReceivedBy.Clear();
+            //txtReceivedBy.Clear();
             txtRemarks.Clear();
             txtUnit.Clear();
+            cmbVendor.Enabled = true;
             cmbItem.SelectedIndex = -1;
             cmbVendor.SelectedIndex = -1;
             dgvItem.Rows.Clear();
@@ -86,13 +131,14 @@ namespace IMS
        
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            cmbVendor.Enabled = false;
             Item item = new Item();
         if (ValidInputs() && cmbItem.SelectedIndex>-1 && cmbVendor.SelectedIndex>-1)
                    
             {
                 item.ItemName = (cmbItem.Text);
                 item.Id= int.Parse(cmbItem.SelectedValue.ToString());
-                item.quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
+                item.quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
                 item.Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
                 item.amount = string.IsNullOrEmpty(txtAmount.Text) ? 0 : decimal.Parse(txtAmount.Text);
                 item.unit = string.IsNullOrEmpty(txtUnit.Text) ? "" :Convert.ToString(txtUnit.Text);
@@ -105,6 +151,7 @@ namespace IMS
                    txtAmount.Text = string.Empty;
                    txtUnit.Clear();
                    cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
+                  
             }
         else
             MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
@@ -117,10 +164,10 @@ namespace IMS
         private void txtRate_MouseLeave(object sender, EventArgs e)
         {
 
-            int quantity = 0;
+            decimal quantity = 0;
             decimal Rate = 0;
-            quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
-            Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : int.Parse(txtRate.Text);
+            quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
+            Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
 
             decimal amount = (quantity) * (Rate);
             txtAmount.Text = amount.ToString();
@@ -243,10 +290,10 @@ namespace IMS
 
         private void txtQuantity_MouseLeave(object sender, EventArgs e)
         {
-            int quantity = 0;
+            decimal quantity = 0;
             decimal Rate = 0;
-            quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : int.Parse(txtQuantity.Text);
-            Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : int.Parse(txtRate.Text);
+            quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
+            Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
 
             decimal amount = (quantity) * (Rate);
             txtAmount.Text = amount.ToString();
@@ -254,6 +301,8 @@ namespace IMS
 
         private void cmbItem_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+
             txtQuantity.Text = string.Empty;
             txtRate.Text = string.Empty;
             txtAmount.Text = string.Empty;
@@ -270,6 +319,17 @@ namespace IMS
                 }
             }
             loadGridview();
+            //ToolTip toolTip1 = new ToolTip();
+
+            //// Set up the delays for the ToolTip.
+            //toolTip1.AutoPopDelay = 5000;
+            //toolTip1.InitialDelay = 1000;
+            //toolTip1.ReshowDelay = 500;
+            //// Force the ToolTip text to be displayed whether or not the form is active.
+            //toolTip1.ShowAlways = true;
+
+            //// Set up the ToolTip text for the Button and Checkbox.
+            //toolTip1.SetToolTip(this.cmbItem, cmbItem.Text);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -281,29 +341,29 @@ namespace IMS
 
         private void dgvDetail_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataTable dt = new DataTable();
-            int gnr = Convert.ToInt32(dgvDetail.Rows[e.RowIndex].Cells["GRN_NO"].Value);
-            dt=_BsMgmt.GetGRNWiseReceivedDetail(gnr);
-            foreach (DataRow dr in dt.Rows)
-            {
-                cmbVendor.SelectedIndex = cmbVendor.FindString(dr["Vendorname"].ToString());
-                txtDate.Text = (dr["ReceivedDate"].ToString());
-                txtReceivedBy.Text = dr["receivedBy"].ToString();
-                txtRemarks.Text = dr["remarks"].ToString();
-                txtGNR.Text = dr["GRN_NO"].ToString();
-                dgvItem.Rows.Add(dr["ItemName"].ToString(), dr["Quantity"].ToString(), dr["Rate"].ToString(), dr["Amount"].ToString(), dr["ItemId"].ToString(), dr["Unit"].ToString());
+            //DataTable dt = new DataTable();
+            //int gnr = Convert.ToInt32(dgvDetail.Rows[e.RowIndex].Cells["GRN_NO"].Value);
+            //dt=_BsMgmt.GetGRNWiseReceivedDetail(gnr);
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    cmbVendor.SelectedIndex = cmbVendor.FindString(dr["Vendorname"].ToString());
+            //    txtDate.Text = (dr["ReceivedDate"].ToString());
+            //    txtReceivedBy.Text = dr["receivedBy"].ToString();
+            //    txtRemarks.Text = dr["remarks"].ToString();
+            //    txtGNR.Text = dr["GRN_NO"].ToString();
+            //    dgvItem.Rows.Add(dr["ItemName"].ToString(), dr["Quantity"].ToString(), dr["Rate"].ToString(), dr["Amount"].ToString(), dr["ItemId"].ToString(), dr["Unit"].ToString());
                 
-            }
+            //}
            
         }
 
         private void dgvItem_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            cmbItem.SelectedIndex = cmbItem.FindString(dgvItem.Rows[e.RowIndex].Cells["Item"].Value.ToString());
-            txtUnit.Text=dgvItem.Rows[e.RowIndex].Cells["unit"].Value.ToString();
-            txtQuantity.Text = dgvItem.Rows[e.RowIndex].Cells["quantity"].Value.ToString();
-            txtRate.Text = dgvItem.Rows[e.RowIndex].Cells["rate"].Value.ToString();
-            txtAmount.Text = dgvItem.Rows[e.RowIndex].Cells["amount"].Value.ToString();
+            //cmbItem.SelectedIndex = cmbItem.FindString(dgvItem.Rows[e.RowIndex].Cells["Item"].Value.ToString());
+            //txtUnit.Text=dgvItem.Rows[e.RowIndex].Cells["unit"].Value.ToString();
+            //txtQuantity.Text = dgvItem.Rows[e.RowIndex].Cells["quantity"].Value.ToString();
+            //txtRate.Text = dgvItem.Rows[e.RowIndex].Cells["rate"].Value.ToString();
+            //txtAmount.Text = dgvItem.Rows[e.RowIndex].Cells["amount"].Value.ToString();
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -346,6 +406,8 @@ namespace IMS
             {
                 foreach (DataGridViewRow row in dgvItem.Rows)
                 {
+                    if(isEdit==false || (isEdit=true && transactionId==null))
+                    transactionId=Convert.ToString(Guid.NewGuid().ToString());
                     rec.Add(new Received
                     {
                         Date = Convert.ToDateTime(txtDate.Text),
@@ -353,32 +415,38 @@ namespace IMS
                         GNR=int.Parse(txtGNR.Text),
                         itemId=int.Parse(row.Cells["itemId"].Value.ToString()),
                         unit=(row.Cells["unit"].Value.ToString()),
-                        itemName=cmbItem.Text,
+                        itemName = (row.Cells["item"].Value.ToString()),
                         vendorId=int.Parse(cmbVendor.SelectedValue.ToString()),
                         vendorName=cmbVendor.Text,
-                        quantity=int.Parse(row.Cells["quantity"].Value.ToString()),
+                        quantity=decimal.Parse(row.Cells["quantity"].Value.ToString()),
                         Rate=decimal.Parse(row.Cells["rate"].Value.ToString()),
                         receivedby= txtReceivedBy.Text,
                         remarks=txtRemarks.Text,
-                        Id = Convert.ToString(Guid.NewGuid().ToString())
+                        Id = transactionId
                     });
                     blnc.Add(new Balance
                     {
                         date = Convert.ToDateTime(txtDate.Text),
                         amount = decimal.Parse(row.Cells["amount"].Value.ToString()),
                         itemId = int.Parse(row.Cells["itemId"].Value.ToString()),
-                        quantity = int.Parse(row.Cells["quantity"].Value.ToString()),
+                        quantity = decimal.Parse(row.Cells["quantity"].Value.ToString()),
                         Rate = decimal.Parse(row.Cells["rate"].Value.ToString()),
+                        grn = int.Parse(txtGNR.Text),
+                        isn = 0,
+                        transactionId=transactionId
                     });
-                   
+                    resultReceived = _BsMgmt.SaveReceived(rec, blnc, 1, 0);
+                    transactionId = "";
                 }
               //  resultBalance = _BsMgmt.SaveBalance(blnc, 1, 0);
-                resultReceived = _BsMgmt.SaveReceived(rec,blnc,1,0);
+               
             }
             else
             {
                 if (ValidInputs() && cmbItem.SelectedIndex>-1 && cmbVendor.SelectedIndex>-1)
                 {
+                    if (isEdit == false || (isEdit=true && transactionId == null))
+                    transactionId=Convert.ToString(Guid.NewGuid().ToString());
                     rec.Add(new Received
                     {
                         Date = Convert.ToDateTime(txtDate.Text),
@@ -389,11 +457,11 @@ namespace IMS
                         itemName = cmbItem.Text,
                         vendorId = int.Parse(cmbVendor.SelectedValue.ToString()),
                         vendorName = cmbVendor.Text,
-                        quantity = int.Parse(txtQuantity.Text),
+                        quantity = decimal.Parse(txtQuantity.Text),
                         Rate = decimal.Parse(txtRate.Text),
                         receivedby = txtReceivedBy.Text,
                         remarks = txtRemarks.Text,
-                        Id = Convert.ToString(Guid.NewGuid().ToString())
+                        Id = transactionId
                     });
 
                     blnc.Add(new Balance
@@ -401,10 +469,14 @@ namespace IMS
                         date = Convert.ToDateTime(txtDate.Text),
                         amount = decimal.Parse(txtAmount.Text),
                         itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                        quantity = int.Parse(txtQuantity.Text),
+                        quantity = decimal.Parse(txtQuantity.Text),
                         Rate = decimal.Parse(txtRate.Text),
+                        grn = int.Parse(txtGNR.Text),
+                        isn = 0,
+                        transactionId=transactionId
                     });
                     resultReceived = _BsMgmt.SaveReceived(rec, blnc, 1, 0);
+                    transactionId = "";
                     // resultBalance = _BsMgmt.SaveBalance(blnc, 1, 0);
                 }
                 else
@@ -422,7 +494,8 @@ namespace IMS
                     //ds.Tables.Add(dt);
                     //ds.WriteXml("VoucherReceived.xml");
                     dt = ToDataTable<Received>(rec);
-                    receivedVoucherReport frmcrystal = new receivedVoucherReport(dt,int.Parse(txtGNR.Text), Convert.ToDateTime(txtDate.Text), cmbVendor.Text, txtReceivedBy.Text);
+                   // receivedVoucherReport frmcrystal = new receivedVoucherReport(dt, int.Parse(txtGNR.Text), Convert.ToDateTime(txtDate.Text), cmbVendor.Text, txtReceivedBy.Text);
+                    receivedVoucherReport frmcrystal = new receivedVoucherReport(dt);
                     frmcrystal.Show();
                 }
 
@@ -478,6 +551,11 @@ namespace IMS
             {
                 e.Handled = true;
             }
+        }
+
+        private void dgvDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }

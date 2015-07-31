@@ -33,14 +33,6 @@
             this.grpDetail = new System.Windows.Forms.GroupBox();
             this.dgvIssued = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnShow = new System.Windows.Forms.Button();
-            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
-            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
-            this.cmbItem = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.grpDepartmentDetail = new System.Windows.Forms.GroupBox();
             this.lblDateTo = new System.Windows.Forms.Label();
             this.lblDateFrom = new System.Windows.Forms.Label();
@@ -48,6 +40,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
+            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.cmbItem = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnShow = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.grpDetail.SuspendLayout();
@@ -92,10 +92,10 @@
             this.dgvIssued.BackgroundColor = System.Drawing.Color.White;
             this.dgvIssued.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvIssued.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvIssued.Location = new System.Drawing.Point(3, 16);
+            this.dgvIssued.Location = new System.Drawing.Point(3, 18);
             this.dgvIssued.Name = "dgvIssued";
             this.dgvIssued.RowHeadersVisible = false;
-            this.dgvIssued.Size = new System.Drawing.Size(1228, 479);
+            this.dgvIssued.Size = new System.Drawing.Size(1228, 477);
             this.dgvIssued.TabIndex = 1;
             // 
             // groupBox1
@@ -118,78 +118,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Report";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(321, 64);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Print";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnShow
-            // 
-            this.btnShow.Location = new System.Drawing.Point(321, 37);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(75, 23);
-            this.btnShow.TabIndex = 6;
-            this.btnShow.Text = "Show";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
-            // txtDateTo
-            // 
-            this.txtDateTo.Location = new System.Drawing.Point(80, 39);
-            this.txtDateTo.Name = "txtDateTo";
-            this.txtDateTo.Size = new System.Drawing.Size(235, 22);
-            this.txtDateTo.TabIndex = 131;
-            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
-            // 
-            // txtDateFrom
-            // 
-            this.txtDateFrom.Location = new System.Drawing.Point(80, 15);
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.Size = new System.Drawing.Size(235, 22);
-            this.txtDateFrom.TabIndex = 130;
-            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
-            // 
-            // cmbItem
-            // 
-            this.cmbItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbItem.FormattingEnabled = true;
-            this.cmbItem.Location = new System.Drawing.Point(80, 63);
-            this.cmbItem.Name = "cmbItem";
-            this.cmbItem.Size = new System.Drawing.Size(235, 24);
-            this.cmbItem.TabIndex = 129;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 16);
-            this.label3.TabIndex = 128;
-            this.label3.Text = "Item";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 16);
-            this.label2.TabIndex = 127;
-            this.label2.Text = "Date To:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 16);
-            this.label1.TabIndex = 126;
-            this.label1.Text = "Date From:";
             // 
             // grpDepartmentDetail
             // 
@@ -261,11 +189,84 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Date From:";
             // 
+            // txtDateTo
+            // 
+            this.txtDateTo.Location = new System.Drawing.Point(80, 39);
+            this.txtDateTo.Name = "txtDateTo";
+            this.txtDateTo.Size = new System.Drawing.Size(235, 22);
+            this.txtDateTo.TabIndex = 131;
+            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // txtDateFrom
+            // 
+            this.txtDateFrom.Location = new System.Drawing.Point(80, 15);
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(235, 22);
+            this.txtDateFrom.TabIndex = 130;
+            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // cmbItem
+            // 
+            this.cmbItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbItem.FormattingEnabled = true;
+            this.cmbItem.Location = new System.Drawing.Point(80, 63);
+            this.cmbItem.Name = "cmbItem";
+            this.cmbItem.Size = new System.Drawing.Size(235, 24);
+            this.cmbItem.TabIndex = 129;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 16);
+            this.label3.TabIndex = 128;
+            this.label3.Text = "Item";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 16);
+            this.label2.TabIndex = 127;
+            this.label2.Text = "Date To:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 16);
+            this.label1.TabIndex = 126;
+            this.label1.Text = "Date From:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(321, 64);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Print";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(321, 37);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(75, 23);
+            this.btnShow.TabIndex = 6;
+            this.btnShow.Text = "Show";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // frmItemwiseStockReport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmItemwiseStockReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Wise Stock report";

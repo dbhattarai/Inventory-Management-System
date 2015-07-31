@@ -10,7 +10,7 @@ namespace IMSModel
         public DateTime Date { get; set; }
         public int itemId { get; set; }
         public string unit { get; set; }
-        public int quantity { get; set; }
+        public decimal quantity { get; set; }
         public decimal Rate { get; set; }
         public decimal amount { get; set; }
         public int vendorId { get; set; }

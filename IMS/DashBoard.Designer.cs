@@ -30,19 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.itemToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.departmentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vendorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseBackupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.logOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addEditEmployToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.receivedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.issuedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.voucherToolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.gRNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iSNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departmentWiseReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departmentWiseItemDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,9 +56,6 @@
             this.itemWiseVendorDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ledgerReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.individualLedgerReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changePasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logOffToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -77,24 +78,16 @@
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(127, 26);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
             // menuStrip2
             // 
             this.menuStrip2.BackColor = System.Drawing.Color.DarkCyan;
-            this.menuStrip2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip2.Font = new System.Drawing.Font("Segoe UI Black", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
             this.adminToolStripMenuItem,
             this.managementToolStripMenuItem,
+            this.voucherToolStripMenu,
             this.reportToolStripMenuItem,
-            this.userToolStripMenuItem,
-            this.logOffToolStripMenuItem1,
             this.helpToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
@@ -111,7 +104,9 @@
             this.itemToolStripMenuItem1,
             this.departmentToolStripMenuItem1,
             this.vendorToolStripMenuItem1,
-            this.databaseBackupToolStripMenuItem});
+            this.databaseBackupToolStripMenuItem,
+            this.changePasswordToolStripMenuItem,
+            this.logOffToolStripMenuItem});
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(103, 36);
@@ -121,7 +116,7 @@
             // 
             this.itemToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itemToolStripMenuItem1.Name = "itemToolStripMenuItem1";
-            this.itemToolStripMenuItem1.Size = new System.Drawing.Size(203, 26);
+            this.itemToolStripMenuItem1.Size = new System.Drawing.Size(209, 26);
             this.itemToolStripMenuItem1.Text = "Item";
             this.itemToolStripMenuItem1.Click += new System.EventHandler(this.itemToolStripMenuItem1_Click_1);
             // 
@@ -129,7 +124,7 @@
             // 
             this.departmentToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.departmentToolStripMenuItem1.Name = "departmentToolStripMenuItem1";
-            this.departmentToolStripMenuItem1.Size = new System.Drawing.Size(203, 26);
+            this.departmentToolStripMenuItem1.Size = new System.Drawing.Size(209, 26);
             this.departmentToolStripMenuItem1.Text = "Department";
             this.departmentToolStripMenuItem1.Click += new System.EventHandler(this.departmentToolStripMenuItem1_Click);
             // 
@@ -137,7 +132,7 @@
             // 
             this.vendorToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vendorToolStripMenuItem1.Name = "vendorToolStripMenuItem1";
-            this.vendorToolStripMenuItem1.Size = new System.Drawing.Size(203, 26);
+            this.vendorToolStripMenuItem1.Size = new System.Drawing.Size(209, 26);
             this.vendorToolStripMenuItem1.Text = "Vendor";
             this.vendorToolStripMenuItem1.Click += new System.EventHandler(this.vendorToolStripMenuItem1_Click);
             // 
@@ -145,9 +140,24 @@
             // 
             this.databaseBackupToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.databaseBackupToolStripMenuItem.Name = "databaseBackupToolStripMenuItem";
-            this.databaseBackupToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
+            this.databaseBackupToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.databaseBackupToolStripMenuItem.Text = "Database Backup";
             this.databaseBackupToolStripMenuItem.Click += new System.EventHandler(this.databaseBackupToolStripMenuItem_Click);
+            // 
+            // changePasswordToolStripMenuItem
+            // 
+            this.changePasswordToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
+            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
+            this.changePasswordToolStripMenuItem.Text = "Change Password";
+            // 
+            // logOffToolStripMenuItem
+            // 
+            this.logOffToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logOffToolStripMenuItem.Name = "logOffToolStripMenuItem";
+            this.logOffToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
+            this.logOffToolStripMenuItem.Text = "Log Off";
+            this.logOffToolStripMenuItem.Click += new System.EventHandler(this.logOffToolStripMenuItem_Click);
             // 
             // adminToolStripMenuItem
             // 
@@ -163,15 +173,15 @@
             // 
             this.addEditEmployToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEditEmployToolStripMenuItem.Name = "addEditEmployToolStripMenuItem";
-            this.addEditEmployToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
-            this.addEditEmployToolStripMenuItem.Text = "Add/Edit Employ";
+            this.addEditEmployToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.addEditEmployToolStripMenuItem.Text = "Add/Edit Employee";
             this.addEditEmployToolStripMenuItem.Click += new System.EventHandler(this.addEditEmployToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // managementToolStripMenuItem
@@ -199,6 +209,32 @@
             this.issuedToolStripMenuItem.Size = new System.Drawing.Size(138, 26);
             this.issuedToolStripMenuItem.Text = "Issue";
             this.issuedToolStripMenuItem.Click += new System.EventHandler(this.issuedToolStripMenuItem_Click);
+            // 
+            // voucherToolStripMenu
+            // 
+            this.voucherToolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gRNToolStripMenuItem,
+            this.iSNToolStripMenuItem});
+            this.voucherToolStripMenu.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voucherToolStripMenu.Name = "voucherToolStripMenu";
+            this.voucherToolStripMenu.Size = new System.Drawing.Size(116, 36);
+            this.voucherToolStripMenu.Text = "Voucher";
+            // 
+            // gRNToolStripMenuItem
+            // 
+            this.gRNToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gRNToolStripMenuItem.Name = "gRNToolStripMenuItem";
+            this.gRNToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.gRNToolStripMenuItem.Text = "GRN";
+            this.gRNToolStripMenuItem.Click += new System.EventHandler(this.gRNToolStripMenuItem_Click);
+            // 
+            // iSNToolStripMenuItem
+            // 
+            this.iSNToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iSNToolStripMenuItem.Name = "iSNToolStripMenuItem";
+            this.iSNToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.iSNToolStripMenuItem.Text = "ISN";
+            this.iSNToolStripMenuItem.Click += new System.EventHandler(this.iSNToolStripMenuItem_Click);
             // 
             // reportToolStripMenuItem
             // 
@@ -276,39 +312,13 @@
             this.individualLedgerReportToolStripMenuItem.Text = "Individual Ledger Report";
             this.individualLedgerReportToolStripMenuItem.Click += new System.EventHandler(this.individualLedgerReportToolStripMenuItem_Click);
             // 
-            // userToolStripMenuItem
-            // 
-            this.userToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.changePasswordToolStripMenuItem});
-            this.userToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(74, 36);
-            this.userToolStripMenuItem.Text = "User";
-            // 
-            // changePasswordToolStripMenuItem
-            // 
-            this.changePasswordToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
-            this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
-            this.changePasswordToolStripMenuItem.Text = "Change Password";
-            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click);
-            // 
-            // logOffToolStripMenuItem1
-            // 
-            this.logOffToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logOffToolStripMenuItem1.Name = "logOffToolStripMenuItem1";
-            this.logOffToolStripMenuItem1.Size = new System.Drawing.Size(107, 36);
-            this.logOffToolStripMenuItem1.Text = "Log Off";
-            this.logOffToolStripMenuItem1.Click += new System.EventHandler(this.logOffToolStripMenuItem1_Click);
-            // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(77, 36);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -453,7 +463,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(85, 30);
+            this.toolStripLabel1.Size = new System.Drawing.Size(78, 30);
             this.toolStripLabel1.Text = "Backup";
             // 
             // toolStripSeparator3
@@ -482,6 +492,7 @@
             this.Name = "DashBoard";
             this.Text = "Inventory Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DashBoard_FormClosing);
             this.Load += new System.EventHandler(this.DashBoard_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
@@ -495,7 +506,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem itemToolStripMenuItem1;
@@ -504,8 +514,6 @@
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addEditEmployToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
@@ -522,7 +530,6 @@
         private System.Windows.Forms.ToolStripMenuItem departmentWiseItemDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem itemWiseDepartmentDetailsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem ledgerReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem databaseBackupToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -537,5 +544,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem individualLedgerReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem voucherToolStripMenu;
+        private System.Windows.Forms.ToolStripMenuItem gRNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iSNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOffToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changePasswordToolStripMenuItem;
     }
 }

@@ -37,12 +37,6 @@
             this.grpDetail = new System.Windows.Forms.GroupBox();
             this.print = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
-            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
-            this.printSummary = new System.Windows.Forms.Button();
-            this.btnSummary = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.grpDepartmentDetail = new System.Windows.Forms.GroupBox();
             this.lblDateTo = new System.Windows.Forms.Label();
             this.lblDateFrom = new System.Windows.Forms.Label();
@@ -50,12 +44,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtDateTo = new System.Windows.Forms.DateTimePicker();
+            this.txtDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.printSummary = new System.Windows.Forms.Button();
+            this.btnSummary = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetail)).BeginInit();
             this.panel2.SuspendLayout();
             this.grpDetail.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.grpDepartmentDetail.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbItem
@@ -83,10 +83,10 @@
             this.dgvDetail.BackgroundColor = System.Drawing.Color.White;
             this.dgvDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDetail.Location = new System.Drawing.Point(3, 16);
+            this.dgvDetail.Location = new System.Drawing.Point(3, 18);
             this.dgvDetail.Name = "dgvDetail";
             this.dgvDetail.RowHeadersVisible = false;
-            this.dgvDetail.Size = new System.Drawing.Size(1228, 479);
+            this.dgvDetail.Size = new System.Drawing.Size(1228, 477);
             this.dgvDetail.TabIndex = 0;
             // 
             // btnDetail
@@ -162,62 +162,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Report";
             // 
-            // txtDateTo
-            // 
-            this.txtDateTo.Location = new System.Drawing.Point(92, 38);
-            this.txtDateTo.Name = "txtDateTo";
-            this.txtDateTo.Size = new System.Drawing.Size(236, 22);
-            this.txtDateTo.TabIndex = 125;
-            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
-            // 
-            // txtDateFrom
-            // 
-            this.txtDateFrom.Location = new System.Drawing.Point(92, 13);
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.Size = new System.Drawing.Size(236, 22);
-            this.txtDateFrom.TabIndex = 124;
-            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
-            // 
-            // printSummary
-            // 
-            this.printSummary.Location = new System.Drawing.Point(411, 62);
-            this.printSummary.Name = "printSummary";
-            this.printSummary.Size = new System.Drawing.Size(75, 23);
-            this.printSummary.TabIndex = 13;
-            this.printSummary.Text = "Print";
-            this.printSummary.UseVisualStyleBackColor = true;
-            this.printSummary.Visible = false;
-            this.printSummary.Click += new System.EventHandler(this.printSummary_Click_1);
-            // 
-            // btnSummary
-            // 
-            this.btnSummary.Location = new System.Drawing.Point(335, 64);
-            this.btnSummary.Name = "btnSummary";
-            this.btnSummary.Size = new System.Drawing.Size(75, 23);
-            this.btnSummary.TabIndex = 12;
-            this.btnSummary.Text = "Summary";
-            this.btnSummary.UseVisualStyleBackColor = true;
-            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 16);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Date From:";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1234, 661);
-            this.panel1.TabIndex = 6;
-            // 
             // grpDepartmentDetail
             // 
             this.grpDepartmentDetail.Controls.Add(this.lblDateTo);
@@ -288,11 +232,68 @@
             this.label6.TabIndex = 9;
             this.label6.Text = "Date From:";
             // 
+            // txtDateTo
+            // 
+            this.txtDateTo.Location = new System.Drawing.Point(92, 38);
+            this.txtDateTo.Name = "txtDateTo";
+            this.txtDateTo.Size = new System.Drawing.Size(236, 22);
+            this.txtDateTo.TabIndex = 125;
+            this.txtDateTo.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // txtDateFrom
+            // 
+            this.txtDateFrom.Location = new System.Drawing.Point(92, 13);
+            this.txtDateFrom.Name = "txtDateFrom";
+            this.txtDateFrom.Size = new System.Drawing.Size(236, 22);
+            this.txtDateFrom.TabIndex = 124;
+            this.txtDateFrom.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            // 
+            // printSummary
+            // 
+            this.printSummary.Location = new System.Drawing.Point(411, 62);
+            this.printSummary.Name = "printSummary";
+            this.printSummary.Size = new System.Drawing.Size(75, 23);
+            this.printSummary.TabIndex = 13;
+            this.printSummary.Text = "Print";
+            this.printSummary.UseVisualStyleBackColor = true;
+            this.printSummary.Visible = false;
+            this.printSummary.Click += new System.EventHandler(this.printSummary_Click_1);
+            // 
+            // btnSummary
+            // 
+            this.btnSummary.Location = new System.Drawing.Point(335, 64);
+            this.btnSummary.Name = "btnSummary";
+            this.btnSummary.Size = new System.Drawing.Size(75, 23);
+            this.btnSummary.TabIndex = 12;
+            this.btnSummary.Text = "Summary";
+            this.btnSummary.UseVisualStyleBackColor = true;
+            this.btnSummary.Click += new System.EventHandler(this.btnSummary_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 16);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Date From:";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1234, 661);
+            this.panel1.TabIndex = 6;
+            // 
             // itemWiseVendorDetails
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.ClientSize = new System.Drawing.Size(1234, 661);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "itemWiseVendorDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Item Wise Vendor Details";
@@ -302,9 +303,9 @@
             this.grpDetail.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.grpDepartmentDetail.ResumeLayout(false);
             this.grpDepartmentDetail.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

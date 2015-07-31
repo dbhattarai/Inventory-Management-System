@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtDate = new System.Windows.Forms.DateTimePicker();
@@ -63,6 +64,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.dgvDetail = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -121,7 +123,7 @@
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(212, 21);
             this.txtDate.TabIndex = 121;
-            this.txtDate.Value = new System.DateTime(2015, 4, 29, 0, 0, 0, 0);
+            this.txtDate.Value = new System.DateTime(2015, 7, 27, 0, 0, 0, 0);
             // 
             // grpItem
             // 
@@ -168,10 +170,11 @@
             // cmbItem
             // 
             this.cmbItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbItem.FormattingEnabled = true;
             this.cmbItem.Location = new System.Drawing.Point(100, 24);
             this.cmbItem.Name = "cmbItem";
-            this.cmbItem.Size = new System.Drawing.Size(153, 23);
+            this.cmbItem.Size = new System.Drawing.Size(179, 21);
             this.cmbItem.TabIndex = 6;
             this.cmbItem.SelectedIndexChanged += new System.EventHandler(this.cmbItem_SelectedIndexChanged);
             // 
@@ -179,14 +182,14 @@
             // 
             this.txtUnit.Location = new System.Drawing.Point(100, 53);
             this.txtUnit.Name = "txtUnit";
-            this.txtUnit.Size = new System.Drawing.Size(153, 21);
+            this.txtUnit.Size = new System.Drawing.Size(179, 21);
             this.txtUnit.TabIndex = 7;
             // 
             // txtQuantity
             // 
             this.txtQuantity.Location = new System.Drawing.Point(100, 80);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(153, 21);
+            this.txtQuantity.Size = new System.Drawing.Size(179, 21);
             this.txtQuantity.TabIndex = 8;
             this.txtQuantity.Tag = "INT";
             this.txtQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantity_KeyPress);
@@ -196,7 +199,7 @@
             // 
             this.txtRate.Location = new System.Drawing.Point(100, 107);
             this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(153, 21);
+            this.txtRate.Size = new System.Drawing.Size(179, 21);
             this.txtRate.TabIndex = 9;
             this.txtRate.Tag = "DECIMAL";
             this.txtRate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRate_KeyPress);
@@ -206,7 +209,7 @@
             // 
             this.txtAmount.Location = new System.Drawing.Point(100, 134);
             this.txtAmount.Name = "txtAmount";
-            this.txtAmount.Size = new System.Drawing.Size(153, 21);
+            this.txtAmount.Size = new System.Drawing.Size(179, 21);
             this.txtAmount.TabIndex = 10;
             this.txtAmount.Tag = "DECIMAL";
             this.txtAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAmount_KeyPress);
@@ -272,7 +275,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 15);
             this.label13.TabIndex = 118;
-            this.label13.Text = "GNR No";
+            this.label13.Text = "GRN No";
             // 
             // dgvItem
             // 
@@ -350,7 +353,10 @@
             // 
             // cmbVendor
             // 
-            this.cmbVendor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVendor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbVendor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbVendor.BackColor = System.Drawing.Color.White;
+            this.cmbVendor.ForeColor = System.Drawing.Color.Black;
             this.cmbVendor.FormattingEnabled = true;
             this.cmbVendor.Location = new System.Drawing.Point(107, 79);
             this.cmbVendor.Name = "cmbVendor";
@@ -423,6 +429,7 @@
             this.dgvDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetail.Size = new System.Drawing.Size(1000, 230);
             this.dgvDetail.TabIndex = 15;
+            this.dgvDetail.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetail_CellContentClick);
             this.dgvDetail.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetail_CellContentDoubleClick);
             // 
             // frmReceived
@@ -488,6 +495,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DateTimePicker txtDate;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.ToolTip toolTip1;
 
 
     }

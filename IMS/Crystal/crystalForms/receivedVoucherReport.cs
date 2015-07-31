@@ -12,7 +12,9 @@ namespace IMS.Report
 {
     public partial class receivedVoucherReport : Form
     {
-        public receivedVoucherReport(DataTable dt,int gnr,DateTime date,string vendor,string receivedBy)
+        //public receivedVoucherReport(DataTable dt,int gnr,DateTime date,string vendor,string receivedBy)
+        //{
+        public receivedVoucherReport(DataTable dt)
         {
             InitializeComponent();
             ReceivedVoucher cr = new ReceivedVoucher();

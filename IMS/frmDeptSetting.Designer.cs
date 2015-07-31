@@ -49,7 +49,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(326, 171);
+            this.panel1.Size = new System.Drawing.Size(461, 213);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -68,14 +68,14 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(326, 171);
+            this.groupBox1.Size = new System.Drawing.Size(461, 213);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Department Setting";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(174, 126);
+            this.btnCancel.Location = new System.Drawing.Point(306, 147);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 26);
@@ -86,7 +86,7 @@
             // 
             // btnDeptSet
             // 
-            this.btnDeptSet.Location = new System.Drawing.Point(46, 126);
+            this.btnDeptSet.Location = new System.Drawing.Point(174, 147);
             this.btnDeptSet.Margin = new System.Windows.Forms.Padding(4);
             this.btnDeptSet.Name = "btnDeptSet";
             this.btnDeptSet.Size = new System.Drawing.Size(88, 26);
@@ -97,32 +97,32 @@
             // 
             // txtHod
             // 
-            this.txtHod.Location = new System.Drawing.Point(174, 84);
+            this.txtHod.Location = new System.Drawing.Point(174, 105);
             this.txtHod.Margin = new System.Windows.Forms.Padding(4);
             this.txtHod.Name = "txtHod";
-            this.txtHod.Size = new System.Drawing.Size(116, 21);
+            this.txtHod.Size = new System.Drawing.Size(220, 21);
             this.txtHod.TabIndex = 21;
             // 
             // txtDeptCode
             // 
-            this.txtDeptCode.Location = new System.Drawing.Point(174, 51);
+            this.txtDeptCode.Location = new System.Drawing.Point(174, 72);
             this.txtDeptCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtDeptCode.Name = "txtDeptCode";
-            this.txtDeptCode.Size = new System.Drawing.Size(116, 21);
+            this.txtDeptCode.Size = new System.Drawing.Size(220, 21);
             this.txtDeptCode.TabIndex = 20;
             // 
             // txtDeptName
             // 
-            this.txtDeptName.Location = new System.Drawing.Point(174, 16);
+            this.txtDeptName.Location = new System.Drawing.Point(174, 37);
             this.txtDeptName.Margin = new System.Windows.Forms.Padding(4);
             this.txtDeptName.Name = "txtDeptName";
-            this.txtDeptName.Size = new System.Drawing.Size(116, 21);
+            this.txtDeptName.Size = new System.Drawing.Size(220, 21);
             this.txtDeptName.TabIndex = 19;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 92);
+            this.label3.Location = new System.Drawing.Point(42, 113);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 15);
@@ -132,7 +132,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 54);
+            this.label2.Location = new System.Drawing.Point(42, 75);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 15);
@@ -142,7 +142,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 24);
+            this.label1.Location = new System.Drawing.Point(42, 40);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 15);
@@ -153,10 +153,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 171);
+            this.ClientSize = new System.Drawing.Size(461, 213);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "frmDeptSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Department Setting";

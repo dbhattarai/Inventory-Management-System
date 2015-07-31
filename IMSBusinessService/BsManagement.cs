@@ -55,5 +55,27 @@ namespace IMSBusinessService
         {
             return _mgmt.GetGRNWiseReceivedDetail(grn);
         }
+
+        public List<Received> GetGRNVoucherDetails(DateTime dateFrom, DateTime dateTo)
+        {
+            return _mgmt.GetGRNVoucherDetails(dateFrom,dateTo);
+        }
+
+        public int DeleteGrnDetail(int grn)
+        {
+            return _mgmt.DeleteGrnDetail(grn);
+        }
+        public List<Issued> GetISNVoucherDetails(DateTime dateFrom, DateTime dateTo)
+        {
+            return _mgmt.GetISNVoucherDetails(dateFrom, dateTo);
+        }
+        public int DeleteIsnDetail(int isn)
+        {
+            return _mgmt.DeleteIsnDetail(isn);
+        }
+        public DataTable GetISNWiseIssuedDetail(int isn)
+        {
+            return _mgmt.GetISNWiseIssuedDetail(isn);
+        }
     }
 }

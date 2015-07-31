@@ -36,9 +36,9 @@ namespace IMS.Report
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
-            ds.Tables.Add(dt);
-            ds.WriteXml("LedgerReport.xml");
+            //DataSet ds = new DataSet();
+            //ds.Tables.Add(dt);
+            //ds.WriteXml("LedgerReport.xml");
             frmLedgerReportRpt frmcrystal = new frmLedgerReportRpt(dt, sDate, eDate);
             frmcrystal.Show();
         }

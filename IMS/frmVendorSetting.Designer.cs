@@ -48,7 +48,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(331, 173);
+            this.panel1.Size = new System.Drawing.Size(465, 188);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -64,14 +64,14 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(331, 173);
+            this.groupBox1.Size = new System.Drawing.Size(465, 188);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendor Setting";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(174, 130);
+            this.btnCancel.Location = new System.Drawing.Point(303, 137);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(87, 27);
             this.btnCancel.TabIndex = 31;
@@ -81,7 +81,7 @@
             // 
             // btnVendorSet
             // 
-            this.btnVendorSet.Location = new System.Drawing.Point(45, 130);
+            this.btnVendorSet.Location = new System.Drawing.Point(174, 137);
             this.btnVendorSet.Name = "btnVendorSet";
             this.btnVendorSet.Size = new System.Drawing.Size(87, 27);
             this.btnVendorSet.TabIndex = 30;
@@ -91,9 +91,9 @@
             // 
             // txtPhNo
             // 
-            this.txtPhNo.Location = new System.Drawing.Point(174, 83);
+            this.txtPhNo.Location = new System.Drawing.Point(174, 99);
             this.txtPhNo.Name = "txtPhNo";
-            this.txtPhNo.Size = new System.Drawing.Size(116, 21);
+            this.txtPhNo.Size = new System.Drawing.Size(262, 21);
             this.txtPhNo.TabIndex = 29;
             this.txtPhNo.Tag = "NUM";
             this.txtPhNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhNo_KeyPress);
@@ -101,22 +101,22 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(174, 50);
+            this.txtAddress.Location = new System.Drawing.Point(174, 66);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(116, 21);
+            this.txtAddress.Size = new System.Drawing.Size(262, 21);
             this.txtAddress.TabIndex = 28;
             // 
             // txtVendorName
             // 
-            this.txtVendorName.Location = new System.Drawing.Point(174, 15);
+            this.txtVendorName.Location = new System.Drawing.Point(174, 31);
             this.txtVendorName.Name = "txtVendorName";
-            this.txtVendorName.Size = new System.Drawing.Size(116, 21);
+            this.txtVendorName.Size = new System.Drawing.Size(262, 21);
             this.txtVendorName.TabIndex = 27;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 86);
+            this.label3.Location = new System.Drawing.Point(42, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 15);
             this.label3.TabIndex = 26;
@@ -125,7 +125,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 53);
+            this.label2.Location = new System.Drawing.Point(42, 69);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 25;
@@ -134,7 +134,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 18);
+            this.label1.Location = new System.Drawing.Point(42, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 15);
             this.label1.TabIndex = 24;
@@ -144,9 +144,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 173);
+            this.ClientSize = new System.Drawing.Size(465, 188);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaximizeBox = false;
             this.Name = "frmVendorSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendor Setting";

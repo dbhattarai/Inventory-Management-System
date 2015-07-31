@@ -11,10 +11,15 @@ using IMS.Report;
 namespace IMS
 {
     public partial class DashBoard : Form
-    {
+    { 
         public DashBoard()
         {
             InitializeComponent();
+            if (Global.Utype.Contains("User"))
+            {
+                adminToolStripMenuItem.Enabled = false;
+                voucherToolStripMenu.Enabled = false;
+            }
         }
         private void addEditEmployToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -142,7 +147,12 @@ namespace IMS
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult result = MessageBox.Show("Are you sure you want to exit?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+      
         }
 
         private void databaseBackupToolStripMenuItem_Click(object sender, EventArgs e)
@@ -207,5 +217,44 @@ namespace IMS
             db.BringToFront();
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutUs frmAboutUs = new AboutUs();
+            frmAboutUs.ShowDialog();
+        }
+
+        private void gRNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGRNVoucherDetails frm = new frmGRNVoucherDetails();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.Activate();
+            frm.BringToFront();
+        }
+
+        private void DashBoard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void logOffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            frmLogin mw = new frmLogin();
+            mw.Show();
+            mw.Activate();
+            mw.BringToFront();
+        }
+
+        private void iSNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmISNVoucherDetails frm = new frmISNVoucherDetails();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.Activate();
+            frm.BringToFront();
+        }
+
+       
     }
 }

@@ -38,12 +38,7 @@ namespace IMS
         {
             if (cmbItem.SelectedIndex >-1)
             {
-                //to display input parameter details
-                grpDepartmentDetail.Visible = true;
-                lblDateFrom.Text = string.IsNullOrEmpty(txtDateFrom.Text) ? "" : txtDateFrom.Text;
-                lblDateTo.Text = string.IsNullOrEmpty(txtDateTo.Text) ? "" : txtDateTo.Text;
-                lblItem.Text = string.IsNullOrEmpty(cmbItem.Text) ? "" : cmbItem.Text;
-                //
+               
                 int itemId = int.Parse(cmbItem.SelectedValue.ToString());
                 item = cmbItem.Text;
                 sDate = DateTime.Parse((txtDateFrom.Text));
@@ -52,6 +47,14 @@ namespace IMS
                 //dgvReceived.DataSource = ds.Tables[0];
                 dgvIssued.DataSource = dt;
                 //dgvBalance.DataSource = ds
+
+                //to display input parameter details
+                grpDepartmentDetail.Visible = true;
+                lblDateFrom.Text = sDate.ToShortDateString();
+                lblDateTo.Text = eDate.ToShortDateString();
+                lblItem.Text = item;
+                //
+             
             }
             else
                 MessageBox.Show("Please Select Item", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
