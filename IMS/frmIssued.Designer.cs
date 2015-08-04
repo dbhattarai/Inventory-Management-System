@@ -35,9 +35,6 @@
             this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.grpItemDetail = new System.Windows.Forms.GroupBox();
             this.dgvItemDetail = new System.Windows.Forms.DataGridView();
-            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -73,6 +70,10 @@
             this.label22 = new System.Windows.Forms.Label();
             this.dgvDetail = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.colItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAmt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -164,6 +165,7 @@
             this.dgvItemDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvItemDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItemDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colItemId,
             this.colQty,
             this.colRate,
             this.colAmt});
@@ -175,21 +177,6 @@
             this.dgvItemDetail.Size = new System.Drawing.Size(362, 122);
             this.dgvItemDetail.TabIndex = 1;
             this.dgvItemDetail.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItemDetail_CellContentDoubleClick);
-            // 
-            // colQty
-            // 
-            this.colQty.HeaderText = "Quantity";
-            this.colQty.Name = "colQty";
-            // 
-            // colRate
-            // 
-            this.colRate.HeaderText = "Rate";
-            this.colRate.Name = "colRate";
-            // 
-            // colAmt
-            // 
-            this.colAmt.HeaderText = "Amount";
-            this.colAmt.Name = "colAmt";
             // 
             // label12
             // 
@@ -508,6 +495,27 @@
             this.dgvDetail.Size = new System.Drawing.Size(845, 125);
             this.dgvDetail.TabIndex = 117;
             // 
+            // colItemId
+            // 
+            this.colItemId.HeaderText = "itemId";
+            this.colItemId.Name = "colItemId";
+            this.colItemId.Visible = false;
+            // 
+            // colQty
+            // 
+            this.colQty.HeaderText = "Quantity";
+            this.colQty.Name = "colQty";
+            // 
+            // colRate
+            // 
+            this.colRate.HeaderText = "Rate";
+            this.colRate.Name = "colRate";
+            // 
+            // colAmt
+            // 
+            this.colAmt.HeaderText = "Amount";
+            this.colAmt.Name = "colAmt";
+            // 
             // frmIssued
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -545,9 +553,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox grpItemDetail;
         private System.Windows.Forms.DataGridView dgvItemDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colAmt;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnAdd;
@@ -584,5 +589,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DateTimePicker txtDate;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAmt;
     }
 }

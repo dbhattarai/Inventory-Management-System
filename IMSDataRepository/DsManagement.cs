@@ -297,9 +297,9 @@ namespace IMSDataRepository
                            receivedDetail.Add(new Received
                            {
                                itemName = (string)reader["ItemName"],
-                              // unit = (string)reader["Unit"],
+                               itemId = (int)reader["itemId"],
                                quantity = Convert.ToDecimal(reader["quantity"]),
-                              Rate = Convert.ToDecimal( reader["Rate"]),
+                               Rate = Convert.ToDecimal( reader["Rate"]),
                                amount = (decimal)reader["amount"]
                            });
                        }

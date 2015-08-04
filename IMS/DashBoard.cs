@@ -58,14 +58,14 @@ namespace IMS
             
         }
 
-        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmChngPwd fcp = new frmChngPwd();
-            fcp.MdiParent = this;
-            fcp.Show();
-            fcp.Activate();
-            fcp.BringToFront();
-        }
+        //private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    frmChngPwd fcp = new frmChngPwd();
+        //    fcp.MdiParent = this;
+        //    fcp.Show();
+        //    fcp.Activate();
+        //    fcp.BringToFront();
+        //}
 
         private void receivedToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -253,6 +253,15 @@ namespace IMS
             frm.Show();
             frm.Activate();
             frm.BringToFront();
+        }
+
+        private void changePasswordToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frmChngPwd fcp = new frmChngPwd();
+            fcp.MdiParent = this;
+            fcp.Show();
+            fcp.Activate();
+            fcp.BringToFront();
         }
 
        

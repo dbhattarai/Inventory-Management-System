@@ -24,7 +24,9 @@ namespace IMS
         private string Id = Convert.ToString(Guid.NewGuid().ToString());
         private readonly BsManagement _BsMgmt = new BsManagement();
         private string transactionId = "";
+        private decimal minQuantity = 0;
         private bool isEdit = false;
+        private bool isBalance = false;
 
         public frmIssued(bool editmode = false, List<Issued> issue = null)
         {
@@ -36,10 +38,12 @@ namespace IMS
             loadISN();
             if (editmode)
             {
+                isBalance = true;
                 foreach (var rec in issue)
                 {
                     txtDate.Text = rec.Date.ToString();
                     txtISN.Text = rec.ISN.ToString();
+                    txtQuantity.Text = Convert.ToString(rec.quantity);
                     cmbItem.SelectedIndex = cmbItem.FindString(rec.itemName.ToString());
                     cmbDept.SelectedValue = rec.DeptId;
                     txtQuantity.Text = Convert.ToString(rec.quantity);
@@ -49,7 +53,7 @@ namespace IMS
                     txtRemarks.Text = rec.remarks.ToString();
                     txtUnit.Text = rec.unit;
                     txtIssuedBy.Text = rec.issuedby;
-                    btnAdd.Enabled = false;
+                   // btnAdd.Enabled = false;
                     transactionId = rec.Id;
 
                 }
@@ -81,9 +85,26 @@ namespace IMS
             List<Received> itemDetail = _BsMgmt.GetReceivedDetail(int.Parse(cmbItem.SelectedValue.ToString()));
             foreach (var item in itemDetail)
             {
-                if(item.quantity>0)
-                dgvItemDetail.Rows.Add(item.quantity,item.Rate,item.amount);
+                if (item.quantity > 0)
+                    dgvItemDetail.Rows.Add(item.itemId, item.quantity, item.Rate, item.amount);
+                if (isEdit && item.quantity<=0)
+                    minQuantity = decimal.Parse(txtQuantity.Text);
+                if(isEdit)
+                    minQuantity = decimal.Parse(txtQuantity.Text);
                 
+            }
+            if (dgvItemDetail.Rows.Count == 0)
+            {
+                if (isBalance)
+                    isBalance = false;
+                else
+                {
+                    MessageBox.Show("No Remaining Balance", "Not Sufficient Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+                    //cmbItem.SelectedIndex = -1;
+                    //txtUnit.Clear();
+                    cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
+                }
             }
         }
        
@@ -127,6 +148,7 @@ namespace IMS
             cmbDept.SelectedIndex = -1;
             dgvItem.Rows.Clear();
             dgvItemDetail.Rows.Clear();
+            txtRate.Enabled = true;
             loadISN();
         }
        
@@ -152,6 +174,7 @@ namespace IMS
                 if (itemId == unit.itemId)
                 {
                     txtUnit.Text = unit.unit;
+                    break;
                 }
             }
 
@@ -183,52 +206,69 @@ namespace IMS
         private void btnAdd_Click(object sender, EventArgs e)
         {
             cmbDept.Enabled = false;
-            //bool dupd = false;
-            decimal quantity=0;
+            decimal quantity = 0;
             Item item = new Item();
             if (ValidInputs() && cmbItem.SelectedIndex > -1 && cmbDept.SelectedIndex > -1)
             {
                 item.ItemName = (cmbItem.Text);
                 item.Id = int.Parse(cmbItem.SelectedValue.ToString());
                 item.quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
-               decimal rate= item.Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
+                decimal rate = item.Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
                 item.amount = string.IsNullOrEmpty(txtAmount.Text) ? 0 : decimal.Parse(txtAmount.Text);
                 item.unit = string.IsNullOrEmpty(txtUnit.Text) ? "" : Convert.ToString(txtUnit.Text);
-               
+
                 foreach (DataGridViewRow row in dgvItemDetail.Rows)
                 {
                     if (decimal.Parse(row.Cells["colRate"].Value.ToString()) == rate)
                     {
-                        quantity = decimal.Parse(row.Cells["colQty"].Value.ToString()) - decimal.Parse(txtQuantity.Text);
-                        decimal amount=(decimal.Parse(row.Cells["colAmt"].Value.ToString()) - decimal.Parse(txtAmount.Text));
-                        if (quantity > 0)
+                        //if (isEdit == false || (isEdit = true && transactionId == null))
+                        //{
+                            
+                        //}
+                        if (isEdit)
                         {
-                            row.Cells["colQty"].Value = quantity;
-                            row.Cells["colAmt"].Value = amount;
+                            quantity = decimal.Parse(row.Cells["colQty"].Value.ToString()) + minQuantity - decimal.Parse(txtQuantity.Text);
+                            // decimal amount = (decimal.Parse(row.Cells["colAmt"].Value.ToString()) + decimal.Parse(txtAmount.Text));
+
+                        }
+                        else
+                        {
+                            quantity = decimal.Parse(row.Cells["colQty"].Value.ToString()) - decimal.Parse(txtQuantity.Text);
+                            decimal amount = (decimal.Parse(row.Cells["colAmt"].Value.ToString()) - decimal.Parse(txtAmount.Text));
                         }
                         break;
                     }
+                    else
+                        quantity = minQuantity - decimal.Parse(txtQuantity.Text);
                 }
-                if ( quantity>0)
+                if(dgvItemDetail.Rows.Count<=0)
+                    quantity = minQuantity - decimal.Parse(txtQuantity.Text);
+                if (quantity < 0 )
+                {
+                    MessageBox.Show("Quantity Exceeds", "Not Sufficient Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+                    //clearItemDetail();
+                    //dgvItemDetail.Rows.Clear();
+                    cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
+                }
+               
+                else
                 {
                     dgvItem.Rows.Add(item.ItemName, item.quantity, item.Rate, item.amount, item.Id, item.unit);
                     cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
                     clearItemDetail();
+                    dgvItemDetail.Rows.Clear();
                     cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
                 }
-                else 
-                    {
-                        MessageBox.Show("Quantity Exceeds", "Not Sufficient Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
-                        clearItemDetail();
-                        cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
-                    }
-                
+                if (isEdit)
+                    isEdit = false;
             }
             else
                 MessageBox.Show("Please enter all required fields", "Required", MessageBoxButtons.OK, MessageBoxIcon.Question);
+           
 
         }
+      
         private void clearItemDetail()
         {
             cmbItem.SelectedIndex = -1;
@@ -236,6 +276,7 @@ namespace IMS
             txtRate.Text = string.Empty;
             txtAmount.Text = string.Empty;
             txtUnit.Clear();
+            txtRate.Enabled = true;
         }
         //private void btnSave_Click_1(object sender, EventArgs e)
         //{
@@ -336,13 +377,14 @@ namespace IMS
             List<Issued> iss = new List<Issued>();
             DataTable dt = new DataTable();
             List<Balance> blnc = new List<Balance>();
+            
             int resultissued = 0;
             int resultBalance = 0; int resTransaction = 0;
             if (dgvItem.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in dgvItem.Rows)
                 {
-                    if (isEdit == false || (isEdit = true && transactionId == null))
+                    if (( transactionId == null) || transactionId=="")
                     transactionId = Convert.ToString(Guid.NewGuid().ToString());
                     iss.Add(new Issued
                     {
@@ -357,7 +399,8 @@ namespace IMS
                         receivedby= txtReceivedBy.Text,
                         issuedby=txtIssuedBy.Text,
                         remarks=txtRemarks.Text,
-                        Id =transactionId
+                        Id =transactionId,
+                        itemName = (row.Cells["item"].Value.ToString()),
                     });
                     blnc.Add(new Balance
                     {
@@ -370,50 +413,101 @@ namespace IMS
                         grn = 0,
                         transactionId=transactionId
                     });
-                   
+                    resultissued = _BsMgmt.SaveIssued(iss, blnc, 0, 1);
+                    transactionId = "";
                 }
                // resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
-                resultissued = _BsMgmt.SaveIssued(iss,blnc,0,1);
-                transactionId = "";
+               
                // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
             }
             else
             {
                 if (ValidInputs() && cmbItem.SelectedIndex > -1 && cmbDept.SelectedIndex > -1)
                 {
-                    if (isEdit == false || (isEdit = true && transactionId == null))
-                    transactionId = Convert.ToString(Guid.NewGuid().ToString());
-                    iss.Add(new Issued
-                    {
-                        Date = Convert.ToDateTime(txtDate.Text),
-                        amount = decimal.Parse(txtAmount.Text),
-                        ISN = int.Parse(txtISN.Text),
-                        itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                        unit = (txtUnit.Text.ToString()),
-                        DeptId = int.Parse(cmbDept.SelectedValue.ToString()),
-                        quantity = decimal.Parse(txtQuantity.Text),
-                        Rate = decimal.Parse(txtRate.Text),
-                        receivedby = txtReceivedBy.Text,
-                        issuedby = txtIssuedBy.Text,
-                        remarks = txtRemarks.Text,
-                        departmentName = cmbDept.Text,
-                        itemName = cmbItem.Text,
-                        Id = transactionId
-                    });
+                    decimal quantity = 0;
+                    Item item = new Item();
+                    item.ItemName = (cmbItem.Text);
+                    item.Id = int.Parse(cmbItem.SelectedValue.ToString());
+                    quantity=item.quantity = string.IsNullOrEmpty(txtQuantity.Text) ? 0 : decimal.Parse(txtQuantity.Text);
+                    decimal rate = item.Rate = string.IsNullOrEmpty(txtRate.Text) ? 0 : decimal.Parse(txtRate.Text);
+                    item.amount = string.IsNullOrEmpty(txtAmount.Text) ? 0 : decimal.Parse(txtAmount.Text);
+                    item.unit = string.IsNullOrEmpty(txtUnit.Text) ? "" : Convert.ToString(txtUnit.Text);
 
-                    blnc.Add(new Balance
+                    foreach (DataGridViewRow row in dgvItemDetail.Rows)
                     {
-                        date = Convert.ToDateTime(txtDate.Text),
-                        amount = decimal.Parse(txtAmount.Text),
-                        itemId = int.Parse(cmbItem.SelectedValue.ToString()),
-                        quantity = decimal.Parse(txtQuantity.Text),
-                        Rate = decimal.Parse(txtRate.Text),
-                        isn = int.Parse(txtISN.Text),
-                        grn = 0,
-                        transactionId=transactionId
-                    });
-                    resultissued = _BsMgmt.SaveIssued(iss, blnc, 0, 1);
-                    transactionId = "";
+                        if (decimal.Parse(row.Cells["colRate"].Value.ToString()) == rate)
+                        {
+                            if ((transactionId == null) || transactionId == "")
+                            
+                                transactionId = Convert.ToString(Guid.NewGuid().ToString());
+                            //if (isEdit == false || (isEdit = true && transactionId == null))
+                            //{
+                            //                               }
+                            if (isEdit)
+                            {
+                                quantity = decimal.Parse(row.Cells["colQty"].Value.ToString()) + minQuantity - decimal.Parse(txtQuantity.Text);
+                                // decimal amount = (decimal.Parse(row.Cells["colAmt"].Value.ToString()) + decimal.Parse(txtAmount.Text));
+
+                            }
+                            else
+                            {
+                                quantity = decimal.Parse(row.Cells["colQty"].Value.ToString()) - decimal.Parse(txtQuantity.Text);
+                                decimal amount = (decimal.Parse(row.Cells["colAmt"].Value.ToString()) - decimal.Parse(txtAmount.Text));
+
+                            }
+
+                            break;
+                        }
+                        else
+                            quantity = minQuantity - decimal.Parse(txtQuantity.Text);
+                    }
+                    if(dgvItemDetail.Rows.Count<=0)
+                        quantity = minQuantity - decimal.Parse(txtQuantity.Text);
+                    if (quantity < 0)
+                    {
+
+                        MessageBox.Show("Quantity Exceeds", "Not Sufficient Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbItem.SelectedIndexChanged -= cmbItem_SelectedIndexChanged;
+                       // clearItemDetail();
+                        //dgvItemDetail.Rows.Clear();
+                        cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
+
+                    }
+                    else
+                    {
+                        iss.Add(new Issued
+                        {
+                            Date = Convert.ToDateTime(txtDate.Text),
+                            amount = decimal.Parse(txtAmount.Text),
+                            ISN = int.Parse(txtISN.Text),
+                            itemId = int.Parse(cmbItem.SelectedValue.ToString()),
+                            unit = (txtUnit.Text.ToString()),
+                            DeptId = int.Parse(cmbDept.SelectedValue.ToString()),
+                            quantity = decimal.Parse(txtQuantity.Text),
+                            Rate = decimal.Parse(txtRate.Text),
+                            receivedby = txtReceivedBy.Text,
+                            issuedby = txtIssuedBy.Text,
+                            remarks = txtRemarks.Text,
+                            departmentName = cmbDept.Text,
+                            itemName = cmbItem.Text,
+                            Id = transactionId
+                        });
+
+                        blnc.Add(new Balance
+                        {
+                            date = Convert.ToDateTime(txtDate.Text),
+                            amount = decimal.Parse(txtAmount.Text),
+                            itemId = int.Parse(cmbItem.SelectedValue.ToString()),
+                            quantity = decimal.Parse(txtQuantity.Text),
+                            Rate = decimal.Parse(txtRate.Text),
+                            isn = int.Parse(txtISN.Text),
+                            grn = 0,
+                            transactionId = transactionId
+                        });
+                        resultissued = _BsMgmt.SaveIssued(iss, blnc, 0, 1);
+                        transactionId = "";
+                    }
+                    
                     //  resultBalance = _BsMgmt.SaveBalance(blnc, 0, 1);
                     // resTransaction = _BsMgmt.SaveDailyTransaction(blnc, 0, 1);
                 }

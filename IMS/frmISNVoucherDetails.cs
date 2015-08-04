@@ -80,7 +80,8 @@ namespace IMS
                     if (result > 0)
                     {
                         MessageBox.Show("ISN Detail Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        loadGridVIew();
+                        dgvIssued.CurrentRow.Visible = false;
+                       // loadGridVIew();
                     }
                 }
 

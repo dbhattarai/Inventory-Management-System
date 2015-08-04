@@ -150,6 +150,7 @@
             this.changePasswordToolStripMenuItem.Name = "changePasswordToolStripMenuItem";
             this.changePasswordToolStripMenuItem.Size = new System.Drawing.Size(209, 26);
             this.changePasswordToolStripMenuItem.Text = "Change Password";
+            this.changePasswordToolStripMenuItem.Click += new System.EventHandler(this.changePasswordToolStripMenuItem_Click_1);
             // 
             // logOffToolStripMenuItem
             // 
@@ -224,7 +225,7 @@
             // 
             this.gRNToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gRNToolStripMenuItem.Name = "gRNToolStripMenuItem";
-            this.gRNToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.gRNToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.gRNToolStripMenuItem.Text = "GRN";
             this.gRNToolStripMenuItem.Click += new System.EventHandler(this.gRNToolStripMenuItem_Click);
             // 
@@ -232,7 +233,7 @@
             // 
             this.iSNToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.iSNToolStripMenuItem.Name = "iSNToolStripMenuItem";
-            this.iSNToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.iSNToolStripMenuItem.Size = new System.Drawing.Size(118, 26);
             this.iSNToolStripMenuItem.Text = "ISN";
             this.iSNToolStripMenuItem.Click += new System.EventHandler(this.iSNToolStripMenuItem_Click);
             // 
