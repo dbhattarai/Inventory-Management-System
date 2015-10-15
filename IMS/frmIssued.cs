@@ -86,12 +86,24 @@ namespace IMS
             foreach (var item in itemDetail)
             {
                 if (item.quantity > 0)
+                {
                     dgvItemDetail.Rows.Add(item.itemId, item.quantity, item.Rate, item.amount);
+
+                    if (dgvItem.Rows.Count > 0)
+                    {
+                        foreach (DataGridViewRow row in dgvItem.Rows)
+                        {
+                            if (item.itemId == int.Parse(row.Cells["itemId"].Value.ToString()))
+                                dgvItemDetail.CurrentRow.Cells["colQty"].Value = (item.quantity - decimal.Parse(row.Cells["quantity"].Value.ToString()));
+                        }
+                    }
+                }
                 if (isEdit && item.quantity<=0)
                     minQuantity = decimal.Parse(txtQuantity.Text);
                 if(isEdit)
                     minQuantity = decimal.Parse(txtQuantity.Text);
-                
+
+               
             }
             if (dgvItemDetail.Rows.Count == 0)
             {
@@ -106,6 +118,8 @@ namespace IMS
                     cmbItem.SelectedIndexChanged += cmbItem_SelectedIndexChanged;
                 }
             }
+
+           
         }
        
         private void frmIssued_Load(object sender, EventArgs e)

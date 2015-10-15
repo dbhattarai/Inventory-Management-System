@@ -1,0 +1,4 @@
+D:\Projects\IMS2\IMS\IMSCommonHelper\bin\Release\IMSCommonHelper.dll
+D:\Projects\IMS2\IMS\IMSCommonHelper\bin\Release\IMSCommonHelper.pdb
+D:\Projects\IMS2\IMS\IMSCommonHelper\obj\Release\IMSCommonHelper.dll
+D:\Projects\IMS2\IMS\IMSCommonHelper\obj\Release\IMSCommonHelper.pdb

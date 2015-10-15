@@ -46,3 +46,6 @@ H:\projects\IMS\IMS\obj\x86\Debug\IMS.Report.vendorWiseItemDetails.resources
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.csproj.GenerateResource.Cache
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.exe
 H:\projects\IMS\IMS\obj\x86\Debug\IMS.pdb
+D:\Projects\IMS2\IMS\IMS\bin\Debug\IMS.exe.config
+D:\Projects\IMS2\IMS\IMS\obj\x86\Debug\IMS.exe
+D:\Projects\IMS2\IMS\IMS\obj\x86\Debug\IMS.pdb
