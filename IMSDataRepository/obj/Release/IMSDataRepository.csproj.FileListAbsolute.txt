@@ -7,3 +7,12 @@ D:\Projects\IMS2\IMS\IMSDataRepository\bin\Release\IMSModel.pdb
 D:\Projects\IMS2\IMS\IMSDataRepository\obj\Release\IMSDataRepository.csprojResolveAssemblyReference.cache
 D:\Projects\IMS2\IMS\IMSDataRepository\obj\Release\IMSDataRepository.dll
 D:\Projects\IMS2\IMS\IMSDataRepository\obj\Release\IMSDataRepository.pdb
+D:\Projects\IMS2\IMSDataRepository\obj\Release\IMSDataRepository.csprojResolveAssemblyReference.cache
+D:\Projects\IMS2\IMSDataRepository\obj\Release\IMSDataRepository.dll
+D:\Projects\IMS2\IMSDataRepository\bin\Release\IMSDataRepository.dll
+D:\Projects\IMS2\IMSDataRepository\bin\Release\IMSDataRepository.pdb
+D:\Projects\IMS2\IMSDataRepository\bin\Release\IMSCommonHelper.dll
+D:\Projects\IMS2\IMSDataRepository\bin\Release\IMSModel.dll
+D:\Projects\IMS2\IMSDataRepository\bin\Release\IMSCommonHelper.pdb
+D:\Projects\IMS2\IMSDataRepository\bin\Release\IMSModel.pdb
+D:\Projects\IMS2\IMSDataRepository\obj\Release\IMSDataRepository.pdb

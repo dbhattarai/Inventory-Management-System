@@ -1,0 +1,9 @@
+H:\projects\IMS\IMSDataRepository\bin\Debug\IMSDataRepository.dll
+H:\projects\IMS\IMSDataRepository\bin\Debug\IMSDataRepository.pdb
+H:\projects\IMS\IMSDataRepository\bin\Debug\IMSCommonHelper.dll
+H:\projects\IMS\IMSDataRepository\bin\Debug\IMSModel.dll
+H:\projects\IMS\IMSDataRepository\bin\Debug\IMSCommonHelper.pdb
+H:\projects\IMS\IMSDataRepository\bin\Debug\IMSModel.pdb
+H:\projects\IMS\IMSDataRepository\obj\Debug\IMSDataRepository.csprojResolveAssemblyReference.cache
+H:\projects\IMS\IMSDataRepository\obj\Debug\IMSDataRepository.dll
+H:\projects\IMS\IMSDataRepository\obj\Debug\IMSDataRepository.pdb

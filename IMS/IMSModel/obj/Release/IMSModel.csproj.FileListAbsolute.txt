@@ -1,0 +1,5 @@
+D:\Projects\IMS2\IMS\IMSModel\bin\Release\IMSModel.dll
+D:\Projects\IMS2\IMS\IMSModel\bin\Release\IMSModel.pdb
+D:\Projects\IMS2\IMS\IMSModel\obj\Release\IMSModel.dll
+D:\Projects\IMS2\IMS\IMSModel\obj\Release\IMSModel.pdb
+D:\Projects\IMS2\IMS\IMSModel\obj\Release\IMSModel.csprojResolveAssemblyReference.cache

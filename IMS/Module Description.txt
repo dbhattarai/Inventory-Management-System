@@ -1,0 +1,24 @@
+1) Setting Module:
+	1) Item Setting
+	2) Vendor Setting
+	3) Department Setting
+	4) Database Backup
+
+2) User Management
+
+3) Transaction Management
+	1) Received Item
+		a) Single Item received
+		b) Multiple Item received
+	2) Issued Item
+		a) Single Item issued
+		b) Multiple Item issued
+4)Report
+	1) Daily Ledger report
+	2) Item wise Daily ledger
+	3) Department Wise Item report
+	4) Item Wise department report
+	5) Vendor wise item report
+	6) Item wise vendor report
+	7) Received voucher report for multiple received item
+	8) Issued voucher report for multiple item issued

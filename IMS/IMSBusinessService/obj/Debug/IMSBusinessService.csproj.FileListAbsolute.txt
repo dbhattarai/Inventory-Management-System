@@ -1,0 +1,11 @@
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSBusinessService.dll
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSBusinessService.pdb
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSDataRepository.dll
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSModel.dll
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSCommonHelper.dll
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSDataRepository.pdb
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSModel.pdb
+H:\projects\IMS\IMSBusinessService\bin\Debug\IMSCommonHelper.pdb
+H:\projects\IMS\IMSBusinessService\obj\Debug\IMSBusinessService.csprojResolveAssemblyReference.cache
+H:\projects\IMS\IMSBusinessService\obj\Debug\IMSBusinessService.dll
+H:\projects\IMS\IMSBusinessService\obj\Debug\IMSBusinessService.pdb

@@ -9,3 +9,14 @@ D:\Projects\IMS2\IMS\IMSBusinessService\bin\Release\IMSCommonHelper.pdb
 D:\Projects\IMS2\IMS\IMSBusinessService\obj\Release\IMSBusinessService.csprojResolveAssemblyReference.cache
 D:\Projects\IMS2\IMS\IMSBusinessService\obj\Release\IMSBusinessService.dll
 D:\Projects\IMS2\IMS\IMSBusinessService\obj\Release\IMSBusinessService.pdb
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSBusinessService.dll
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSBusinessService.pdb
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSDataRepository.dll
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSModel.dll
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSCommonHelper.dll
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSDataRepository.pdb
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSModel.pdb
+D:\Projects\IMS2\IMSBusinessService\bin\Release\IMSCommonHelper.pdb
+D:\Projects\IMS2\IMSBusinessService\obj\Release\IMSBusinessService.csprojResolveAssemblyReference.cache
+D:\Projects\IMS2\IMSBusinessService\obj\Release\IMSBusinessService.dll
+D:\Projects\IMS2\IMSBusinessService\obj\Release\IMSBusinessService.pdb
