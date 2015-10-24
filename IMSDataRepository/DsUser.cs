@@ -13,7 +13,8 @@ namespace IMSDataRepository
     public class DsUser
     {
         private readonly DBConnect dbc = new DBConnect();
-
+        public string saltKey { get; set; }
+        public string HashKey { get; set; }
         public DataTable userLogin(User user)
         {
             try
@@ -31,9 +32,22 @@ namespace IMSDataRepository
                 adapter.Fill(dt);
                 cmdLogin.Dispose();
                 dbc.Disconnect();
-                var password = dt.Rows[0][3].ToString();
-                var salt = dt.Rows[0][4].ToString();
-                bool isValid = AuthenticateUser(password, salt, user.password);
+                var Dbpassword = dt.Rows[0][3].ToString();
+                var Dbsalt = dt.Rows[0][4].ToString();
+                if (string.IsNullOrEmpty(Dbsalt))
+                {
+                    User updateUser = new User();
+                    updateUser.userId = dt.Rows[0][0].ToString();
+                    updateUser.fullname = dt.Rows[0][1].ToString();
+                    updateUser.username = dt.Rows[0][2].ToString();
+                    updateUser.password = dt.Rows[0][3].ToString();
+                    updateUser.Usertype = dt.Rows[0][5].ToString();
+                    updateUser.DeptId = Convert.ToInt32(dt.Rows[0][6].ToString());
+                    SaveUser(updateUser);
+                    Dbsalt = saltKey;
+                    Dbpassword = HashKey;
+                }
+                bool isValid = AuthenticateUser(Dbpassword, Dbsalt, user.password);
                 if (isValid)
                 {
                     return dt;
@@ -100,6 +114,8 @@ namespace IMSDataRepository
             //Hashes should be stored using Base64 encoding.
             user.password = Convert.ToBase64String(hashValue);
             user.salt = Convert.ToBase64String(saltBytes);
+            saltKey = user.salt;
+            HashKey = user.password;
             //store hashString and saltString in database.
             return user;
         }
