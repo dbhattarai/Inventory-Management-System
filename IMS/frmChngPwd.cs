@@ -25,7 +25,7 @@ namespace IMS
 
         private void btnSavePwd_Click(object sender, EventArgs e)
         {
-            if (txtUName.Text == Global.UserName && txtOldPwd.Text == Global.Password)
+            if (txtUName.Text == Global.UserName)
             {
                 user.username = txtUName.Text;
                 user.password = txtNewPwd.Text;
