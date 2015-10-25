@@ -25,14 +25,17 @@ namespace IMS
 
         private void btnSavePwd_Click(object sender, EventArgs e)
         {
-            if (txtUName.Text == Global.UserName)
+            user.username = txtUName.Text;
+            user.password = txtOldPwd.Text;
+            user.userId = Global.UserId;//userId;
+            user.fullname = Global.fullName;
+            user.Usertype = Global.Utype;
+            user.DeptId = Global.deptId;
+
+            var isValidUser = _Bsuser.userLogin(user);
+            if (txtUName.Text == Global.UserName && isValidUser.Rows.Count > 0)
             {
-                user.username = txtUName.Text;
                 user.password = txtNewPwd.Text;
-                user.userId = Global.UserId;//userId;
-                user.fullname = Global.fullName;
-                user.Usertype = Global.Utype;
-                user.DeptId = Global.deptId;
                 int result = _Bsuser.SaveUser(user);
                 if (result > 0)
                 {
@@ -45,7 +48,7 @@ namespace IMS
                 MessageBox.Show("Please enter valid user name or password", "IMS");
                 Clear();
             }
-              
+
         }
         private void Clear()
         {
