@@ -32,17 +32,17 @@ namespace IMSDataRepository
                 adapter.Fill(dt);
                 cmdLogin.Dispose();
                 dbc.Disconnect();
-                var Dbpassword = dt.Rows[0][3].ToString();
-                var Dbsalt = dt.Rows[0][4].ToString();
+                var Dbpassword = dt.Rows[0]["Password"].ToString();
+                var Dbsalt = dt.Rows[0]["salt"].ToString();
                 if (string.IsNullOrEmpty(Dbsalt))
                 {
                     User updateUser = new User();
-                    updateUser.userId = dt.Rows[0][0].ToString();
-                    updateUser.fullname = dt.Rows[0][1].ToString();
-                    updateUser.username = dt.Rows[0][2].ToString();
-                    updateUser.password = dt.Rows[0][3].ToString();
-                    updateUser.Usertype = dt.Rows[0][5].ToString();
-                    updateUser.DeptId = Convert.ToInt32(dt.Rows[0][6].ToString());
+                    updateUser.userId = dt.Rows[0]["Id"].ToString();
+                    updateUser.fullname = dt.Rows[0]["FullName"].ToString();
+                    updateUser.username = dt.Rows[0]["UserName"].ToString();
+                    updateUser.password = dt.Rows[0]["Password"].ToString();
+                    updateUser.Usertype = dt.Rows[0]["UserType"].ToString();
+                    updateUser.DeptId = Convert.ToInt32(dt.Rows[0]["DeptId"].ToString());
                     SaveUser(updateUser);
                     Dbsalt = saltKey;
                     Dbpassword = HashKey;

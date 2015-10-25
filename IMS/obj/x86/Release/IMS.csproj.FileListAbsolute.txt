@@ -47,8 +47,6 @@ D:\Projects\IMS2\IMS\IMS\obj\x86\Release\IMS.csproj.GenerateResource.Cache
 D:\Projects\IMS2\IMS\IMS\obj\x86\Release\IMS.exe
 D:\Projects\IMS2\IMS\IMS\obj\x86\Release\IMS.pdb
 D:\Projects\IMS2\IMS\bin\Release\IMS.exe.config
-D:\Projects\IMS2\IMS\obj\x86\Release\IMS.exe
-D:\Projects\IMS2\IMS\obj\x86\Release\IMS.pdb
 D:\Projects\IMS2\IMS\bin\Release\IMS.exe
 D:\Projects\IMS2\IMS\bin\Release\IMS.pdb
 D:\Projects\IMS2\IMS\bin\Release\IMSBusinessService.dll
@@ -94,3 +92,5 @@ D:\Projects\IMS2\IMS\obj\x86\Release\IMS.Report.ledgerReport.resources
 D:\Projects\IMS2\IMS\obj\x86\Release\IMS.Report.receivedVoucherReport.resources
 D:\Projects\IMS2\IMS\obj\x86\Release\IMS.Report.vendorWiseItemDetails.resources
 D:\Projects\IMS2\IMS\obj\x86\Release\IMS.csproj.GenerateResource.Cache
+D:\Projects\IMS2\IMS\obj\x86\Release\IMS.exe
+D:\Projects\IMS2\IMS\obj\x86\Release\IMS.pdb
